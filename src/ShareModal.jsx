@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useContext, useReducer, useMemo, useSt
 import SingleCondition from "./generalComponents/SingleCondition";
 import ReviewConditions from "./generalComponents/ReviewConditions";
 import MultipleConditions from "./generalComponents/MultipleConditions";
+import './index.css'
 
 import LitJsSdk from "lit-js-sdk";
 import { TOP_LIST } from "./helpers/topList";
@@ -15,7 +16,7 @@ const ShareModal = (props) => {
     onClose = () => false,
     onBack = () => false,
     // TODO: showModal needs to start as false
-    showModal = false,
+    showModal = true,
     onAccessControlConditionsSelected,
     defaultTokens = TOP_LIST
   } = props;
