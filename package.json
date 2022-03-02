@@ -1,0 +1,35 @@
+{
+  "name": "lit-modal-vite",
+  "version": "0.0.7",
+  "main": "./dist/LitModalVite.umd.js",
+  "module": "./dist/LitModalVite.es.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "ethers": "^5.5.4",
+    "react-select": "^5.2.2",
+    "react-windowed-select": "^3.1.2",
+    "util": "^0.12.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-react": "^7.16.7",
+    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+    "@vitejs/plugin-react": "^1.0.7",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^8.10.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "postcss": "^8.4.7",
+    "tailwindcss": "^3.0.23",
+    "vite": "^2.8.6"
+  },
+  "peerDependencies": {
+    "lit-js-sdk": "^1.1.99",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
