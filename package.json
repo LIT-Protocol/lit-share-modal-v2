@@ -1,8 +1,8 @@
 {
   "name": "lit-modal-vite",
-  "version": "0.0.7",
-  "main": "./dist/LitModalVite.umd.js",
-  "module": "./dist/LitModalVite.es.js",
+  "version": "0.0.12",
+  "main": "./dist/lit-modal-vite.umd.js",
+  "module": "./dist/lit-modal-vite.es.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -25,11 +25,11 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "postcss": "^8.4.7",
     "tailwindcss": "^3.0.23",
-    "vite": "^2.8.6"
+    "vite": "^2.8.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "lit-js-sdk": "^1.1.99"
   },
   "peerDependencies": {
-    "lit-js-sdk": "^1.1.99",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
   }
 }

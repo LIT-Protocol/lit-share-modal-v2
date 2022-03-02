@@ -16,7 +16,13 @@ export default defineConfig({
         'lit-js-sdk',
         'react',
         'react-dom'
-      ]
+      ],
+      output: {
+        globals: {
+          react: 'React',
+          LitJsSdk: 'lit-js-sdk',
+        }
+      }
     }
   },
   plugins: [react()],

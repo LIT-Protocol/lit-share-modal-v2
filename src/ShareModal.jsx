@@ -182,7 +182,6 @@ const ShareModal = (props) => {
 
   return (
     <div>
-      TEST
       {showModal && (
         <ShareModalContext.Provider value={{
           handleUpdateAccessControlConditions,
