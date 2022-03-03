@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import LitBackButton from "../reusableComponents/LitBackButton";
 import LitNextButton from "../reusableComponents/LitNextButton";
 import LitSelectDropdown from "../reusableComponents/LitSelectDropdown";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "../generalComponents/ShareModal";
 import LitSelectToken from "../reusableComponents/LitSelectToken";
 
 const SelectNFT = ({ setSelectPage, handleUpdateAccessControlConditions }) => {

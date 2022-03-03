@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import LitBackButton from "../reusableComponents/LitBackButton";
 import LitNextButton from "../reusableComponents/LitNextButton";
 import { ethers } from "ethers";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "../generalComponents/ShareModal";
 import LitJsSdk from "lit-js-sdk";
 import LitSelectDropdown from "../reusableComponents/LitSelectDropdown";
 import LitSelectToken from "../reusableComponents/LitSelectToken";

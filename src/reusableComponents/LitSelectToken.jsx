@@ -10,7 +10,7 @@ import {
 } from "react-windowed-select";
 
 import LitBackButton from "./LitBackButton";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "../generalComponents/ShareModal";
 import CreatableSelect from "react-select/creatable";
 
 const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {

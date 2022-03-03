@@ -1,5 +1,5 @@
 import React, { useContext, useState, useMemo, useEffect } from 'react';
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "../generalComponents/ShareModal";
 import LitSelectDropdown from "../reusableComponents/LitSelectDropdown";
 import LitJsSdk from "lit-js-sdk";
 import LitBackButton from "../reusableComponents/LitBackButton";

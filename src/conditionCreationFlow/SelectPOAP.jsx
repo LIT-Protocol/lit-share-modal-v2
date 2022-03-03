@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import LitBackButton from "../reusableComponents/LitBackButton";
 import LitNextButton from "../reusableComponents/LitNextButton";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "../generalComponents/ShareModal";
 import LitSelectDropdown from "../reusableComponents/LitSelectDropdown";
 
 const matchConditionOptions = [

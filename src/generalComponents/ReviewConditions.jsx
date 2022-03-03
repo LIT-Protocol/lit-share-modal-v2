@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import LitBackButton from "../reusableComponents/LitBackButton";
 import LitNextButton from "../reusableComponents/LitNextButton";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "./ShareModal";
 import link from '../assets/link.svg';
 import LitConfirmationModal from "../reusableComponents/LitConfirmationModal";
 

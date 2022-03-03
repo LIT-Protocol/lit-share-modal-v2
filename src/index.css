@@ -5,3 +5,10 @@
 body {
   margin: 0;
 }
+
+.modal {
+  width: 90%;
+  left: 5%;
+  top: 35%;
+}
+

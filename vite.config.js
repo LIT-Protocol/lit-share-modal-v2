@@ -11,6 +11,7 @@ export default defineConfig({
       name: 'lit-modal-vite',
       fileName: (format) => `lit-modal-vite.${format}.js`,
     },
+    cssCodeSplit: false,
     rollupOptions: {
       external: [
         'lit-js-sdk',

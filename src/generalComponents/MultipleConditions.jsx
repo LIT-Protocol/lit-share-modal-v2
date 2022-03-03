@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import LitBackButton from "../reusableComponents/LitBackButton";
 import LitNextButton from "../reusableComponents/LitNextButton";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "./ShareModal";
 import MultipleCreateCondition from "./MultipleCreateCondition";
 import union from "../assets/union.svg";
 import LitConfirmationModal from "../reusableComponents/LitConfirmationModal";

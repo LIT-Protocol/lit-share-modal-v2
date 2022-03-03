@@ -1,8 +1,14 @@
 {
   "name": "lit-modal-vite",
-  "version": "0.0.13",
+  "version": "0.0.25",
   "main": "./dist/lit-modal-vite.umd.js",
   "module": "./dist/lit-modal-vite.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/lit-modal-vite.es.js",
+      "require": "./dist/lit-modal-vite.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

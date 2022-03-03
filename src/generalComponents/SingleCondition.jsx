@@ -6,7 +6,7 @@ import SelectDAO from "../conditionCreationFlow/SelectDAO";
 import SelectPOAP from "../conditionCreationFlow/SelectPOAP";
 import SelectNFT from "../conditionCreationFlow/SelectNFT";
 import union from "../assets/union.svg";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "./ShareModal";
 
 const SingleCondition = () => {
   const { handleUpdateAccessControlConditions, handleClose, setDisplayedPage } = useContext(ShareModalContext);

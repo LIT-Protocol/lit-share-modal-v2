@@ -1,5 +1,4 @@
 import React from "react";
-import './LitModal.css';
 
 const LitConfirmationModal = ({ showConfirmationModal, modalResponse, onClick, message = null }) => {
 

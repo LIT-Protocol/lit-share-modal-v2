@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import LitChooseAccessButton from "../reusableComponents/LitChooseAccessButton";
 import POAP from "../assets/POAP.svg";
 import venn from "../assets/venn.svg";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "../generalComponents/ShareModal";
 
 const ChooseAccess = ({ setSelectPage }) => {
   const { setDisplayedPage, setFlow } = useContext(ShareModalContext);

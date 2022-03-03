@@ -1,13 +1,13 @@
 import React, { createContext, useEffect, useContext, useReducer, useMemo, useState } from 'react';
-import SingleCondition from "./generalComponents/SingleCondition";
-import ReviewConditions from "./generalComponents/ReviewConditions";
-import MultipleConditions from "./generalComponents/MultipleConditions";
-import './index.css'
+import SingleCondition from "./SingleCondition";
+import ReviewConditions from "./ReviewConditions";
+import MultipleConditions from "./MultipleConditions";
+import '../index.css'
 
 import LitJsSdk from "lit-js-sdk";
-import { TOP_LIST } from "./helpers/topList";
-import { humanizeNestedConditions, cleanAccessControlConditions } from "./helpers/multipleConditionHelpers";
-import LitConfirmationModal from "./reusableComponents/LitConfirmationModal";
+import { TOP_LIST } from "../helpers/topList";
+import { humanizeNestedConditions, cleanAccessControlConditions } from "../helpers/multipleConditionHelpers";
+import LitConfirmationModal from "../reusableComponents/LitConfirmationModal";
 
 export const ShareModalContext = createContext({});
 
@@ -203,7 +203,7 @@ const ShareModal = (props) => {
           sendAccessControlConditions
         }}>
           {displayPage === 'single' && (
-            <SingleCondition/>
+            <SingleCondition style={{ 'border': '2px solid red'}}/>
           )}
           {displayPage === 'multiple' && (
             <MultipleConditions humanizedAccessControlConditions={humanizedAccessControlConditions}/>

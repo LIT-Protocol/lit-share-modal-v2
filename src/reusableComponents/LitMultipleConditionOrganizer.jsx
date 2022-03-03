@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import './LitModal.css';
 import trashcan from "../assets/trashcan.svg";
 import add from "../assets/add.svg";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "../generalComponents/ShareModal";
 import LitDeleteModal from "./LitDeleteModal";
 
 const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControlConditions }) => {

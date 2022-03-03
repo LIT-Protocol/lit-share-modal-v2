@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import chevronDown from '../assets/chevronDown.svg';
 import union from '../assets/union.svg';
 import LitBackButton from "./LitBackButton";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "../generalComponents/ShareModal";
 
 const LitTokenSelectDropdown = ({ options, label, setOption, option, }) => {
   const context = useContext(ShareModalContext);

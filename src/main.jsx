@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ShareModal from './ShareModal'
+import ShareModal from './generalComponents/ShareModal'
+import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>

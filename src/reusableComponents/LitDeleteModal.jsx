@@ -1,5 +1,4 @@
 import React from "react";
-import './LitModal.css';
 
 const LitDeleteModal = ({ showDeleteModal, modalResponse, onClick, message }) => {
 

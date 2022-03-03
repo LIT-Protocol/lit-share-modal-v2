@@ -7,7 +7,7 @@ import SelectPOAP from "../conditionCreationFlow/SelectPOAP";
 import SelectNFT from "../conditionCreationFlow/SelectNFT";
 import LitBackButton from "../reusableComponents/LitBackButton";
 import LitNextButton from "../reusableComponents/LitNextButton";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "./ShareModal";
 
 const MultipleCreateCondition = ({ endOfCreateCondition, isNested, nestedIndex }) => {
   const { handleUpdateAccessControlConditions } = useContext(ShareModalContext);
