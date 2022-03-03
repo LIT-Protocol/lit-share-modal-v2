@@ -10,10 +10,13 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
     sendAccessControlConditions,
     flow,
     setFlow,
+    resetModal,
     setDisplayedPage,
     clearAllAccessControlConditions,
   } = useContext(ShareModalContext);
+
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [conditionsAreUpdatable, setConditionsAreUpdatable] = useState(false);
 
   const navigateBack = () => {
     if (flow === 'singleCondition') {
@@ -25,9 +28,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
 
   const handleConfirmGoBack = (modalResponse) => {
     if (modalResponse === 'yes') {
-      setFlow('singleCondition');
-      setDisplayedPage('single');
-      clearAllAccessControlConditions();
+      resetModal();
     }
 
     setShowConfirmationModal(false);
@@ -71,7 +72,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
             )
           } else {
             return (
-              <span className={'text-sm w-11/12 p-3 mx-auto bg-white break-words text-center overflow-auto rounded'}
+              <span className={'text-sm w-11/12 p-3 mx-auto bg-white break-words text-left overflow-auto rounded'}
                     key={i}
               > {h.humanizedAcc}
               </span>
@@ -81,19 +82,19 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
       </div>
       {/*<footer className={'flex flex-col bg-white items-align w-full h-30 fixed bottom-0 left-0'}>*/}
       <footer className={'flex flex-col bg-white items-align w-full h-30'}>
-        <div className={'mt-4 w-11/12 flex items-center mx-auto border rounded border-brand-4 p-2'}>
-          <input className={'mr-4'} type="checkbox" id="edit" name="edit"/>
+        <div className={'mt-4 w-full flex items-center mx-auto border rounded border-brand-4 p-2'}>
+          <input className={'mr-4'} type="checkbox" id="edit" name="edit" value={conditionsAreUpdatable} onChange={(e) => setConditionsAreUpdatable(e.target.checked)}/>
           <label className={'text-sm'} htmlFor="edit">Make condition(s) editable; if selected, only you can edit</label>
         </div>
         <div className={'w-full mx-auto flex justify-center mt-4 text-brand-4'}>
-          <a className={'text-sm flex'} href={'https://developer.litprotocol.com/docs/AccessControlConditions/basicExamples'} target={'_blank'} rel="noreferrer">More information about
+          <a className={'text-sm flex'} href={'https://developer.litprotocol.com/docs/AccessControlConditions/evmBasicExamples'} target={'_blank'} rel="noreferrer">More information about
             conditions <img
               alt={'clear input'} className={'h-4 font-os ml-2'} src={link}/></a>
         </div>
         {/*<div className={'flex flex-row justify-end w-full h-12 mt-8'}>*/}
         <div className={'flex flex-row bg-white justify-between w-full h-12 my-4'}>
           <LitBackButton onClick={() => navigateBack()}/>
-          <LitNextButton disableConditions={false} onClick={() => sendAccessControlConditions()}/>
+          <LitNextButton label={'DONE'} disableConditions={false} onClick={() => sendAccessControlConditions(conditionsAreUpdatable)}/>
         </div>
       </footer>
       <LitConfirmationModal showConfirmationModal={showConfirmationModal}

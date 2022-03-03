@@ -28,7 +28,7 @@ const MultipleCreateCondition = ({ endOfCreateCondition, isNested, nestedIndex }
       <MultipleChooseAccess setSelectPage={setSelectPage}/>
       <footer className={'flex flex-row justify-between w-full h-12 mb-4 mt-8 fixed bottom-0 left-0'}>
         <LitBackButton onClick={() => endOfCreateCondition(false)}/>
-        <LitNextButton disableConditions={false} onClick={() => console.log('HEY HEY')}/>
+        {/* <LitNextButton disableConditions={false} onClick={() => console.log('HEY HEY')}/> */}
       </footer>
     </>
   }

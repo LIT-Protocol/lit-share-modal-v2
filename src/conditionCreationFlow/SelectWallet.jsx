@@ -67,7 +67,7 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
   };
 
   return (
-    <div className={'w-full h-full flex flex-col items-center px-8 py-4 bg-white'}>
+    <div className={'w-full flex flex-col items-center px-8 py-4 bg-white'}>
       <h3 className={'mb-4'}>Which wallet should be able to access this asset?</h3>
       <p className={'text-sm mb-4 text-brand-4'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
       <h3 className={'w-full mb-4'}>Select blockchain:</h3>

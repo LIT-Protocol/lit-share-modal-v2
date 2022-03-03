@@ -77,7 +77,7 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
         <img src={chevronDown}/>
       </button>
       {!!selectIsOpen && (
-        <div className={'absolute w-screen h-screen top-0 left-0 bg-brand-20'}>
+        <div className={'absolute w-full h-full top-0 left-0 bg-brand-20'}>
           <header className={'w-full py-4 m-0 bg-brand-4'}>
             <span className={'w-full bg-brand-4'}>
               <h3 className={'w-11/12 mx-auto text-brand-light'}>SELECT A TOKEN/NFT</h3>

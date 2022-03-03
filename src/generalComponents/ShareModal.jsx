@@ -53,7 +53,6 @@ const ShareModal = (props) => {
   document.addEventListener(
     "lit-ready",
     function (e) {
-      console.log("Lit client ready");
     },
     false
   );
@@ -62,7 +61,6 @@ const ShareModal = (props) => {
   const handleDeleteAccessControlCondition = async (localIndex, nestedIndex) => {
     const updatedAcc = accessControlConditions;
     // TODO: create nested delete
-    console.log('INDEX LIST, local:', localIndex, 'Nested', nestedIndex)
 
     if (nestedIndex === null) {
       if (localIndex > 1 && localIndex === updatedAcc.length - 1) {
@@ -71,16 +69,11 @@ const ShareModal = (props) => {
         updatedAcc.splice(updatedAcc[localIndex], 2);
       }
     } else {
-      console.log('1. NESTED START', updatedAcc[localIndex])
       if (nestedIndex > 1 && nestedIndex === updatedAcc[localIndex].length - 1) {
-        console.log('2. LONG NESTED START', updatedAcc[localIndex]);
         updatedAcc[localIndex].splice(updatedAcc[localIndex][nestedIndex - 1], 2);
-        console.log('2. LONG NESTED END', updatedAcc[localIndex]);
 
       } else {
-        console.log('2. SHORT NESTED START', updatedAcc)
         updatedAcc[localIndex].splice(updatedAcc[localIndex][nestedIndex], 2);
-        console.log('2. SHORT NESTED END', updatedAcc)
       }
     }
 
@@ -93,20 +86,16 @@ const ShareModal = (props) => {
 
   const checkForAddingOperatorToCondition = (acc, newAccessControlCondition) => {
     const updatedAcc = acc;
-    console.log('Check for adding, updatedAcc', updatedAcc)
     if (!acc.length && newAccessControlCondition[0]) {
       updatedAcc.push(newAccessControlCondition[0]);
     } else {
-      console.log('Check to add new nested condition')
       updatedAcc.push({ operator: 'and' });
       updatedAcc.push(newAccessControlCondition[0]);
-      console.log('end of adding new nested condition', updatedAcc)
     }
     return updatedAcc;
   }
 
   const handleUpdateAccessControlConditions = async (newAccessControlCondition, isNested = false, index = null) => {
-    console.log('---> handle update, nested:', isNested, 'index', index)
     let updatedAcc = [...accessControlConditions];
     if (!newAccessControlCondition[0]) {
       return;
@@ -114,14 +103,10 @@ const ShareModal = (props) => {
 
     if (isNested) {
       if (Array.isArray(updatedAcc[index])) {
-        console.log('Handle update, already array')
         updatedAcc[index] = checkForAddingOperatorToCondition(updatedAcc[index], newAccessControlCondition);
       } else {
-        console.log('Handle update, not array')
         let nestedUpdatedAcc = checkForAddingOperatorToCondition([updatedAcc[index]], newAccessControlCondition);
-        console.log('Handle update, nestedUpdatedAcc', nestedUpdatedAcc)
         updatedAcc[index] = nestedUpdatedAcc;
-        console.log('After updateAcc', updatedAcc)
       }
     } else {
       updatedAcc = checkForAddingOperatorToCondition(updatedAcc, newAccessControlCondition);
@@ -135,11 +120,8 @@ const ShareModal = (props) => {
   }
 
   const updateLogicOperator = async (value, localIndex, nestedIndex = null) => {
-    console.log('start of update logic operator', value, localIndex, nestedIndex)
     let updatedAcc = [...accessControlConditions];
-    console.log('udpated acc', updatedAcc[nestedIndex])
     if (!!nestedIndex) {
-      console.log('nested', nestedIndex, localIndex)
       updatedAcc[localIndex][nestedIndex].operator = value;
     } else {
       updatedAcc[localIndex].operator = value;
@@ -151,70 +133,80 @@ const ShareModal = (props) => {
   const updateState = async (acc) => {
     const cleanedAcc = cleanAccessControlConditions(acc);
     const humanizedData = await humanizeNestedConditions([...cleanedAcc]);
-    console.log('---> UPDATE STATE', humanizedData)
     setHumanizedAccessControlConditions([...humanizedData]);
     setAccessControlConditions([...cleanedAcc]);
-    console.log('CLEANED AND UPDATED', cleanedAcc)
   }
 
   const handleClose = () => {
     if (accessControlConditions.length) {
       setShowConfirmationModal(true);
     } else {
-      clearAllAccessControlConditions();
-      console.log('CLOSE YO!');
-      // TODO: handle on close
-      // onClose();
+      resetModal();
+      onClose();
     }
+  }
+
+  const resetModal = () => {
+    setFlow('singleCondition');
+    setDisplayedPage('single');
+    clearAllAccessControlConditions();
   }
 
   const handleConfirmModalClose = (modalResponse) => {
     if (modalResponse === 'yes') {
       clearAllAccessControlConditions();
-      console.log('CLOSE TRHOUGH THE MODAL YO!');
     }
 
     setShowConfirmationModal(false);
   }
 
-  const sendAccessControlConditions = () => {
-    onAccessControlConditionsSelected(accessControlConditions);
+  const sendAccessControlConditions = (conditionsAreUpdatable) => {
+    const keyParams = {
+      accessControlConditions,
+      permanent: !conditionsAreUpdatable
+    }
+    onAccessControlConditionsSelected(keyParams);
+    resetModal();
+    onClose();
   }
 
   return (
     <div>
       {showModal && (
-        <ShareModalContext.Provider value={{
-          handleUpdateAccessControlConditions,
-          handleDeleteAccessControlCondition,
-          clearAllAccessControlConditions,
-          updateLogicOperator,
-          handleClose,
-          humanizedAccessControlConditions,
-          accessControlConditions,
-          setError,
-          setDisplayedPage,
-          displayPage,
-          tokenList,
-          flow,
-          setFlow,
-          chainOptions,
-          defaultTokens,
-          sendAccessControlConditions
-        }}>
-          {displayPage === 'single' && (
-            <SingleCondition style={{ 'border': '2px solid red'}}/>
-          )}
-          {displayPage === 'multiple' && (
-            <MultipleConditions humanizedAccessControlConditions={humanizedAccessControlConditions}/>
-          )}
-          {displayPage === 'review' && (
-            <ReviewConditions humanizedAccessControlConditions={humanizedAccessControlConditions}/>
-          )}
-          <LitConfirmationModal message={'Are you sure you want to close the modal?'}
-                                showConfirmationModal={showConfirmationModal}
-                                onClick={handleConfirmModalClose}/>
-        </ShareModalContext.Provider>
+        <div className={'absolute top-0 left-0 w-full h-full bg-transparent top-modal border border-brand-4'}>
+          <ShareModalContext.Provider value={{
+            handleUpdateAccessControlConditions,
+            handleDeleteAccessControlCondition,
+            clearAllAccessControlConditions,
+            updateLogicOperator,
+            handleClose,
+            sendAccessControlConditions,
+            resetModal,
+            setError,
+            setDisplayedPage,
+            setFlow,
+            humanizedAccessControlConditions,
+            accessControlConditions,
+            displayPage,
+            tokenList,
+            flow,
+            chainOptions,
+            defaultTokens,
+          }}>
+            {displayPage === 'single' && (
+              <SingleCondition/>
+            )}
+            {displayPage === 'multiple' && (
+              <MultipleConditions humanizedAccessControlConditions={humanizedAccessControlConditions}/>
+            )}
+            {displayPage === 'review' && (
+              <ReviewConditions humanizedAccessControlConditions={humanizedAccessControlConditions}/>
+            )}
+            <LitConfirmationModal message={'Are you sure you want to close the modal?'}
+                                  showConfirmationModal={showConfirmationModal}
+                                  onClick={handleConfirmModalClose}/>
+          </ShareModalContext.Provider>
+        </div>
       )}
     </div>
   );

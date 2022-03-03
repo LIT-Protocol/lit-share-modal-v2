@@ -159,7 +159,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
   };
 
   return (
-    <div className={'w-full h-full flex flex-col items-center px-8 py-4 bg-white'}>
+    <div className={'w-full flex flex-col items-center px-8 py-4 bg-white'}>
       <h3 className={'mb-4'}>Which wallet should be able to access this asset?</h3>
       <h3 className={'w-full mb-2'}>Select blockchain:</h3>
       <LitSelectDropdown options={context.chainOptions}

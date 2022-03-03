@@ -12,3 +12,13 @@ body {
   top: 35%;
 }
 
+@media (min-width: 768px) {
+  .top-modal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 26rem;
+    height: 46rem;
+    border-radius: 0.25rem;
+  }
+}

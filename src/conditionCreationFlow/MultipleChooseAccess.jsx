@@ -2,10 +2,8 @@ import React, { useContext, useState } from 'react';
 import LitChooseAccessButton from "../reusableComponents/LitChooseAccessButton";
 import POAP from "../assets/POAP.svg";
 import venn from "../assets/venn.svg";
-import { ShareModalContext } from "../generalComponents/ShareModal";
 
 const MultipleChooseAccess = ({ setSelectPage }) => {
-  const { setDisplayedPage, setFlow } = useContext(ShareModalContext);
 
   return (
     <div className={'flex flex-col items-center'}>

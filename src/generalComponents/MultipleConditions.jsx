@@ -12,6 +12,7 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
     setDisplayedPage,
     accessControlConditions,
     setFlow,
+    resetModal,
     handleClose,
     clearAllAccessControlConditions,
   } = useContext(ShareModalContext);
@@ -22,9 +23,7 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
 
   const handleConfirmGoBack = (modalResponse) => {
     if (modalResponse === 'yes') {
-      setFlow('singleCondition');
-      setDisplayedPage('single');
-      clearAllAccessControlConditions();
+      resetModal();
     }
 
     setShowConfirmationModal(false);
@@ -54,14 +53,14 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
                                          humanizedAccessControlConditions={humanizedAccessControlConditions}/>
           <footer className={'flex bg-white flex-row justify-between items-center w-full h-20 fixed bottom-0 left-0'}>
             <LitBackButton onClick={() => {
-              if (accessControlConditions.length < 1) {
+              if (humanizedAccessControlConditions.length < 1) {
                 setFlow('singleCondition');
                 setDisplayedPage('single');
               } else {
                 setShowConfirmationModal(true);
               }
             }}/>
-            <LitNextButton disableConditions={!accessControlConditions}
+            <LitNextButton disableConditions={!humanizedAccessControlConditions || !humanizedAccessControlConditions.length}
                            onClick={() => setDisplayedPage('review')}/>
           </footer>
           <LitConfirmationModal showConfirmationModal={showConfirmationModal}
