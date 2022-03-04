@@ -1,6 +1,6 @@
 {
   "name": "lit-modal-vite",
-  "version": "0.0.40",
+  "version": "0.0.44",
   "main": "./dist/lit-modal-vite.umd.js",
   "module": "./dist/lit-modal-vite.es.js",
   "exports": {
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build; echo \"------> DONT FORGET TO ADD import './style.css'; TO .ES BUILD FILE\"",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {

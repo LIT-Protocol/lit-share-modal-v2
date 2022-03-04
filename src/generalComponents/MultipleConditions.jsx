@@ -43,7 +43,7 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
 
   return (
     <>
-      <header className={'w-full h-14 bg-brand-light flex justify-between items-center px-5'}>
+      <header className={'w-full h-14 bg-brand-light flex justify-between items-center px-5 rounded-t-lg'}>
         <h3 className={'text-slate-500'}>ACCESS CONTROL</h3>
         <button><img alt={'close'} className={'h-4 font-os'} src={union} onClick={() => handleClose()}/></button>
       </header>
