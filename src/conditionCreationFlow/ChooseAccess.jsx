@@ -8,19 +8,19 @@ const ChooseAccess = ({ setSelectPage }) => {
   const { setDisplayedPage, setFlow } = useContext(ShareModalContext);
 
   return (
-    <div className={'flex flex-col items-center'}>
-      <h3 className={'mt-6 mb-4'}>Choose who can access this:</h3>
+    <div className={'lms-flex lms-flex-col lms-items-center'}>
+      <h3 className={'lms-mt-6 lms-mb-4'}>Choose who can access this:</h3>
       <LitChooseAccessButton onClick={() => setSelectPage('wallet')} label={'An Individual Wallet'}/>
       <LitChooseAccessButton onClick={() => setSelectPage('group')} label={'A Group of Token or NFT'}/>
       {/*<LitChooseAccessButton onClick={() => setSelectPage('nft')} label={'NFT Ownership'}/>*/}
       <LitChooseAccessButton onClick={() => setSelectPage('dao')} label={'DAO Members'}/>
       <LitChooseAccessButton onClick={() => setSelectPage('poap')} img={POAP} label={'POAP Collectors'}/>
-        <span className={'flex justify-center mt-8 mx-auto'} onClick={() => {
+        <span className={'lms-flex lms-justify-center lms-mt-8 lms-mx-auto lms-items-center'} onClick={() => {
           setFlow('multipleCondition');
           setDisplayedPage('multiple');
         }}>
           <img src={venn}/>
-          <p className={'text-xs w-6/12 ml-4 text-brand-4 underline'}>Gate with multiple conditions using AND/OR operators</p>
+          <p className={'lms-text-xs lms-w-6/12 lms-ml-4 text-brand-4 lms-underline md:lms-text-base md:lms-w-11/12'}>Gate with multiple conditions using AND/OR operators</p>
         </span>
     </div>
   );

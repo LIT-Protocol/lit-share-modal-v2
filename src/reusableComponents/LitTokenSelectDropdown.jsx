@@ -32,7 +32,7 @@ const LitTokenSelectDropdown = ({ options, label, setOption, option, }) => {
 
   return (
     <div className={'w-11/12 z-20 mx-auto px-2'}>
-      <p className={'text-sm w-full'}>SEARCH</p>
+      <p className={'text-sm md:text-base w-full'}>SEARCH</p>
       <button
         className={"w-full h-12 bg-white border border-brand-4 rounded hover:border-2 flex flex-row items-center justify-between px-4"}
         onClick={() => setSelectIsOpen(true)}>
@@ -44,7 +44,7 @@ const LitTokenSelectDropdown = ({ options, label, setOption, option, }) => {
           <div className={'fixed top-0 left-0 w-full pt-4 pb-2 bg-brand-4'}>
               <span
                 className={'w-11/12 mx-auto border-b border-brand-light flex flex-row items-center justify-between px-2'}>
-                <input className={'w-full py-2 focus:outline-0 bg-brand-4 text-brand-light'} value={searchTerm}
+                <input className={'w-full py-2 focus:outline-0 bg-brand-4 text-brand-light lms-input'} value={searchTerm}
                        onChange={(e) => setSearchTerm(e.target.value)}/>
                 <img alt={'clear input'} className={'h-4 font-os'} src={union} onClick={() => setSearchTerm('')}/>
               </span>

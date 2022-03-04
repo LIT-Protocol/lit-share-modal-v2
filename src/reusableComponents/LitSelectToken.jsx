@@ -30,7 +30,7 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
           />
           <div>
             <div className={'text-base leading-normal text-black'}>{label}</div>
-            <div className={'text-small text-secondary'}>{symbol}</div>
+            <div className={'text-sm md:text-base text-secondary'}>{symbol}</div>
           </div>
         </div>
       </components.Option>
@@ -62,9 +62,9 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
       selectedToken &&
       token["symbol"] === selectedToken["symbol"]
     ) {
-      return 'flex flex-row items-center border border-brand-5 rounded py-1.5 px-1.5 mr-2 mt-4 bg-white border-2';
+      return 'flex flex-row items-center border border-brand-5 rounded py-1.5 px-1.5 mr-2 mt-4 bg-white border-2 cursor-pointer';
     } else {
-      return 'flex flex-row items-center border border-brand-5 rounded py-1.5 px-1.5 mr-2 mt-4 bg-white';
+      return 'flex flex-row items-center border border-brand-5 rounded py-1.5 px-1.5 mr-2 mt-4 bg-white cursor-pointer';
     }
   };
 
@@ -84,7 +84,7 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
             </span>
           </header>
           <div className={'w-11/12 mx-auto flex flex-col items-center justify-between px-2 mt-8 mb-16'}>
-            <p className={'text-sm w-full'}>TOP TOKENS/NFTS</p>
+            <p className={'text-sm md:text-base w-full'}>TOP TOKENS/NFTS</p>
             <span className={'flex flex-row flex-wrap justify-start w-full'}>
               {defaultTokens.map((t, i) => (
                 <span

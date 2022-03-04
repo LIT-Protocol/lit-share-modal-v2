@@ -26,9 +26,9 @@ const LitSelectDropdown = ({options, label, setOption, option, backButtonLabel, 
       option &&
       chain["name"] === option["name"]
     ) {
-      return 'flex flex-row items-center border border-brand-5 rounded py-2.5 px-2.5 mr-2 mt-4 bg-white border-2';
+      return 'flex flex-row items-center border border-brand-5 rounded py-2.5 px-2.5 mr-2 mt-4 bg-white border-2 cursor-pointer';
     } else {
-      return 'flex flex-row items-center border border-brand-5 rounded py-2.5 px-2.5 mr-2 mt-4 bg-white';
+      return 'flex flex-row items-center border border-brand-5 rounded py-2.5 px-2.5 mr-2 mt-4 bg-white cursor-pointer';
     }
   };
 
@@ -48,7 +48,7 @@ const LitSelectDropdown = ({options, label, setOption, option, backButtonLabel, 
             ) : (
               <div className={'fixed top-0 left-0 w-full pt-4 pb-2 bg-brand-2'}>
                 <span className={'w-11/12 mx-auto border-b border-brand-2 flex flex-row items-center justify-between px-2'}>
-                  <input className={'w-full py-2 focus:outline-0 bg-brand-light'} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+                  <input className={'w-full py-2 focus:outline-0 bg-brand-light lms-input'} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
                   <img alt={'clear input'} className={'h-4 font-os'} src={union} onClick={() => setSearchTerm('')}/>
                 </span>
                 <p className={"w-11/12 mx-auto mt-2 mr-2"}>No. of results: {filteredOptions.length}</p>

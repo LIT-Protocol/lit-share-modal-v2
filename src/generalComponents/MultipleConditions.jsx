@@ -49,8 +49,10 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
       </header>
       {!showAddCondition ? (
         <>
-          <LitMultipleConditionOrganizer createCondition={createCondition}
-                                         humanizedAccessControlConditions={humanizedAccessControlConditions}/>
+          <div className={'overflow-scroll h-5/6'}>
+            <LitMultipleConditionOrganizer createCondition={createCondition}
+                                          humanizedAccessControlConditions={humanizedAccessControlConditions}/>
+          </div>
           <footer className={'flex bg-white flex-row justify-between items-center w-full h-20 fixed bottom-0 left-0'}>
             <LitBackButton onClick={() => {
               if (humanizedAccessControlConditions.length < 1) {

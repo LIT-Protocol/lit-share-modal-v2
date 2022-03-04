@@ -54,9 +54,9 @@ const SelectDAO = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
                          backButtonLabel={'BACK TO SELECT DAO'}
                          turnOffSearch={true}
       />
-      <h3 className={'mt-12 mb-4'}>Add DAO contract address:</h3>
+      <h3 className={'mt-12 mb-4 w-full lms-text-spacing'}>Add DAO contract address:</h3>
       <input value={DAOAddress} onChange={(e) => setDAOAddress(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0'}/>
+             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0 lms-input'}/>
       <p className={'mt-4 mb-4 text-sm'}>Lit Gateway currently supports DAOs using the MolochDAOv2.1 contract (includes
         DAOhaus)</p>
       <footer className={'flex flex-row justify-between w-full h-12 mb-4 mt-8'}>

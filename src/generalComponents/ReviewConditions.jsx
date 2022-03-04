@@ -36,7 +36,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
 
   return (
     <div className={'w-full h-full flex flex-col items-center w-11/12 py-4 mx-auto'}>
-      <h3 className={'text-sm text-center mb-4'}>Scroll down to review your conditions and confirm at bottom</h3>
+      <h3 className={'text-sm md:text-base text-center mb-4'}>Scroll down to review your conditions and confirm at bottom</h3>
       <div
         className={'w-full h-auto mx-auto px-2 py-6 bg-brand-light rounded flex flex-col items-align overflow-scroll'}
       >
@@ -49,13 +49,13 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
                 {h.map((n, ni) => {
                   if (!n['operator']) {
                     return (
-                      <span className={'text-sm break-words text-left w-11/12 overflow-auto'}
+                      <span className={'text-sm md:text-base break-words text-left w-11/12 overflow-auto'}
                             key={`n-${ni}`}
                       >{n.humanizedAcc}
                       </span>
                     )
                   } else {
-                    return <span className={'text-sm break-words text-center w-11/12 overflow-auto my-2'}
+                    return <span className={'text-sm md:text-base break-words text-center w-11/12 overflow-auto my-2'}
                                  key={`n-${ni}`}
                     >{n.operator === 'and' ? 'AND' : 'OR'}
                     </span>
@@ -65,14 +65,14 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
             )
           } else if (h['operator']) {
             return (
-              <span className={'text-sm break-words text-center overflow-auto my-2'}
+              <span className={'text-sm md:text-base break-words text-center overflow-auto my-2'}
                     key={i}
               >{h.operator === 'and' ? 'AND' : 'OR'}
               </span>
             )
           } else {
             return (
-              <span className={'text-sm w-11/12 p-3 mx-auto bg-white break-words text-left overflow-auto rounded'}
+              <span className={'text-sm md:text-base w-11/12 p-3 mx-auto bg-white break-words text-left overflow-auto rounded'}
                     key={i}
               > {h.humanizedAcc}
               </span>
@@ -82,12 +82,12 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
       </div>
       {/*<footer className={'flex flex-col bg-white items-align w-full h-30 fixed bottom-0 left-0'}>*/}
       <footer className={'flex flex-col bg-white items-align w-full h-30'}>
-        <div className={'mt-4 w-full flex items-center mx-auto border rounded border-brand-4 p-2'}>
-          <input className={'mr-4'} type="checkbox" id="edit" name="edit" value={conditionsAreUpdatable} onChange={(e) => setConditionsAreUpdatable(e.target.checked)}/>
-          <label className={'text-sm'} htmlFor="edit">Make condition(s) editable; if selected, only you can edit</label>
+        <div className={'mt-4 w-full flex items-center justify-center mx-auto border rounded border-brand-4'}>
+          <input className={'mr-4 lms-input p-2'} type="checkbox" id="edit" name="edit" value={conditionsAreUpdatable} onChange={(e) => setConditionsAreUpdatable(e.target.checked)}/>
+          <label className={'text-sm md:text-base p-2'} htmlFor="edit">Make condition(s) editable; if selected, only you can edit</label>
         </div>
         <div className={'w-full mx-auto flex justify-center mt-4 text-brand-4'}>
-          <a className={'text-sm flex'} href={'https://developer.litprotocol.com/docs/AccessControlConditions/evmBasicExamples'} target={'_blank'} rel="noreferrer">More information about
+          <a className={'text-sm md:text-base flex'} href={'https://developer.litprotocol.com/docs/AccessControlConditions/evmBasicExamples'} target={'_blank'} rel="noreferrer">More information about
             conditions <img
               alt={'clear input'} className={'h-4 font-os ml-2'} src={link}/></a>
         </div>

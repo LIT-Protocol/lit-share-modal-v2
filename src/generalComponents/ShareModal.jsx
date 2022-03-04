@@ -154,10 +154,12 @@ const ShareModal = (props) => {
 
   const handleConfirmModalClose = (modalResponse) => {
     if (modalResponse === 'yes') {
-      clearAllAccessControlConditions();
+      resetModal();
+      setShowConfirmationModal(false);
+      onClose();
+    } else {
+      setShowConfirmationModal(false);
     }
-
-    setShowConfirmationModal(false);
   }
 
   const sendAccessControlConditions = (conditionsAreUpdatable) => {
@@ -173,7 +175,7 @@ const ShareModal = (props) => {
   return (
     <div>
       {showModal && (
-        <div className={'absolute top-0 left-0 w-full h-full bg-white top-modal border border-brand-4'}>
+        <div className={'absolute top-0 left-0 w-full h-full bg-white lsm-top-modal border border-brand-4'}>
           <ShareModalContext.Provider value={{
             handleUpdateAccessControlConditions,
             handleDeleteAccessControlCondition,

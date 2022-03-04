@@ -69,7 +69,7 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
   return (
     <div className={'w-full flex flex-col items-center px-8 py-4 bg-white'}>
       <h3 className={'mb-4'}>Which wallet should be able to access this asset?</h3>
-      <p className={'text-sm mb-4 text-brand-4'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
+      <p className={'text-sm md:text-base mb-4 text-brand-4'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
       <h3 className={'w-full mb-4'}>Select blockchain:</h3>
       <LitSelectDropdown options={chainOptions}
                          label={'Select blockchain'}
@@ -78,9 +78,9 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
                          backButtonLabel={'BACK TO SELECT WALLET'}
                          turnOffSearch={true}
       />
-      <h3 className={'mt-12 mb-4'}>Add Wallet Address or Blockchain Domain (e.g. ENS, UNS) here:</h3>
+      <h3 className={'mt-12 mb-4 w-full lms-text-spacing'}>Add Wallet Address or Blockchain Domain (e.g. ENS, UNS) here:</h3>
       <input value={walletAddress} onChange={(e) => setWalletAddress(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0'}/>
+             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0 lms-input'}/>
       <footer className={'flex flex-row justify-between w-full h-12 mb-4 mt-8'}>
         <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
         <LitNextButton disableConditions={(!chain['name'] || !walletAddress.length)} onClick={() => handleSubmit()}/>

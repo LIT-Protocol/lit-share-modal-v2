@@ -64,8 +64,8 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
       <h3 className={'mb-8 w-full'}>Which POAP should be able to access this asset?</h3>
       <h3 className={'mb-4 w-full'}>POAP Name:</h3>
       <input value={POAPName} onChange={(e) => setPOAPName(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0'}/>
-      <h3 className={'mt-12 w-full mb-4'}>Match conditions:</h3>
+             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0 lms-input'}/>
+      <h3 className={'mt-12 w-full mb-4 lms-text-spacing'}>Match conditions:</h3>
       <LitSelectDropdown options={matchConditionOptions}
                          label={'Select match condition'}
                          option={matchCondition}

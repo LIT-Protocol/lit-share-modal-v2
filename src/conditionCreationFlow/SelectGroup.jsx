@@ -160,8 +160,8 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
 
   return (
     <div className={'w-full flex flex-col items-center px-8 py-4 bg-white'}>
-      <h3 className={'mb-4'}>Which wallet should be able to access this asset?</h3>
-      <h3 className={'w-full mb-2'}>Select blockchain:</h3>
+      <h3 className={'mb-4 md:mb-0'}>Which wallet should be able to access this asset?</h3>
+      <h3 className={'w-full mb-2 lms-text-spacing'}>Select blockchain:</h3>
       <LitSelectDropdown options={context.chainOptions}
                          label={'Select blockchain'}
                          option={chain}
@@ -169,7 +169,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
                          turnOffSearch={true}
                          backButtonLabel={'BACK TO SELECT WALLET'}
       />
-      <h3 className={'mt-4 mb-2'}>Select token/NFT or enter contract address:</h3>
+      <h3 className={'mt-4 mb-2 w-full lms-text-spacing'}>Select token/NFT or enter contract address:</h3>
       {(!contractAddress.length) && (
         <LitSelectToken option={selectedToken}
                         label={(!selectedToken || !selectedToken['label']) ? 'Search for a token/NFT' : selectedToken.label}
@@ -178,13 +178,13 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
         />
       )}
       {((!selectedToken || !selectedToken['label']) && !contractAddress.length) && (
-        <p className={'text-sm w-full my-1'}>OR</p>
+        <p className={'text-sm md:text-base w-full my-1 lms-condition-spacing'}>OR</p>
       )}
       {(!selectedToken || !selectedToken['label']) && (
         <input placeholder={'ERC20 or ERC721 address'}
                value={contractAddress}
                onChange={(e) => setContractAddress(e.target.value)}
-               className={'duration-200 w-full py-2 px-4 border rounded border-brand-4 focus:outline-0'}/>
+               className={'duration-200 w-full py-2 px-4 border rounded border-brand-4 focus:outline-0 lms-input'}/>
       )}
       {(!!selectedToken && !!selectedToken['label']) && (
         <button
@@ -193,9 +193,9 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
           Clear token/NFT
         </button>
       )}
-      <h3 className={'mt-4 mb-2'}>How many tokens does the wallet need to own?</h3>
+      <h3 className={'mt-4 mb-2 w-full lms-text-spacing'}>How many tokens does the wallet need to own?</h3>
       <input value={amount} onChange={(e) => setAmount(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0'}/>
+             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0 lms-input'}/>
       <footer className={'flex flex-row justify-between w-full h-12 bottom-0 my-4'}>
         <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
         <LitNextButton disableConditions={!amount || (!selectedToken && !contractAddress) || !chain}

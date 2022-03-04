@@ -36,9 +36,9 @@ const SelectNFT = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'w-full h-full flex flex-col items-center px-8 py-4 bg-white'}>
+    <div className={'w-full flex flex-col items-center px-8 py-4 bg-white'}>
       <h3 className={'mb-4'}>Which wallet should be able to access this asset?</h3>
-      <p className={'text-sm mb-4 text-brand-4'} onClick={() => setSelectPage('wallet')}>Grant Access to Wallet or
+      <p className={'text-sm md:text-base mb-4 text-brand-4'} onClick={() => setSelectPage('wallet')}>Grant Access to Wallet or
         Blockchain Domain</p>
       <h3 className={'w-full mb-2'}>Select blockchain:</h3>
       <LitSelectDropdown options={chainOptions}
@@ -56,7 +56,7 @@ const SelectNFT = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
       />
       <h3 className={'mt-8 mb-2 w-full'}>Select token or enter contract address</h3>
       <input value={tokenId} onChange={(e) => setTokenId(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0'}/>
+             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0 lms-input'}/>
       <footer className={'flex flex-row justify-between w-full h-12 mb-4 mt-8'}>
         <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
         <LitNextButton disableConditions={(!chain || !tokenId.length || !selectedToken)}
