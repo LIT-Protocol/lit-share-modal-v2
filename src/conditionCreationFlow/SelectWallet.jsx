@@ -69,7 +69,7 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
   return (
     <div className={'lms-w-full lms-flex lms-flex-col lms-items-center lms-px-8 lms-py-4 lms-bg-white'}>
       <h3 className={'lms-mb-4'}>Which wallet should be able to access this asset?</h3>
-      <p className={'lms-text-sm md:lms-text-base lms-mb-4 text-brand-4'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
+      <p className={'lms-text-sm md:lms-text-base lms-mb-4 lms-text-brand-4'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
       <h3 className={'lms-w-full lms-mb-4'}>Select lms-blockchain:</h3>
       <LitSelectDropdown options={chainOptions}
                          label={'Select lms-blockchain'}

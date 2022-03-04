@@ -22,15 +22,15 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
     const newProps = Object.assign(props, { innerProps: rest });
 
     return (
-      <components.Option {...newProps} className={'z-100 p-0'} style={{ padding: 0, zIndex: 105 }}>
-        <div className={'flex items-center'}>
+      <components.Option {...newProps} className={'lms-z-100 lms-p-0'} style={{ padding: 0, zIndex: 105 }}>
+        <div className={'lms-flex lms-items-center'}>
           <div
-            className={'h-2.5 w-2.5 radius-full mx-1.5 bg-no-repeat bg-contain bg-center'}
+            className={'lms-h-2.5 lms-w-2.5 radius-full lms-mx-1.5 lms-bg-no-repeat lms-bg-contain lms-bg-center'}
             style={{ backgroundImage: logo ? `url(${logo})` : undefined }}
           />
           <div>
-            <div className={'text-base leading-normal text-black'}>{label}</div>
-            <div className={'text-sm md:text-base text-secondary'}>{symbol}</div>
+            <div className={'lms-text-base lms-leading-normal lms-text-black'}>{label}</div>
+            <div className={'lms-text-sm md:lms-text-base lms-text-secondary'}>{symbol}</div>
           </div>
         </div>
       </components.Option>
@@ -77,7 +77,7 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
         <img src={chevronDown}/>
       </button>
       {!!selectIsOpen && (
-        <div className={'lms-absolute lms-w-full lms-h-full lms-top-0 lms-left-0 bg-brand-20'}>
+        <div className={'lms-absolute lms-w-full lms-h-full lms-top-0 lms-left-0 lms-bg-brand-20'}>
           <header className={'lms-w-full lms-py-4 lms-m-0 lms-bg-brand-4'}>
             <span className={'lms-w-full lms-bg-brand-4'}>
               <h3 className={'lms-w-11/12 lms-mx-auto lms-text-brand-light'}>SELECT A TOKEN/NFT</h3>
@@ -102,7 +102,7 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
               ))}
             </span>
           </div>
-          <div className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-absolute lms-bottom-0 lms-my-4 bg-co lms-z-0'}>
+          <div className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-absolute lms-bottom-0 lms-my-4 lms-bg-co lms-z-0'}>
             <LitBackButton onClick={() => {
               setSelectedToken(null);
               setSelectIsOpen(false);

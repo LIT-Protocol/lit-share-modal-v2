@@ -14,7 +14,7 @@ const LitConfirmationModal = ({ showConfirmationModal, modalResponse, onClick, m
                 NO
               </button>
               <button
-                className={'lms-bg-white lms-border lms-border-brand-4 text-brand-4 lms-px-10 lms-py-0 lms-mx-4 lms-rounded lms-flex lms-items-center disabled:lms-bg-gray'}
+                className={'lms-bg-white lms-border lms-border-brand-4 lms-text-brand-4 lms-px-10 lms-py-0 lms-mx-4 lms-rounded lms-flex lms-items-center disabled:lms-bg-gray'}
                 onClick={() => onClick('yes')}>
                 YES
               </button>

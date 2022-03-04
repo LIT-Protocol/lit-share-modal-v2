@@ -86,7 +86,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
           <input className={'lms-mr-4 lms-input lms-p-2'} type="checkbox" id="edit" name="edit" value={conditionsAreUpdatable} onChange={(e) => setConditionsAreUpdatable(e.target.checked)}/>
           <label className={'lms-text-sm md:lms-text-base lms-p-2'} htmlFor="edit">Make condition(s) editable; if selected, only you can edit</label>
         </div>
-        <div className={'lms-w-full lms-mx-auto lms-flex lms-justify-center lms-mt-4 text-brand-4'}>
+        <div className={'lms-w-full lms-mx-auto lms-flex lms-justify-center lms-mt-4 lms-text-brand-4'}>
           <a className={'lms-text-sm md:lms-text-base lms-flex'} href={'https://developer.litprotocol.com/docs/AccessControlConditions/evmBasicExamples'} target={'_blank'} rel="noreferrer">More information about
             conditions <img
               alt={'clear input'} className={'lms-h-4 font-os lms-ml-2'} src={link}/></a>

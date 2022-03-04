@@ -53,7 +53,7 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
             <LitMultipleConditionOrganizer createCondition={createCondition}
                                           humanizedAccessControlConditions={humanizedAccessControlConditions}/>
           </div>
-          <footer className={'lms-flex lms-bg-white lms-flex-row lms-justify-between lms-items-center lms-w-full lms-h-20 lms-fixed lms-bottom-0 lms-left-0'}>
+          <footer className={'lms-flex lms-bg-white lms-rounded-b-lg lms-flex-row lms-justify-between lms-items-center lms-w-full lms-h-20 lms-fixed lms-bottom-0 lms-left-0'}>
             <LitBackButton onClick={() => {
               if (humanizedAccessControlConditions.length < 1) {
                 setFlow('singleCondition');

@@ -20,7 +20,7 @@ const ChooseAccess = ({ setSelectPage }) => {
           setDisplayedPage('multiple');
         }}>
           <img src={venn}/>
-          <p className={'lms-text-xs lms-w-6/12 lms-ml-4 text-brand-4 lms-underline md:lms-text-base md:lms-w-11/12'}>Gate with multiple conditions using AND/OR operators</p>
+          <p className={'lms-text-xs lms-w-6/12 lms-ml-4 lms-text-brand-4 lms-underline md:lms-text-base md:lms-w-11/12'}>Gate with multiple conditions using AND/OR operators</p>
         </span>
     </div>
   );
