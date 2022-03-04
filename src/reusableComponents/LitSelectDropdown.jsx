@@ -48,7 +48,7 @@ const LitSelectDropdown = ({options, label, setOption, option, backButtonLabel, 
             ) : (
               <div className={'lms-fixed lms-top-0 lms-left-0 lms-w-full lms-pt-4 lms-pb-2 bg-brand-2'}>
                 <span className={'lms-w-11/12 lms-mx-auto lms-border-b lms-border-brand-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-2'}>
-                  <input className={'lms-w-full lms-py-2 focus:outline-0 bg-brand-light lms-input'} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+                  <input className={'lms-w-full lms-py-2 focus:outline-0 lms-bg-brand-light lms-input'} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
                   <img alt={'clear input'} className={'lms-h-4 font-os'} src={union} onClick={() => setSearchTerm('')}/>
                 </span>
                 <p className={"lms-w-11/12 lms-mx-auto lms-mt-2 lms-mr-2"}>No. of results: {filteredOptions.length}</p>

@@ -38,7 +38,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
     <div className={'lms-w-full lms-h-full lms-flex lms-flex-col lms-items-center lms-w-11/12 lms-py-4 lms-mx-auto'}>
       <h3 className={'lms-text-sm md:lms-text-base lms-text-center lms-mb-4'}>Scroll down to review your conditions and confirm at bottom</h3>
       <div
-        className={'lms-w-full lms-h-auto lms-mx-auto lms-px-2 lms-py-6 bg-brand-light lms-rounded lms-flex lms-flex-col items-align lms-overflow-scroll'}
+        className={'lms-w-full lms-h-auto lms-mx-auto lms-px-2 lms-py-6 lms-bg-brand-light lms-rounded lms-flex lms-flex-col items-align lms-overflow-scroll'}
       >
         {!!humanizedAccessControlConditions && humanizedAccessControlConditions.map((h, i) => {
           console.log('LOCAL HUMAN ACC', h)

@@ -106,7 +106,7 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
         } else if (!a['operator']) {
           return (
             <div
-              className={'lms-flex lms-flex-col lms-w-11/12 lms-mx-auto lms-rounded lms-p-3 lms-justify-between lms-items-center lms-border lms-border-brand-4 lms-condition-shadow '}
+              className={'lms-flex lms-flex-col lms-w-11/12 lms-mx-auto lms-rounded lms-p-3 lms-justify-between lms-items-center lms-condition-shadow '}
               key={i}
               style={{ 'backgroundColor': colorArray[i / 2] }}>
               <span className={'lms-flex lms-flex-row lms-w-full lms-justify-between lms-items-center'}>
@@ -157,7 +157,7 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
           </span>
         ) : (
           <div className={'lms-flex lms-flex-col lms-items-center'}>
-            <span className={'lms-flex lms-flex-col lms-w-11/12 lms-mx-auto lms-rounded lms-p-4 lms-justify-between lms-items-center lms-mb-4 bg-initial-blue'}>
+            <span className={'lms-flex lms-flex-col lms-w-11/12 lms-mx-auto lms-rounded lms-p-4 lms-justify-between lms-items-center lms-mb-4 lms-bg-initial-blue'}>
               <button className={'lms-flex lms-flex-row lms-w-full lms-mx-auto lms-justify-center lms-bg-white lms-border-brand-4 lms-border lms-rounded text-brand-4 lms-p-1 lms-choose-access-button'} onClick={() => createCondition()}>
                 <p className={''}>Define First Condition</p>
                 {/* <img src={add}/> */}

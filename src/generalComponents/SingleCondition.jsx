@@ -20,9 +20,9 @@ const SingleCondition = () => {
 
   return (
     <>
-      <header className={'w-full h-14 bg-brand-light flex justify-between items-center px-5 rounded-t-lg'}>
-        <h3 className={'text-slate-500'}>ACCESS CONTROL</h3>
-        <button><img alt={'close'} className={'h-4 font-os'} src={union} onClick={() => handleClose()}/></button>
+      <header className={'lms-w-full lms-h-14 lms-bg-brand-light lms-flex lms-justify-between lms-items-center lms-px-5 lms-rounded-t-lg'}>
+        <h3 className={'lms-text-slate-500'}>ACCESS CONTROL</h3>
+        <button><img alt={'close'} className={'lms-h-4 font-os'} src={union} onClick={() => handleClose()}/></button>
       </header>
       {(() => {
         switch (selectPage) {
