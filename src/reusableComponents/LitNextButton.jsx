@@ -4,11 +4,11 @@ import nextArrow from "../assets/nextArrow.svg";
 const LitNextButton = ({ disableConditions, onClick, label}) => {
 
   return (
-    <button className={'bg-brand-4 text-white h-12 px-6 py-0 mx-4 rounded flex items-center disabled:bg-gray'}
+    <button className={'lms-bg-brand-4 lms-text-white lms-h-12 lms-px-6 lms-py-0 lms-mx-4 lms-rounded lms-flex lms-items-center disabled:bg-gray'}
             disabled={!!disableConditions ? disableConditions : false}
             onClick={onClick}>
         {!label ? 'NEXT' : label}
-      <img src={nextArrow} className={'ml-2'}/>
+      <img src={nextArrow} className={'lms-ml-2'}/>
     </button>
   );
 };

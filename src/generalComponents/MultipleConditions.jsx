@@ -43,17 +43,17 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
 
   return (
     <>
-      <header className={'w-full h-14 bg-brand-light flex justify-between items-center px-5 rounded-t-lg'}>
+      <header className={'lms-w-full lms-h-14 bg-brand-light lms-flex lms-justify-between lms-items-center lms-px-5 lms-rounded-t-lg'}>
         <h3 className={'text-slate-500'}>ACCESS CONTROL</h3>
-        <button><img alt={'close'} className={'h-4 font-os'} src={union} onClick={() => handleClose()}/></button>
+        <button><img alt={'close'} className={'lms-h-4 font-os'} src={union} onClick={() => handleClose()}/></button>
       </header>
       {!showAddCondition ? (
         <>
-          <div className={'overflow-scroll h-5/6'}>
+          <div className={'lms-overflow-scroll lms-h-5/6'}>
             <LitMultipleConditionOrganizer createCondition={createCondition}
                                           humanizedAccessControlConditions={humanizedAccessControlConditions}/>
           </div>
-          <footer className={'flex bg-white flex-row justify-between items-center w-full h-20 fixed bottom-0 left-0'}>
+          <footer className={'lms-flex lms-bg-white lms-flex-row lms-justify-between lms-items-center lms-w-full lms-h-20 lms-fixed lms-bottom-0 lms-left-0'}>
             <LitBackButton onClick={() => {
               if (humanizedAccessControlConditions.length < 1) {
                 setFlow('singleCondition');

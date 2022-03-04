@@ -44,22 +44,22 @@ const SelectDAO = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'w-full h-full flex flex-col items-center px-8 py-4 '}>
-      <h3 className={'mb-8'}>Which DAO's members should be able to access this asset?</h3>
-      <h3 className={'w-full mb-4'}>Select blockchain:</h3>
+    <div className={'lms-w-full lms-h-full lms-flex lms-flex-col lms-items-center lms-px-8 lms-py-4 '}>
+      <h3 className={'lms-mb-8'}>Which DAO's members should be able to access this asset?</h3>
+      <h3 className={'lms-w-full lms-mb-4'}>Select lms-blockchain:</h3>
       <LitSelectDropdown options={chainOptions}
-                         label={'Select blockchain'}
+                         label={'Select lms-blockchain'}
                          option={chain}
                          setOption={setChain}
                          backButtonLabel={'BACK TO SELECT DAO'}
                          turnOffSearch={true}
       />
-      <h3 className={'mt-12 mb-4 w-full lms-text-spacing'}>Add DAO contract address:</h3>
+      <h3 className={'lms-mt-12 lms-mb-4 lms-w-full lms-text-spacing'}>Add DAO contract address:</h3>
       <input value={DAOAddress} onChange={(e) => setDAOAddress(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0 lms-input'}/>
-      <p className={'mt-4 mb-4 text-sm'}>Lit Gateway currently supports DAOs using the MolochDAOv2.1 contract (includes
+             className={'lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
+      <p className={'lms-mt-4 lms-mb-4 lms-text-sm'}>Lit Gateway currently supports DAOs using the MolochDAOv2.1 contract (includes
         DAOhaus)</p>
-      <footer className={'flex flex-row justify-between w-full h-12 mb-4 mt-8'}>
+      <footer className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-mb-4 lms-mt-8'}>
         <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
         <LitNextButton disableConditions={(!chain['name'] || !DAOAddress.length)} onClick={() => handleSubmit()}/>
       </footer>

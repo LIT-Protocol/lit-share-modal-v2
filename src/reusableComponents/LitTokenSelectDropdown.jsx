@@ -31,42 +31,42 @@ const LitTokenSelectDropdown = ({ options, label, setOption, option, }) => {
   }, [searchTerm])
 
   return (
-    <div className={'w-11/12 z-20 mx-auto px-2'}>
-      <p className={'text-sm md:text-base w-full'}>SEARCH</p>
+    <div className={'lms-w-11/12 lms-z-20 lms-mx-auto lms-px-2'}>
+      <p className={'lms-text-sm md:lms-text-base lms-w-full'}>SEARCH</p>
       <button
-        className={"w-full h-12 bg-white border border-brand-4 rounded hover:border-2 flex flex-row items-center justify-between px-4"}
+        className={"lms-w-full lms-h-12 lms-bg-white lms-border lms-border-brand-4 lms-rounded hover:lms-border-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4"}
         onClick={() => setSelectIsOpen(true)}>
         {option ? option.name : label}
         <img src={chevronDown}/>
       </button>
       {!!selectIsOpen && (
-        <div className={'absolute w-full h-full top-0 left-0 bg-brand-20 p-6'}>
-          <div className={'fixed top-0 left-0 w-full pt-4 pb-2 bg-brand-4'}>
+        <div className={'lms-absolute lms-w-full lms-h-full lms-top-0 lms-left-0 bg-brand-20 lms-p-6'}>
+          <div className={'lms-fixed lms-top-0 lms-left-0 lms-w-full lms-pt-4 lms-pb-2 lms-bg-brand-4'}>
               <span
-                className={'w-11/12 mx-auto border-b border-brand-light flex flex-row items-center justify-between px-2'}>
-                <input className={'w-full py-2 focus:outline-0 bg-brand-4 text-brand-light lms-input'} value={searchTerm}
+                className={'lms-w-11/12 lms-mx-auto lms-border-b lms-border-brand-light lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-2'}>
+                <input className={'lms-w-full lms-py-2 focus:outline-0 lms-bg-brand-4 lms-text-brand-light lms-input'} value={searchTerm}
                        onChange={(e) => setSearchTerm(e.target.value)}/>
-                <img alt={'clear input'} className={'h-4 font-os'} src={union} onClick={() => setSearchTerm('')}/>
+                <img alt={'clear input'} className={'lms-h-4 font-os'} src={union} onClick={() => setSearchTerm('')}/>
               </span>
-            <p className={"w-11/12 mx-auto mt-2 mr-2 text-brand-light"}>No. of results: {filteredCount}</p>
+            <p className={"lms-w-11/12 lms-mx-auto lms-mt-2 lms-mr-2 lms-text-brand-light"}>No. of results: {filteredCount}</p>
           </div>
-          <div className={'mt-20'}>
+          <div className={'lms-mt-20'}>
             {filteredOptions.map((option, i) => {
               return <button key={i}
-                             className={"w-full h-16 border border-brand-4 rounded mt-2 flex flex-row items-center justify-start px-4"}
+                             className={"lms-w-full lms-h-16 lms-border lms-border-brand-4 lms-rounded lms-mt-2 lms-flex lms-flex-row lms-items-center lms-justify-start lms-px-4"}
                              onClick={() => {
                                setOption(option);
                                setSelectIsOpen(false);
                              }}>
                 {!!option['logoURI'] && (
-                  <img className={'h-10 w-10 mr-2 rounded-full'} src={option['logoURI']}/>
+                  <img className={'lms-h-10 lms-w-10 lms-mr-2 lms-rounded-full'} src={option['logoURI']}/>
                 )}
                 {option.name}
               </button>
             })
             }
           </div>
-          <span className={'w-full h-16 fixed bottom-0 left-0 py-3 bg-brand-20'}>
+          <span className={'lms-w-full lms-h-16 lms-fixed lms-bottom-0 lms-left-0 lms-py-3 bg-brand-20'}>
             <LitBackButton label={'BACK TO TOKEN SELECT'}
                            backgroundColor={'bg-brand-20'}
                            onClick={() => setSelectIsOpen(false)}/>

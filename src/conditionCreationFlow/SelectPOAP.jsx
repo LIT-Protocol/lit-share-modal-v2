@@ -60,12 +60,12 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'w-full h-full flex flex-col items-center px-8 py-4 '}>
-      <h3 className={'mb-8 w-full'}>Which POAP should be able to access this asset?</h3>
-      <h3 className={'mb-4 w-full'}>POAP Name:</h3>
+    <div className={'lms-w-full lms-h-full lms-flex lms-flex-col lms-items-center lms-px-8 lms-py-4 '}>
+      <h3 className={'lms-mb-8 lms-w-full'}>Which POAP should be able to access this asset?</h3>
+      <h3 className={'lms-mb-4 lms-w-full'}>POAP Name:</h3>
       <input value={POAPName} onChange={(e) => setPOAPName(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0 lms-input'}/>
-      <h3 className={'mt-12 w-full mb-4 lms-text-spacing'}>Match conditions:</h3>
+             className={'lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
+      <h3 className={'lms-mt-12 lms-w-full lms-mb-4 lms-text-spacing'}>Match conditions:</h3>
       <LitSelectDropdown options={matchConditionOptions}
                          label={'Select match condition'}
                          option={matchCondition}
@@ -73,7 +73,7 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
                          turnOffSearch={true}
                          backButtonLabel={'BACK TO SELECT POAP'}
       />
-      <footer className={'flex flex-row justify-between w-full h-12 mb-4 mt-8'}>
+      <footer className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-mb-4 lms-mt-8'}>
         <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
         <LitNextButton disableConditions={(!POAPName.length || !matchCondition)} onClick={() => handleSubmit()}/>
       </footer>

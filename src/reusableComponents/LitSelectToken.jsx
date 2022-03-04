@@ -61,31 +61,31 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
       token["symbol"] &&
       selectedToken &&
       token["symbol"] === selectedToken["symbol"]
-    ) {
-      return 'flex flex-row items-center border border-brand-5 rounded py-1.5 px-1.5 mr-2 mt-4 bg-white border-2 cursor-pointer';
-    } else {
-      return 'flex flex-row items-center border border-brand-5 rounded py-1.5 px-1.5 mr-2 mt-4 bg-white cursor-pointer';
-    }
+      ) {
+        return 'lms-flex lms-flex-row lms-items-center lms-border lms-border-brand-5 lms-rounded lms-py-1.5 lms-px-1.5 lms-mr-2 lms-mt-4 lms-bg-white lms-border-2 lms-cursor-pointer';
+      } else {
+        return 'lms-flex lms-flex-row lms-items-center lms-border lms-border-brand-5 lms-rounded lms-py-1.5 lms-px-1.5 lms-mr-2 lms-mt-4 lms-bg-white lms-cursor-pointer';
+      }
   };
 
   return (
-    <div className={'w-full'}>
+    <div className={'lms-w-full'}>
       <button
-        className={"w-full h-12 border border-brand-4 rounded hover:border-2 flex flex-row items-center justify-between px-4"}
+        className={"lms-w-full lms-h-12 lms-border lms-border-brand-4 lms-rounded hover:lms-border-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4"}
         onClick={() => setSelectIsOpen(true)}>
         {option ? option.label : label}
         <img src={chevronDown}/>
       </button>
       {!!selectIsOpen && (
-        <div className={'absolute w-full h-full top-0 left-0 bg-brand-20'}>
-          <header className={'w-full py-4 m-0 bg-brand-4'}>
-            <span className={'w-full bg-brand-4'}>
-              <h3 className={'w-11/12 mx-auto text-brand-light'}>SELECT A TOKEN/NFT</h3>
+        <div className={'lms-absolute lms-w-full lms-h-full lms-top-0 lms-left-0 bg-brand-20'}>
+          <header className={'lms-w-full lms-py-4 lms-m-0 lms-bg-brand-4'}>
+            <span className={'lms-w-full lms-bg-brand-4'}>
+              <h3 className={'lms-w-11/12 lms-mx-auto lms-text-brand-light'}>SELECT A TOKEN/NFT</h3>
             </span>
           </header>
-          <div className={'w-11/12 mx-auto flex flex-col items-center justify-between px-2 mt-8 mb-16'}>
-            <p className={'text-sm md:text-base w-full'}>TOP TOKENS/NFTS</p>
-            <span className={'flex flex-row flex-wrap justify-start w-full'}>
+          <div className={'lms-w-11/12 lms-mx-auto lms-flex lms-flex-col lms-items-center lms-justify-between lms-px-2 lms-mt-8 lms-mb-16'}>
+            <p className={'lms-text-sm md:lms-text-base lms-w-full'}>TOP TOKENS/NFTS</p>
+            <span className={'lms-flex lms-flex-row lms-flex-wrap lms-justify-start lms-w-full'}>
               {defaultTokens.map((t, i) => (
                 <span
                   className={checkForSelected(t)}
@@ -95,21 +95,21 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
                   }}
                 >
                   {!!t['logo'] && (
-                    <img className={'h-6 w-6 mr-2'} src={t['logo']}/>
+                    <img className={'lms-h-6 lms-w-6 lms-mr-2'} src={t['logo']}/>
                   )}
                   <div className={''}>{t.symbol}</div>
                   </span>
               ))}
             </span>
           </div>
-          <div className={'flex flex-row justify-between w-full h-12 absolute bottom-0 my-4 bg-co z-0'}>
+          <div className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-absolute lms-bottom-0 lms-my-4 bg-co lms-z-0'}>
             <LitBackButton onClick={() => {
               setSelectedToken(null);
               setSelectIsOpen(false);
             }}/>
             <LitNextButton disableConditions={false} onClick={() => setSelectIsOpen(false)}/>
           </div>
-          <div className={'w-11/12 mx-auto'}>
+          <div className={'lms-w-11/12 lms-mx-auto'}>
             <label>Search</label>
             <CreatableSelect
               filterOption={createFilter({ ignoreAccents: false })}

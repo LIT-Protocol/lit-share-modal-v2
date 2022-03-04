@@ -67,21 +67,21 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
   };
 
   return (
-    <div className={'w-full flex flex-col items-center px-8 py-4 bg-white'}>
-      <h3 className={'mb-4'}>Which wallet should be able to access this asset?</h3>
-      <p className={'text-sm md:text-base mb-4 text-brand-4'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
-      <h3 className={'w-full mb-4'}>Select blockchain:</h3>
+    <div className={'lms-w-full lms-flex lms-flex-col lms-items-center lms-px-8 lms-py-4 lms-bg-white'}>
+      <h3 className={'lms-mb-4'}>Which wallet should be able to access this asset?</h3>
+      <p className={'lms-text-sm md:lms-text-base lms-mb-4 text-brand-4'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
+      <h3 className={'lms-w-full lms-mb-4'}>Select lms-blockchain:</h3>
       <LitSelectDropdown options={chainOptions}
-                         label={'Select blockchain'}
+                         label={'Select lms-blockchain'}
                          option={chain}
                          setOption={setChain}
                          backButtonLabel={'BACK TO SELECT WALLET'}
                          turnOffSearch={true}
       />
-      <h3 className={'mt-12 mb-4 w-full lms-text-spacing'}>Add Wallet Address or Blockchain Domain (e.g. ENS, UNS) here:</h3>
+      <h3 className={'lms-mt-12 lms-mb-4 lms-w-full lms-text-spacing'}>Add Wallet Address or Blockchain Domain (e.g. ENS, UNS) here:</h3>
       <input value={walletAddress} onChange={(e) => setWalletAddress(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0 lms-input'}/>
-      <footer className={'flex flex-row justify-between w-full h-12 mb-4 mt-8'}>
+             className={'lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
+      <footer className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-mb-4 lms-mt-8'}>
         <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
         <LitNextButton disableConditions={(!chain['name'] || !walletAddress.length)} onClick={() => handleSubmit()}/>
       </footer>

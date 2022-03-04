@@ -175,7 +175,7 @@ const ShareModal = (props) => {
   return (
     <div>
       {showModal && (
-        <div className={'absolute top-0 left-0 w-full h-full bg-white lsm-top-modal border border-brand-4'}>
+        <div className={'lms-absolute lms-top-0 lms-left-0 lms-w-full lms-h-full lms-bg-white lsm-top-modal lms-border lms-border-brand-4'}>
           <ShareModalContext.Provider value={{
             handleUpdateAccessControlConditions,
             handleDeleteAccessControlCondition,

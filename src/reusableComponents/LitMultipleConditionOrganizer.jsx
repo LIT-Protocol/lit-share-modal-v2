@@ -44,32 +44,32 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
 
   const checkOperator = (operator, value) => {
     if (operator === value) {
-      return 'border border-black rounded'
+      return 'lms-border lms-border-black lms-rounded'
     } else {
       return '';
     }
   }
 
   return (
-    <div className={'mt-4 mb-20'}>
+    <div className={'lms-mt-4 lms-mb-20'}>
       {humanizedAccessControlConditions.length > 0 && humanizedAccessControlConditions.map((a, i) => {
         if (Array.isArray(a)) {
           return (
             <div
-              className={'flex flex-col w-11/12 mx-auto rounded p-3 justify-between items-center lms-condition-shadow '}
+              className={'lms-flex lms-flex-col lms-w-11/12 lms-mx-auto lms-rounded lms-p-3 lms-justify-between lms-items-center lms-condition-shadow '}
               key={i}
               style={{ 'backgroundColor': colorArray[i / 2] }}>
               {a.map((n, ni) => {
                 if (!n['operator']) {
                   return (
-                    <span className={'flex flex-row w-11/12 justify-between items-center'}
+                    <span className={'lms-flex lms-flex-row lms-w-11/12 lms-justify-between lms-items-center'}
                           key={`n-${ni}`}>
-                      {/* <span className={'mr-4 flex flex-row w-full mx-auto justify-center bg-white border-brand-4 border rounded text-brand-4 p-1 break-words text-left overflow-auto lms-choose-access-button '}> */}
-                      <span className={'mr-4 flex flex-row w-full mx-auto justify-center p-1 break-words text-left overflow-auto lms-choose-access-button '}>
+                      {/* <span className={'lms-mr-4 lms-flex lms-flex-row lms-w-full lms-mx-auto lms-justify-center lms-bg-white lms-border-brand-4 lms-border lms-rounded text-brand-4 lms-p-1 lms-break-words lms-text-left lms-overflow-auto lms-choose-access-button '}> */}
+                      <span className={'lms-mr-4 lms-flex lms-flex-row lms-w-full lms-mx-auto lms-justify-center lms-p-1 lms-break-words lms-text-left lms-overflow-auto lms-choose-access-button '}>
                         {n.humanizedAcc}
                       </span>
                       <span>
-                        <button className={'mr-1'}>
+                        <button className={'lms-mr-1'}>
                           <img src={trashcan} onClick={() => {
                             setCurrentAccIndex([i, ni]);
                             setShowDeleteModal(true);
@@ -80,24 +80,24 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
                   )
                 } else {
                   return (
-                    <span className={'flex flex-row w-8/12 mx-auto rounded py-3 px-4 justify-center items-center my-2'}
+                    <span className={'lms-flex lms-flex-row lms-w-8/12 lms-mx-auto lms-rounded lms-py-3 lms-px-4 lms-justify-center lms-items-center lms-my-2'}
                           key={`n-${ni}`}>
                       <button onClick={() => updateLogicOperator('and', i, ni)}
-                              className={`mr-8 text-sm md:text-base text-center p-2 w-20 ${checkOperator('and', n['operator'])}`}>
+                              className={`mr-8 lms-text-sm md:lms-text-base lms-text-center lms-p-2 lms-w-20 ${checkOperator('and', n['operator'])}`}>
                         AND
                       </button>
                       <button onClick={() => updateLogicOperator('or', i, ni)}
-                              className={`text-sm md:text-base text-center p-2 w-20 ${checkOperator('or', n['operator'])}`}>
+                              className={`text-sm md:lms-text-base lms-text-center lms-p-2 lms-w-20 ${checkOperator('or', n['operator'])}`}>
                         OR
                       </button>
                     </span>
                   )
                 }
               })}
-              {/* <span className={'flex flex-row w-11/12 justify-center mx-auto mt-4 rounded py-2'}> */}
-              <span className={'mr-4 flex flex-row mt-4 w-full mx-auto justify-center bg-white border-brand-4 border rounded text-brand-4 p-1 lms-choose-access-button'}>
-                <button className={'flex flex-row w-full'} onClick={() => createCondition(true, i)}>
-                  <p className={'mx-auto'}>Define Another Nested Condition</p>
+              {/* <span className={'lms-flex lms-flex-row lms-w-11/12 lms-justify-center lms-mx-auto lms-mt-4 lms-rounded lms-py-2'}> */}
+              <span className={'lms-mr-4 lms-flex lms-flex-row lms-mt-4 lms-w-full lms-mx-auto lms-justify-center lms-bg-white lms-border-brand-4 lms-border lms-rounded text-brand-4 lms-p-1 lms-choose-access-button'}>
+                <button className={'lms-flex lms-flex-row lms-w-full'} onClick={() => createCondition(true, i)}>
+                  <p className={'lms-mx-auto'}>Define Another Nested Condition</p>
                   {/* <img src={add}/> */}
                 </button>
               </span>
@@ -106,16 +106,16 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
         } else if (!a['operator']) {
           return (
             <div
-              className={'flex flex-col w-11/12 mx-auto rounded p-3 justify-between items-center border border-brand-4 lms-condition-shadow '}
+              className={'lms-flex lms-flex-col lms-w-11/12 lms-mx-auto lms-rounded lms-p-3 lms-justify-between lms-items-center lms-border lms-border-brand-4 lms-condition-shadow '}
               key={i}
               style={{ 'backgroundColor': colorArray[i / 2] }}>
-              <span className={'flex flex-row w-full justify-between items-center'}>
-                {/* <span className={'mr-4 flex flex-row w-full mx-auto justify-center bg-white border-brand-4 border rounded text-brand-4 p-1 break-words text-left overflow-auto lms-choose-access-button '}> */}
-                <span className={'mr-4 flex flex-row w-full mx-auto justify-center p-1 break-words text-left overflow-auto lms-choose-access-button '}>
+              <span className={'lms-flex lms-flex-row lms-w-full lms-justify-between lms-items-center'}>
+                {/* <span className={'lms-mr-4 lms-flex lms-flex-row lms-w-full lms-mx-auto lms-justify-center lms-bg-white lms-border-brand-4 lms-border lms-rounded text-brand-4 lms-p-1 lms-break-words lms-text-left lms-overflow-auto lms-choose-access-button '}> */}
+                <span className={'lms-mr-4 lms-flex lms-flex-row lms-w-full lms-mx-auto lms-justify-center lms-p-1 lms-break-words lms-text-left lms-overflow-auto lms-choose-access-button '}>
                   {humanizedAccessControlConditions[i].humanizedAcc}
                 </span>
                 <span>
-                  <button className={'mr-1'}>
+                  <button className={'lms-mr-1'}>
                     <img src={trashcan} onClick={() => {
                       setCurrentAccIndex([i]);
                       setShowDeleteModal(true);
@@ -123,9 +123,9 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
                   </button>
                 </span>
               </span>
-              <span className={'mr-4 flex flex-row mt-4 w-full mx-auto justify-center bg-white border-brand-4 border rounded text-brand-4 p-1 lms-choose-access-button'}>
-                <button className={'flex flex-row w-full'} onClick={() => createCondition(true, i)}>
-                  <p className={'mx-auto'}>Define Another Nested Condition</p>
+              <span className={'lms-mr-4 lms-flex lms-flex-row lms-mt-4 lms-w-full lms-mx-auto lms-justify-center lms-bg-white lms-border-brand-4 lms-border lms-rounded text-brand-4 lms-p-1 lms-choose-access-button'}>
+                <button className={'lms-flex lms-flex-row lms-w-full'} onClick={() => createCondition(true, i)}>
+                  <p className={'lms-mx-auto'}>Define Another Nested Condition</p>
                   {/* <img src={add}/> */}
                 </button>
               </span>
@@ -133,14 +133,14 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
           )
         } else {
           return (
-            <span className={'flex flex-row w-8/12 mx-auto rounded py-3 px-4 justify-center items-center my-2'}
+            <span className={'lms-flex lms-flex-row lms-w-8/12 lms-mx-auto lms-rounded lms-py-3 lms-px-4 lms-justify-center lms-items-center lms-my-2'}
                   key={i}>
               <button onClick={() => updateLogicOperator('and', i)}
-                      className={`mr-8 text-sm md:text-base text-center p-2 w-20 ${checkOperator('and', a['operator'])}`}>
+                      className={`mr-8 lms-text-sm md:lms-text-base lms-text-center lms-p-2 lms-w-20 ${checkOperator('and', a['operator'])}`}>
                 AND
               </button>
               <button onClick={() => updateLogicOperator('or', i)}
-                      className={`text-sm md:text-base text-center p-2 w-20 ${checkOperator('or', a['operator'])}`}>
+                      className={`text-sm md:lms-text-base lms-text-center lms-p-2 lms-w-20 ${checkOperator('or', a['operator'])}`}>
                 OR
               </button>
             </span>
@@ -148,23 +148,23 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
         }
       })}
         {humanizedAccessControlConditions.length ? (
-          <span className={'flex flex-row w-11/12 justify-center mx-auto mt-4 rounded'}>
-            {/* <button className={'flex flex-row w-11/12 mx-auto justify-center'} onClick={() => createCondition()}> */}
-            <button className={'flex flex-row w-full mx-auto justify-center bg-white border-brand-4 border rounded text-brand-4 p-1 lms-choose-access-button'} onClick={() => createCondition()}>
+          <span className={'lms-flex lms-flex-row lms-w-11/12 lms-justify-center lms-mx-auto lms-mt-4 lms-rounded'}>
+            {/* <button className={'lms-flex lms-flex-row lms-w-11/12 lms-mx-auto lms-justify-center'} onClick={() => createCondition()}> */}
+            <button className={'lms-flex lms-flex-row lms-w-full lms-mx-auto lms-justify-center lms-bg-white lms-border-brand-4 lms-border lms-rounded text-brand-4 lms-p-1 lms-choose-access-button'} onClick={() => createCondition()}>
               <p className={''}>Define Another Condition</p>
               {/* <img src={add}/> */}
             </button>
           </span>
         ) : (
-          <div className={'flex flex-col items-center'}>
-            <span className={'flex flex-col w-11/12 mx-auto rounded p-4 justify-between items-center mb-4 bg-initial-blue'}>
-              <button className={'flex flex-row w-full mx-auto justify-center bg-white border-brand-4 border rounded text-brand-4 p-1 lms-choose-access-button'} onClick={() => createCondition()}>
+          <div className={'lms-flex lms-flex-col lms-items-center'}>
+            <span className={'lms-flex lms-flex-col lms-w-11/12 lms-mx-auto lms-rounded lms-p-4 lms-justify-between lms-items-center lms-mb-4 bg-initial-blue'}>
+              <button className={'lms-flex lms-flex-row lms-w-full lms-mx-auto lms-justify-center lms-bg-white lms-border-brand-4 lms-border lms-rounded text-brand-4 lms-p-1 lms-choose-access-button'} onClick={() => createCondition()}>
                 <p className={''}>Define First Condition</p>
                 {/* <img src={add}/> */}
               </button>
             </span>
-            <img className="mr-16 h-28" src={uparrow}/>
-            <h3 className={"text-base text-center mt-4 w-9/12 text-dark-gray md:text-base"}>
+            <img className="lms-mr-16 lms-h-28" src={uparrow}/>
+            <h3 className={"lms-text-base lms-text-center lms-mt-4 lms-w-9/12 text-dark-gray md:lms-text-base"}>
               Once you've added your first condition, you can add operators like “and" and “or" plus groups
             </h3>
           </div>

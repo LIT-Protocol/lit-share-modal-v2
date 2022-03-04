@@ -36,28 +36,28 @@ const SelectNFT = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'w-full flex flex-col items-center px-8 py-4 bg-white'}>
-      <h3 className={'mb-4'}>Which wallet should be able to access this asset?</h3>
-      <p className={'text-sm md:text-base mb-4 text-brand-4'} onClick={() => setSelectPage('wallet')}>Grant Access to Wallet or
+    <div className={'lms-w-full lms-flex lms-flex-col lms-items-center lms-px-8 lms-py-4 lms-bg-white'}>
+      <h3 className={'lms-mb-4'}>Which wallet should be able to access this asset?</h3>
+      <p className={'lms-text-sm md:lms-text-base lms-mb-4 text-brand-4'} onClick={() => setSelectPage('wallet')}>Grant Access to Wallet or
         Blockchain Domain</p>
-      <h3 className={'w-full mb-2'}>Select blockchain:</h3>
+      <h3 className={'lms-w-full lms-mb-2'}>Select lms-blockchain:</h3>
       <LitSelectDropdown options={chainOptions}
-                         label={'Select blockchain'}
+                         label={'Select lms-blockchain'}
                          option={chain}
                          setOption={setChain}
                          backButtonLabel={'BACK TO SELECT WALLET'}
                          turnOffSearch={true}
       />
-      <h3 className={'w-full mt-8 mb-2'}>Select token or enter contract address</h3>
+      <h3 className={'lms-w-full lms-mt-8 lms-mb-2'}>Select token or enter contract address</h3>
       <LitSelectToken option={selectedToken}
                       label={(!selectedToken || !selectedToken['label']) ? 'Search for a token/NFT' : selectedToken.label}
                       selectedToken={selectedToken}
                       setSelectedToken={setSelectedToken}
       />
-      <h3 className={'mt-8 mb-2 w-full'}>Select token or enter contract address</h3>
+      <h3 className={'lms-mt-8 lms-mb-2 lms-w-full'}>Select token or enter contract address</h3>
       <input value={tokenId} onChange={(e) => setTokenId(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0 lms-input'}/>
-      <footer className={'flex flex-row justify-between w-full h-12 mb-4 mt-8'}>
+             className={'lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
+      <footer className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-mb-4 lms-mt-8'}>
         <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
         <LitNextButton disableConditions={(!chain || !tokenId.length || !selectedToken)}
                        onClick={() => handleSubmit()}/>
