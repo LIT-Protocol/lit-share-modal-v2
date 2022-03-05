@@ -15,7 +15,7 @@ const ChooseAccess = ({ setSelectPage }) => {
       {/*<LitChooseAccessButton onClick={() => setSelectPage('nft')} label={'NFT Ownership'}/>*/}
       <LitChooseAccessButton onClick={() => setSelectPage('dao')} label={'DAO Members'}/>
       <LitChooseAccessButton onClick={() => setSelectPage('poap')} img={POAP} label={'POAP Collectors'}/>
-        <span className={'lms-flex lms-justify-center lms-mt-8 lms-mx-auto lms-items-center'} onClick={() => {
+        <span className={'lms-flex lms-justify-center lms-mt-8 lms-mx-auto lms-items-center lms-cursor-pointer'} onClick={() => {
           setFlow('multipleCondition');
           setDisplayedPage('multiple');
         }}>
