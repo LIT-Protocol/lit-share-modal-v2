@@ -14,6 +14,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
   const [contractAddress, setContractAddress] = useState("");
   const [chain, setChain] = useState(null);
   const [contractType, setContractType] = useState("ERC721");
+  const [erc1155TokenId, setErc1155TokenId] = useState("");
 
   useEffect(
     () =>
@@ -28,23 +29,64 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
   const handleSubmit = async () => {
     console.log("handleSubmit and selectedToken is", selectedToken);
 
-
     if (contractAddress && contractAddress.length) {
-      const accessControlConditions = [
-        {
-          contractAddress: contractAddress,
-          standardContractType: contractType,
-          chain: chain.value,
-          method: "balanceOf",
-          parameters: [":userAddress"],
-          returnValueTest: {
-            comparator: ">=",
-            value: amount.toString(),
+      let accessControlConditions;
+      if (contractType === "ERC20") {
+        let decimals = 0;
+        try {
+          decimals = await LitJsSdk.decimalPlaces({
+            chain: chain.value,
+            contractAddress: contractAddress,
+          });
+        } catch (e) {
+          console.log(e);
+        }
+        console.log(`decimals`, decimals);
+        const amountInBaseUnit = ethers.utils.parseUnits(amount, decimals);
+        accessControlConditions = [
+          {
+            contractAddress: contractAddress,
+            standardContractType: contractType,
+            chain: chain.value,
+            method: "balanceOf",
+            parameters: [":userAddress"],
+            returnValueTest: {
+              comparator: ">=",
+              value: amountInBaseUnit.toString(),
+            },
           },
-        },
-      ];
+        ];
+      } else if (contractType === "ERC721") {
+        accessControlConditions = [
+          {
+            contractAddress: contractAddress,
+            standardContractType: contractType,
+            chain: chain.value,
+            method: "balanceOf",
+            parameters: [":userAddress"],
+            returnValueTest: {
+              comparator: ">=",
+              value: amount.toString(),
+            },
+          },
+        ];
+      } else if (contractType === "ERC1155") {
+        accessControlConditions = [
+          {
+            contractAddress: contractAddress,
+            standardContractType: contractType,
+            chain: chain.value,
+            method: "balanceOf",
+            parameters: [":userAddress", erc1155TokenId],
+            returnValueTest: {
+              comparator: ">=",
+              value: amount.toString(),
+            },
+          },
+        ];
+      }
+      console.log("accessControlConditions contract", accessControlConditions);
       handleUpdateAccessControlConditions(accessControlConditions);
-
     } else if (selectedToken && selectedToken.value === "ethereum") {
       // ethereum
       const amountInWei = ethers.utils.parseEther(amount);
@@ -63,7 +105,6 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
       ];
       console.log("accessControlConditions token", accessControlConditions);
       handleUpdateAccessControlConditions(accessControlConditions);
-
     } else {
       console.log("selectedToken", selectedToken);
 
@@ -151,11 +192,16 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
       }
     }
 
+    
     if (context.flow === 'singleCondition') {
       context.setDisplayedPage('review');
     } else if (context.flow === 'multipleConditions') {
       context.setDisplayedPage('multiple');
     }
+  };
+
+  const handleChangeContractType = (value) => {
+    setContractType(value);
   };
 
   return (
@@ -181,10 +227,38 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
         <p className={'lms-text-sm md:lms-text-base lms-w-full lms-my-1 lms-condition-spacing'}>OR</p>
       )}
       {(!selectedToken || !selectedToken['label']) && (
-        <input placeholder={'ERC20 or ERC721 address'}
+        <input placeholder={'ERC20 or ERC721 or ERC1155 address'}
                value={contractAddress}
                onChange={(e) => setContractAddress(e.target.value)}
                className={'lms-duration-200 lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
+      )}
+      {(!!contractAddress.length) && (
+        // <span className={'lms-flex lms-w-full lms-justify-around lms-items-center lms-h-8'}>
+        <div className={'lms-w-full'}>
+          <h3 className={'lms-mt-2 lms-mb-2 lms-w-full'}>Token Contract Type:</h3>
+          <span onChange={(e) => handleChangeContractType(e.target.value)} className={'lms-flex lms-w-full lms-justify-around lms-items-center lms-mt-2 lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}>
+            <div>
+              <input readOnly checked={contractType === 'ERC20'} type="radio" id="erc20" name="addressType" value="ERC20"/>
+              <label className={'lms-ml-2'} for="erc20">ERC20</label>
+            </div>
+
+            <div>
+              <input readOnly checked={contractType === 'ERC721'} type="radio" id="erc721" name="addressType" value="ERC721"/>
+              <label className={'lms-ml-2'} for="erc721">ERC721</label>
+            </div>
+
+            <div>
+              <input readOnly checked={contractType === 'ERC1155'} type="radio" id="erc1155" name="addressType" value="ERC1155"/>
+              <label className={'lms-ml-2'} for="erc1155">ERC1155</label>
+            </div>
+          </span>
+        </div>
+      )}
+      {(!!contractAddress.length && contractType === 'ERC1155') && (
+          <input placeholder={'ERC1155 Token Id'}
+          value={erc1155TokenId}
+          onChange={(e) => setErc1155TokenId(e.target.value)}
+          className={'lms-duration-200 lms-w-full lms-mt-2 lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
       )}
       {(!!selectedToken && !!selectedToken['label']) && (
         <button
@@ -198,7 +272,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
              className={'lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
       <footer className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-bottom-0 lms-my-4'}>
         <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
-        <LitNextButton disableConditions={!amount || (!selectedToken && !contractAddress) || !chain}
+        <LitNextButton disableConditions={!amount || (!selectedToken && !contractAddress) || !chain || (contractType === 'ERC1155' && !erc1155TokenId.length)}
                        onClick={() => handleSubmit()}/>
       </footer>
     </div>
