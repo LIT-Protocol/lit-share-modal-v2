@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import chevronDown from '../assets/chevronDown.svg';
 import union from '../assets/union.svg';
 import LitBackButton from "./LitBackButton";
+import LitNextButton from "./LitNextButton";
 
-const LitSelectDropdown = ({options, label, setOption, option, backButtonLabel, turnOffSearch = false}) => {
+const LitSelectScreen = ({options, label, setOption, option, turnOffSearch = false}) => {
   const [selectIsOpen, setSelectIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredOptions, setFilteredOptions] = useState([])
@@ -34,19 +35,19 @@ const LitSelectDropdown = ({options, label, setOption, option, backButtonLabel, 
 
   return (
     <div className={'lms-w-full'}>
-      <button className={"lms-w-full lms-h-12 lms-border lms-border-brand-4 lms-rounded hover:lms-border-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4 lms-select-none focus:outline-0 focus:outline-transparent"}
+      <button className={"lms-w-full lms-h-12 lms-bg-white lms-border lms-border-brand-4 lms-rounded hover:lms-border-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4 lms-select-none focus:outline-0 focus:outline-transparent"}
               onClick={() => setSelectIsOpen(true)}>
         {option ? option.name : label}
         <img src={chevronDown}/>
       </button>
       {!!selectIsOpen && (
-        <div className={'lms-absolute lms-w-full lms-h-full lms-top-0 lms-left-0 lms-bg-brand-2 lms-p-6 lms-z-20'}>
+        <div className={'lms-absolute lms-w-full lms-h-full lms-top-0 lms-left-0 lms-bg-brand-2 lms-py-4 lms-rounded lms-z-10 lms-px-4'}>
             {!!turnOffSearch ? (
-              <div className={'lms-fixed lms-top-0 lms-left-0 lms-w-full lms-py-4 lms-bg-brand-4 lms-text-white lms-h-14'}>
+              <div className={'lms-fixed lms-top-0 lms-left-0 lms-w-full lms-text-left lms-py-4 lms-bg-brand-4 lms-text-white lms-h-14'}>
                 <h3 className={'lms-ml-6'}>{label.toUpperCase()}</h3>
               </div>
             ) : (
-              <div className={'lms-fixed lms-top-0 lms-left-0 lms-w-full lms-pt-4 lms-pb-2lms-bg-brand-2'}>
+              <div className={'lms-fixed lms-top-0 lms-left-0 lms-w-full lms-pt-4 lms-pb-2 lms-bg-brand-2'}>
                 <span className={'lms-w-11/12 lms-mx-auto lms-border-b lms-border-brand-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-2'}>
                   <input className={'lms-w-full lms-py-2 focus:outline-0 lms-bg-brand-light lms-input'} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
                   <img alt={'clear input'} className={'lms-h-4 font-os'} src={union} onClick={() => setSearchTerm('')}/>
@@ -61,7 +62,6 @@ const LitSelectDropdown = ({options, label, setOption, option, backButtonLabel, 
                   key={i}
                   onClick={(e) => {
                     setOption(t);
-                    setSelectIsOpen(false);
                   }}
                 >
                   {!!t['logo'] && (
@@ -71,13 +71,14 @@ const LitSelectDropdown = ({options, label, setOption, option, backButtonLabel, 
                   </span>
               ))}
             </span>
-          <footer className={'lms-w-fulllms-bg-brand-2 lms-py-4 lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-20 lms-bottom-0 lms-fixed lms-bottom-0 lms-left-0'}>
-            <LitBackButton label={backButtonLabel} onClick={() => setSelectIsOpen(false)}/>
-          </footer>
+          <div className={'lms-flex lms-flex-row lms-bg-transparent lms-justify-between lms-w-full lms-pr-8 lms-h-12 lms-my-4 lms-absolute lms-bottom-0'}>
+            <LitBackButton onClick={() => setSelectIsOpen(false)}/>
+            <LitNextButton disableConditions={!option} onClick={() => setSelectIsOpen(false)}/>
+          </div>
         </div>
       )}
     </div>
   )
 }
 
-export default LitSelectDropdown;
+export default LitSelectScreen;

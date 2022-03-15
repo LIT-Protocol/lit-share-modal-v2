@@ -64,13 +64,13 @@ const ShareModal = (props) => {
 
     if (nestedIndex === null) {
       if (localIndex > 1 && localIndex === updatedAcc.length - 1) {
-        updatedAcc.splice(updatedAcc[localIndex - 1], 2);
+        updatedAcc.splice(-2);
       } else {
         updatedAcc.splice(updatedAcc[localIndex], 2);
       }
     } else {
-      if (nestedIndex > 1 && nestedIndex === updatedAcc[localIndex].length - 1) {
-        updatedAcc[localIndex].splice(updatedAcc[localIndex][nestedIndex - 1], 2);
+      if (nestedIndex !== 0 && nestedIndex === updatedAcc[localIndex].length - 1) {
+        updatedAcc[localIndex].splice(-2);
 
       } else {
         updatedAcc[localIndex].splice(updatedAcc[localIndex][nestedIndex], 2);
@@ -175,39 +175,41 @@ const ShareModal = (props) => {
   return (
     <div>
       {showModal && (
-        <div className={'lms-absolute lms-top-0 lms-left-0 lms-w-full lms-h-full lms-bg-white lsm-top-modal lms-border lms-border-brand-4'}>
-          <ShareModalContext.Provider value={{
-            handleUpdateAccessControlConditions,
-            handleDeleteAccessControlCondition,
-            clearAllAccessControlConditions,
-            updateLogicOperator,
-            handleClose,
-            sendAccessControlConditions,
-            resetModal,
-            setError,
-            setDisplayedPage,
-            setFlow,
-            humanizedAccessControlConditions,
-            accessControlConditions,
-            displayPage,
-            tokenList,
-            flow,
-            chainOptions,
-            defaultTokens,
-          }}>
-            {displayPage === 'single' && (
-              <SingleCondition/>
-            )}
-            {displayPage === 'multiple' && (
-              <MultipleConditions humanizedAccessControlConditions={humanizedAccessControlConditions}/>
-            )}
-            {displayPage === 'review' && (
-              <ReviewConditions humanizedAccessControlConditions={humanizedAccessControlConditions}/>
-            )}
-            <LitConfirmationModal message={'Are you sure you want to close the modal?'}
-                                  showConfirmationModal={showConfirmationModal}
-                                  onClick={handleConfirmModalClose}/>
-          </ShareModalContext.Provider>
+        <div className={'lms-absolute lms-w-full lms-h-full lms-top-0 lms-left-0 lms-bg-modal-overlay lms-z-[9999] lms-modal-overlay'}>
+          <div className={'lms-absolute lms-top-0 lms-left-0 lms-w-full lms-h-full lms-bg-white lms-border lms-border-brand-4 lsm-top-modal lms-slide-in'}>
+            <ShareModalContext.Provider value={{
+              handleUpdateAccessControlConditions,
+              handleDeleteAccessControlCondition,
+              clearAllAccessControlConditions,
+              updateLogicOperator,
+              handleClose,
+              sendAccessControlConditions,
+              resetModal,
+              setError,
+              setDisplayedPage,
+              setFlow,
+              humanizedAccessControlConditions,
+              accessControlConditions,
+              displayPage,
+              tokenList,
+              flow,
+              chainOptions,
+              defaultTokens,
+            }}>
+              {displayPage === 'single' && (
+                <SingleCondition/>
+              )}
+              {displayPage === 'multiple' && (
+                <MultipleConditions humanizedAccessControlConditions={humanizedAccessControlConditions}/>
+              )}
+              {displayPage === 'review' && (
+                <ReviewConditions humanizedAccessControlConditions={humanizedAccessControlConditions}/>
+              )}
+              <LitConfirmationModal message={'Are you sure you want to close the modal?'}
+                                    showConfirmationModal={showConfirmationModal}
+                                    onClick={handleConfirmModalClose}/>
+            </ShareModalContext.Provider>
+          </div>
         </div>
       )}
     </div>

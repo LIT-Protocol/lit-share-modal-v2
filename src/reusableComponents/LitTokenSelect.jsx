@@ -13,7 +13,7 @@ import LitBackButton from "./LitBackButton";
 import { ShareModalContext } from "../generalComponents/ShareModal";
 import CreatableSelect from "react-select/creatable";
 
-const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
+const LitTokenSelect = ({ label, setSelectedToken, option, selectedToken }) => {
   const { tokenList, defaultTokens } = useContext(ShareModalContext);
   const [selectIsOpen, setSelectIsOpen] = useState(false);
 
@@ -25,7 +25,7 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
       <components.Option {...newProps} className={'lms-z-100 lms-p-0'} style={{ padding: 0, zIndex: 105 }}>
         <div className={'lms-flex lms-items-center'}>
           <div
-            className={'lms-h-2.5 lms-w-2.5 radius-full lms-mx-1.5 lms-bg-no-repeat lms-bg-contain lms-bg-center'}
+            className={'lms-h-8 lms-w-8 radius-full lms-ml-1 lms-mr-4 lms-bg-no-repeat lms-bg-contain lms-bg-center'}
             style={{ backgroundImage: logo ? `url(${logo})` : undefined }}
           />
           <div>
@@ -71,20 +71,20 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
   return (
     <div className={'lms-w-full'}>
       <button
-        className={"lms-w-full lms-h-12 lms-border lms-border-brand-4 lms-rounded hover:lms-border-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4"}
+        className={"lms-w-full lms-bg-white lms-h-12 lms-border-2 lms-border-brand-4 lms-rounded hover:lms-border-2 lms-text-brand-4 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4"}
         onClick={() => setSelectIsOpen(true)}>
         {option ? option.label : label}
-        <img src={chevronDown}/>
+        {/* <img src={chevronDown}/> */}
       </button>
       {!!selectIsOpen && (
-        <div className={'lms-absolute lms-w-full lms-h-full lms-top-0 lms-left-0 lms-bg-brand-20'}>
-          <header className={'lms-w-full lms-py-4 lms-m-0 lms-bg-brand-4'}>
+        <div className={'lms-absolute lms-w-full lms-h-full lms-rounded lms-top-0 lms-left-0 lms-z-20 lms-bg-brand-2'}>
+          <header className={'lms-w-full lms-py-4 lms-m-0 lms-bg-brand-4 lms-px-4'}>
             <span className={'lms-w-full lms-bg-brand-4'}>
-              <h3 className={'lms-w-11/12 lms-mx-auto lms-text-brand-light'}>SELECT A TOKEN/NFT</h3>
+              <h3 className={'lms-w-full lms-mx-auto lms-text-brand-light'}>SELECT A TOKEN/NFT</h3>
             </span>
           </header>
-          <div className={'lms-w-11/12 lms-mx-auto lms-flex lms-flex-col lms-items-center lms-justify-between lms-px-2 lms-mt-8 lms-mb-16'}>
-            <p className={'lms-text-sm md:lms-text-base lms-w-full'}>TOP TOKENS/NFTS</p>
+          <div className={'lms-w-full lms-mx-auto lms-flex lms-flex-col lms-items-center lms-justify-between lms-px-4 lms-mt-8 lms-mb-16'}>
+            <p className={'lms-w-full lms-capitalize-and-size'}>TOP TOKENS/NFTS</p>
             <span className={'lms-flex lms-flex-row lms-flex-wrap lms-justify-start lms-w-full'}>
               {defaultTokens.map((t, i) => (
                 <span
@@ -102,15 +102,15 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
               ))}
             </span>
           </div>
-          <div className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-absolute lms-bottom-0 lms-my-4 lms-bg-co lms-z-0'}>
+          <div className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-absolute lms-bottom-0 lms-my-4 lms-bg-transparent lms-z-20 lms-px-4'}>
             <LitBackButton onClick={() => {
               setSelectedToken(null);
               setSelectIsOpen(false);
             }}/>
-            <LitNextButton disableConditions={false} onClick={() => setSelectIsOpen(false)}/>
+            <LitNextButton disableConditions={!selectedToken} onClick={() => setSelectIsOpen(false)}/>
           </div>
-          <div className={'lms-w-11/12 lms-mx-auto'}>
-            <label>Search</label>
+          <div className={'lms-w-full lms-px-4 lms-mx-auto'}>
+            <label className="lms-capitalize-and-size lms-mb-4">SEARCH</label>
             <CreatableSelect
               filterOption={createFilter({ ignoreAccents: false })}
               classNamePrefix="react-select"
@@ -130,4 +130,4 @@ const LitSelectToken = ({ label, setSelectedToken, option, selectedToken }) => {
   );
 };
 
-export default LitSelectToken;
+export default LitTokenSelect;

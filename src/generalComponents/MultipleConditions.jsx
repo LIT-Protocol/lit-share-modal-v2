@@ -10,11 +10,9 @@ import LitMultipleConditionOrganizer from "../reusableComponents/LitMultipleCond
 const MultipleConditions = ({ humanizedAccessControlConditions }) => {
   const {
     setDisplayedPage,
-    accessControlConditions,
     setFlow,
     resetModal,
     handleClose,
-    clearAllAccessControlConditions,
   } = useContext(ShareModalContext);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [showAddCondition, setShowAddCondition] = useState(false);
@@ -43,17 +41,17 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
 
   return (
     <>
-      <header className={'lms-w-full lms-h-14 lms-bg-brand-light lms-flex lms-justify-between lms-items-center lms-px-5 lms-rounded-t-lg'}>
+      <header className={'lms-w-full lms-h-14 lms-bg-brand-light lms-flex lms-justify-between lms-items-center lms-px-4 lms-rounded-t-lg'}>
         <h3 className={'lms-text-slate-500'}>ACCESS CONTROL</h3>
         <button><img alt={'close'} className={'lms-h-4 font-os'} src={union} onClick={() => handleClose()}/></button>
       </header>
       {!showAddCondition ? (
         <>
-          <div className={'lms-overflow-scroll lms-h-5/6'}>
+          <div className={'lms-overflow-scroll lms-h-5/6 lms-px-4 lms-mt-4'}>
             <LitMultipleConditionOrganizer createCondition={createCondition}
                                           humanizedAccessControlConditions={humanizedAccessControlConditions}/>
           </div>
-          <footer className={'lms-flex lms-bg-white lms-rounded-b-lg lms-flex-row lms-justify-between lms-items-center lms-w-full lms-h-20 lms-fixed lms-bottom-0 lms-left-0'}>
+          <div className={'lms-flex lms-flex-row lms-bg-white lms-justify-between lms-w-full lms-h-12 lms-my-4 lms-px-4 lms-absolute lms-bottom-0'}>
             <LitBackButton onClick={() => {
               if (humanizedAccessControlConditions.length < 1) {
                 setFlow('singleCondition');
@@ -64,7 +62,7 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
             }}/>
             <LitNextButton disableConditions={!humanizedAccessControlConditions || !humanizedAccessControlConditions.length}
                            onClick={() => setDisplayedPage('review')}/>
-          </footer>
+          </div>
           <LitConfirmationModal showConfirmationModal={showConfirmationModal}
                                 onClick={handleConfirmGoBack}/>
         </>

@@ -7,9 +7,10 @@ body {
 }
 
 .modal {
-  width: 90%;
-  left: 5%;
-  top: 35%;
+  max-width: 24rem;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
 }
 
 button {
@@ -22,9 +23,14 @@ button {
   border-radius: 2px;
 }
 
+.lms-capitalize-and-size {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
 @media (min-width: 768px) {
   .lsm-top-modal {
-    z-index: 10000;
+    /* z-index: 100; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

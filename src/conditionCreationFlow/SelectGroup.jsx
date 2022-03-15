@@ -4,8 +4,8 @@ import LitNextButton from "../reusableComponents/LitNextButton";
 import { ethers } from "ethers";
 import { ShareModalContext } from "../generalComponents/ShareModal";
 import LitJsSdk from "lit-js-sdk";
-import LitSelectDropdown from "../reusableComponents/LitSelectDropdown";
-import LitSelectToken from "../reusableComponents/LitSelectToken";
+import LitSelectScreen from "../reusableComponents/LitSelectScreen";
+import LitTokenSelect from "../reusableComponents/LitTokenSelect";
 
 const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   const context = useContext(ShareModalContext);
@@ -27,7 +27,6 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
   );
 
   const handleSubmit = async () => {
-    console.log("handleSubmit and selectedToken is", selectedToken);
 
     if (contractAddress && contractAddress.length) {
       let accessControlConditions;
@@ -85,7 +84,6 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
           },
         ];
       }
-      console.log("accessControlConditions contract", accessControlConditions);
       handleUpdateAccessControlConditions(accessControlConditions);
     } else if (selectedToken && selectedToken.value === "ethereum") {
       // ethereum
@@ -103,10 +101,8 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
           },
         },
       ];
-      console.log("accessControlConditions token", accessControlConditions);
       handleUpdateAccessControlConditions(accessControlConditions);
     } else {
-      console.log("selectedToken", selectedToken);
 
       let tokenType;
       if (selectedToken && selectedToken.standard?.toLowerCase() === "erc721") {
@@ -147,10 +143,6 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
             },
           },
         ];
-        console.log(
-          "accessControlConditions typeerc721",
-          accessControlConditions
-        );
         handleUpdateAccessControlConditions(accessControlConditions);
       } else {
         // erc20 token
@@ -171,7 +163,6 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
           } catch (e) {
             console.log(e);
           }
-          console.log(`decimals in ${selectedToken.value}`, decimals);
           amountInBaseUnit = ethers.utils.parseUnits(amount, decimals);
         }
         const accessControlConditions = [
@@ -187,7 +178,6 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
             },
           },
         ];
-        console.log("accessControlConditions else", accessControlConditions);
         handleUpdateAccessControlConditions(accessControlConditions);
       }
     }
@@ -205,19 +195,18 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
   };
 
   return (
-    <div className={'lms-w-full lms-flex lms-flex-col lms-items-center lms-px-8 lms-py-4 lms-bg-white'}>
-      <h3 className={'lms-mb-4 md:lms-mb-0'}>Which wallet should be able to access this asset?</h3>
-      <h3 className={'lms-w-full lms-mb-2 lms-text-spacing'}>Select lms-blockchain:</h3>
-      <LitSelectDropdown options={context.chainOptions}
-                         label={'Select lms-blockchain'}
+    <div className={'lms-w-full lms-flex lms-flex-col lms-items-center lms-px-4 lms-py-4 lms-bg-white'}>
+      <h3 className={'lms-mb-4 md:lms-mb-0 lms-w-full'}>Which wallet should be able to access this asset?</h3>
+      <h3 className={'lms-w-full lms-mb-2 lms-text-spacing'}>Select blockchain:</h3>
+      <LitSelectScreen options={context.chainOptions}
+                         label={'Select blockchain'}
                          option={chain}
                          setOption={setChain}
                          turnOffSearch={true}
-                         backButtonLabel={'BACK TO SELECT WALLET'}
       />
       <h3 className={'lms-mt-4 lms-mb-2 lms-w-full lms-text-spacing'}>Select token/NFT or enter contract address:</h3>
       {(!contractAddress.length) && (
-        <LitSelectToken option={selectedToken}
+        <LitTokenSelect option={selectedToken}
                         label={(!selectedToken || !selectedToken['label']) ? 'Search for a token/NFT' : selectedToken.label}
                         selectedToken={selectedToken}
                         setSelectedToken={setSelectedToken}
@@ -239,17 +228,17 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
           <span onChange={(e) => handleChangeContractType(e.target.value)} className={'lms-flex lms-w-full lms-justify-around lms-items-center lms-mt-2 lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}>
             <div>
               <input readOnly checked={contractType === 'ERC20'} type="radio" id="erc20" name="addressType" value="ERC20"/>
-              <label className={'lms-ml-2'} for="erc20">ERC20</label>
+              <label className={'lms-ml-2'} htmlFor="erc20">ERC20</label>
             </div>
 
             <div>
               <input readOnly checked={contractType === 'ERC721'} type="radio" id="erc721" name="addressType" value="ERC721"/>
-              <label className={'lms-ml-2'} for="erc721">ERC721</label>
+              <label className={'lms-ml-2'} htmlFor="erc721">ERC721</label>
             </div>
 
             <div>
               <input readOnly checked={contractType === 'ERC1155'} type="radio" id="erc1155" name="addressType" value="ERC1155"/>
-              <label className={'lms-ml-2'} for="erc1155">ERC1155</label>
+              <label className={'lms-ml-2'} htmlFor="erc1155">ERC1155</label>
             </div>
           </span>
         </div>
@@ -268,13 +257,13 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
         </button>
       )}
       <h3 className={'lms-mt-4 lms-mb-2 lms-w-full lms-text-spacing'}>How many tokens does the wallet need to own?</h3>
-      <input value={amount} onChange={(e) => setAmount(e.target.value)}
+      <input value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={'##'}
              className={'lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
-      <footer className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-bottom-0 lms-my-4'}>
+      <div className={'lms-flex lms-flex-row lms-bg-white lms-justify-between lms-w-full lms-h-12 lms-my-4 lms-px-4 lms-absolute lms-bottom-0'}>
         <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
         <LitNextButton disableConditions={!amount || (!selectedToken && !contractAddress) || !chain || (contractType === 'ERC1155' && !erc1155TokenId.length)}
                        onClick={() => handleSubmit()}/>
-      </footer>
+      </div>
     </div>
   );
 };

@@ -25,11 +25,11 @@ const MultipleCreateCondition = ({ endOfCreateCondition, isNested, nestedIndex }
 
   if (selectPage === 'chooseAccess') {
     return <>
-      <MultipleChooseAccess setSelectPage={setSelectPage}/>
-      <footer className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-mb-4 lms-mt-8 lms-fixed lms-bottom-0 lms-left-0'}>
+      <MultipleChooseAccess setSelectPage={setSelectPage} isNested={isNested}/>
+      <div className={'lms-flex lms-flex-row lms-bg-white lms-justify-between lms-w-full lms-h-12 lms-my-4 lms-px-4 lms-absolute lms-bottom-0'}>
         <LitBackButton onClick={() => endOfCreateCondition(false)}/>
         {/* <LitNextButton disableConditions={false} onClick={() => console.log('HEY HEY')}/> */}
-      </footer>
+      </div>
     </>
   }
 

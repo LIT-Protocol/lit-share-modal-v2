@@ -9,20 +9,21 @@ module.exports = {
       "white": "#fff",
       "dark-gray": "#616161",
       "brand-light": "#F0ECF8",
-      "brand-4": "#5E36B7",
-      "brand-2": "rgba(158, 119, 243, 10)",
+      "brand-4": "rgba(129, 89, 217, 1)",
+      "brand-2": "#e6dcfa",
+      "next-button": "rgba(0, 0, 0, 0.26)"
     },
     colors: {
       "white": "#fff",
       "black": "#000",
       "modal-overlay": "rgba(0,0,0,0.65)",
+      "light-modal-overlay": "rgba(0,0,0,0.30)",
       "gray": "#d4d4d4",
       "dark-gray": "#616161",
       "brand-light": "#F0ECF8",
       "brand-5": "#2C0C72",
-      "brand-4": "#5E36B7",
-      "brand-2": "rgba(158, 119, 243, 10)",
-      "brand-20": "#BFA1FF",
+      "brand-4": "rgba(129, 89, 217, 1)",
+      "brand-2": "#e6dcfa",
       "initial-blue": "rgba(0, 148, 255, .22)"
     },
     fontFamily: {

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useMemo, useEffect } from 'react';
 import { ShareModalContext } from "../generalComponents/ShareModal";
-import LitSelectDropdown from "../reusableComponents/LitSelectDropdown";
+import LitSelectScreen from "../reusableComponents/LitSelectScreen";
 import LitJsSdk from "lit-js-sdk";
 import LitBackButton from "../reusableComponents/LitBackButton";
 import LitNextButton from "../reusableComponents/LitNextButton";
@@ -67,24 +67,23 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
   };
 
   return (
-    <div className={'lms-w-full lms-flex lms-flex-col lms-items-center lms-px-8 lms-py-4 lms-bg-white'}>
-      <h3 className={'lms-mb-4'}>Which wallet should be able to access this asset?</h3>
-      <p className={'lms-text-sm md:lms-text-base lms-mb-4 lms-text-brand-4'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
-      <h3 className={'lms-w-full lms-mb-4'}>Select lms-blockchain:</h3>
-      <LitSelectDropdown options={chainOptions}
-                         label={'Select lms-blockchain'}
+    <div className={'lms-w-full lms-flex lms-flex-col lms-items-center lms-px-4 lms-py-4 lms-bg-white'}>
+      <h3 className={'lms-mb-4 lms-w-full lms-text-left'}>Which wallet should be able to access this asset?</h3>
+      <h3 className={'lms-mt-12 lms-mb-4 lms-w-full lms-text-spacing'}>Select blockchain:</h3>
+      <LitSelectScreen options={chainOptions}
+                         label={'Select blockchain'}
                          option={chain}
                          setOption={setChain}
-                         backButtonLabel={'BACK TO SELECT WALLET'}
                          turnOffSearch={true}
       />
       <h3 className={'lms-mt-12 lms-mb-4 lms-w-full lms-text-spacing'}>Add Wallet Address or Blockchain Domain (e.g. ENS, UNS) here:</h3>
       <input value={walletAddress} onChange={(e) => setWalletAddress(e.target.value)}
              className={'lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
-      <footer className={'lms-flex lms-flex-row lms-justify-between lms-w-full lms-h-12 lms-mb-4 lms-mt-8'}>
+      <p className={'lms-text-sm lms-w-full lms-cursor-pointer md:lms-text-base lms-mb-4 lms-mt-4 lms-text-brand-4 lms-text-left'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
+      <div className={'lms-flex lms-flex-row lms-bg-white lms-justify-between lms-w-full lms-h-12 lms-my-4 lms-px-4 lms-absolute lms-bottom-0'}>
         <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
         <LitNextButton disableConditions={(!chain['name'] || !walletAddress.length)} onClick={() => handleSubmit()}/>
-      </footer>
+      </div>
     </div>
   );
 }
