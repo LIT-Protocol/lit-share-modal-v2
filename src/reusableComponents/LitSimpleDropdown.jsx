@@ -5,13 +5,14 @@ import chevronDown from '../assets/chevronDown.svg';
 const LitSimpleDropdown = ({ label, options, selected, setSelected}) => {
 
   const [ showMenu, setShowMenu ] = useState(false);
-  const [dropdownStyle, setDropdownStyle] = useState('')
+  const [ dropdownStyle, setDropdownStyle ] = useState('')
 
   useEffect(() => {
+    console.log('check show Menu', showMenu)
     if (!showMenu) {
-      setDropdownStyle("lms-hidden lms-absolute lms-w-full lms-rounded lms-border lms-border-gray");
+      setDropdownStyle("lms-hidden lms-w-full lms-rounded lms-border lms-border-gray");
     } else {
-      setDropdownStyle("lms-block lms-w-full lms-rounded lms-border lms-border-gray");
+      setDropdownStyle("lms-block lms-absolute lms-w-full lms-rounded lms-border lms-border-gray");
     }
   }, [showMenu])
 
@@ -33,7 +34,7 @@ const LitSimpleDropdown = ({ label, options, selected, setSelected}) => {
                       setShowMenu(false);
                     }
                   }
-                  ><li className={"lms-w-full lms-m-0 lms-p-3 hover:lms-bg-gray"}
+                  ><li className={"lms-w-full lms-text-left lms-m-0 lms-p-3 hover:lms-bg-gray"}
                   >{option.name}</li>
                   </span>
                 )

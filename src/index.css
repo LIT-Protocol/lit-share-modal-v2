@@ -28,6 +28,10 @@ button {
   font-size: 0.8rem;
 }
 
+.lms-delete-transparent {
+  background-color: transparent;
+}
+
 @media (min-width: 768px) {
   .lsm-top-modal {
     /* z-index: 100; */

@@ -75,7 +75,7 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
                   {a[2].humanizedAcc}
                 </span>
                 <span>
-                  <button className={'lms-mr-1'}>
+                  <button className={'lms-mr-1 lms-delete-transparent'}>
                     <img src={trashcan} onClick={() => {
                       setAccType('POAP');
                       setCurrentAccIndex([i]);
@@ -102,7 +102,7 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
                         {n.humanizedAcc}
                       </span>
                       <span>
-                        <button className={'lms-mr-1'}>
+                        <button className={'lms-mr-1 lms-delete-transparent'}>
                           <img src={trashcan} onClick={() => {
                             setCurrentAccIndex([i, ni]);
                             setShowDeleteModal(true);
@@ -148,7 +148,7 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
                   {humanizedAccessControlConditions[i].humanizedAcc}
                 </span>
                 <span>
-                  <button className={'lms-mr-1'}>
+                  <button className={'lms-mr-1 lms-delete-transparent'}>
                     <img src={trashcan} onClick={() => {
                       setCurrentAccIndex([i]);
                       setShowDeleteModal(true);
