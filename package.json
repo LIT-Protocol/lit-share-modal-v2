@@ -1,12 +1,12 @@
 {
-  "name": "lit-modal-vite",
-  "version": "0.0.72",
-  "main": "./dist/lit-modal-vite.umd.js",
-  "module": "./dist/lit-modal-vite.es.js",
+  "name": "lit-share-modal",
+  "version": "0.1.1",
+  "main": "./dist/lit-share-modal.umd.js",
+  "module": "./dist/lit-share-modal.es.js",
   "exports": {
     ".": {
-      "import": "./dist/lit-modal-vite.es.js",
-      "require": "./dist/lit-modal-vite.umd.js"
+      "import": "./dist/lit-share-modal.es.js",
+      "require": "./dist/lit-share-modal.umd.js"
     },
     "./dist/style.css": {
       "import": "./dist/style.css",

@@ -8,8 +8,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.js'),
-      name: 'lit-modal-vite',
-      fileName: (format) => `lit-modal-vite.${format}.js`,
+      name: 'lit-share-modal',
+      fileName: (format) => `lit-share-modal.${format}.js`,
     },
     cssCodeSplit: false,
     rollupOptions: {
