@@ -1,3 +1,5 @@
+For use with Lit Protocol. [Click here to visit the developer docs.](https://developer.litprotocol.com/docs/intro/)
+
 # Installation
 
 with npm
@@ -45,9 +47,16 @@ export default App;
 
 ### Required
 
-- `onClose` - actions to take on closing the modal 
+- `onClose` - callback for actions to take on closing the modal 
 - `showModal` - boolean that signals whether modal is open (true) or closed (false)
-- `onAccessControlConditionsSelected` - function to send the share modal output 
+- `onAccessControlConditionsSelected` - callback for the share modal output
+
+`onAccessControlConditions` provides an object with the following properties:
+
+- `accessControlConditions` - an array of objects and nested arrays reflecting the selected conditions
+- `permanent` - a boolean signaling whether conditions will be permanent (true) or editable by the author in the future (false)
+
+Documentation on how these properties are used with the `LitJsSdk`, can be found in the [LitJsSdk docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#litnodeclientsavesigningcondition)
 
 ### Optional
 
