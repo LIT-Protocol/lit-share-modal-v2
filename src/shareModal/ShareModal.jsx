@@ -177,7 +177,7 @@ const ShareModal = (props) => {
     <div>
       {showModal && (
         <div className={'lms-top-modal-overlay md:lms-bg-modal-overlay'}>
-          <div className={'lms-bg-white lms-border lms-border-brand-4 lsm-top-modal'}>
+          <div className={'lms-bg-white lms-border lms-border-brand-4 lms-top-modal '}>
             <ShareModalContext.Provider value={{
               handleUpdateAccessControlConditions,
               handleDeleteAccessControlCondition,

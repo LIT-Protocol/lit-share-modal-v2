@@ -241,8 +241,8 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
       )}
       {(!!contractAddress.length) && (
         <div className={'lms-w-full'}>
-          <h3 className={'lms-mt-2 lms-mb-2 lms-w-full lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Token Contract Type:</h3>
-          <span onChange={(e) => handleChangeContractType(e.target.value)} className={'lms-flex lms-w-full lms-justify-around lms-items-center lms-mt-2 lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}>
+          <h3 className={'lms-mt-2 lms-mb-2 lms-w-full lms-text-title-gray lms-font-segoe lms-text-base lms-font-light lms-select-label'}>Token Contract Type:</h3>
+          <span onChange={(e) => handleChangeContractType(e.target.value)} className={'lms-flex lms-w-full lms-justify-around lms-items-center lms-mt-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}>
             <div>
               <input readOnly checked={contractType === 'ERC20'} type="radio" id="erc20" name="addressType" value="ERC20"/>
               <label className={'lms-ml-2'} htmlFor="erc20">ERC20</label>
