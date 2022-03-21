@@ -1,6 +1,5 @@
 # Installation
 
----
 with npm
 ```
 npm install --save lit-share-modal
@@ -13,7 +12,6 @@ yarn add lit-share-modal
 
 # Usage
 
----
 with React Hooks
 
 ```
@@ -45,8 +43,8 @@ export default App;
 
 # Props
 
----
 ### Required
+
 - `onClose` - actions to take on closing the modal 
 - `showModal` - boolean that signals whether modal is open (true) or closed (false)
 - `onAccessControlConditionsSelected` - function to send the share modal output 
@@ -65,7 +63,7 @@ This list can be altered by passing an array of objects with the following prope
 - `symbol` - token/NFT symbol
 - `standard` - token standard (ERC20, ERC721, or ERC1155)
 
-Example using Lit Genesis NFT (LITGATE)
+**Example of a single entry quick access array**
 ```
 export const defaultTokens = [
   {
