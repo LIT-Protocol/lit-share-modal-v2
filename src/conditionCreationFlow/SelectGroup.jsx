@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import LitBackButton from "../reusableComponents/LitBackButton";
-import LitNextButton from "../reusableComponents/LitNextButton";
+import React, { useContext, useEffect, useState } from 'react';
 import { ethers } from "ethers";
-import { ShareModalContext } from "../generalComponents/ShareModal";
+import { ShareModalContext } from "../shareModal/ShareModal";
 import LitJsSdk from "lit-js-sdk";
-import LitSelectScreen from "../reusableComponents/LitSelectScreen";
-import LitTokenSelect from "../reusableComponents/LitTokenSelect";
+import LitReusableSelect from "../reusableComponents/litSelectScreen/LitReusableSelect";
+import LitTokenSelect from "../reusableComponents/litTokenSelect/LitTokenSelect";
+import LitFooter from "../reusableComponents/litFooter/LitFooter";
+import union from '../assets/union.svg';
 
 const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   const context = useContext(ShareModalContext);
@@ -182,7 +182,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
       }
     }
 
-    
+
     if (context.flow === 'singleCondition') {
       context.setDisplayedPage('review');
     } else if (context.flow === 'multipleConditions') {
@@ -194,17 +194,35 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
     setContractType(value);
   };
 
+  const createTokenSelectLabel = () => {
+    if (selectedToken && selectedToken.label) {
+      return (
+        <span>
+          {selectedToken.label}
+          <button className={'lms-border-none lms-cursor-pointer'}>
+            <img alt={'close'}
+                 className={'lms-h-4'}
+                 src={union}
+                 onClick={() => setSelectedToken(null)}/>
+          </button>
+        </span>
+      )
+    } else {
+      return 'Search for a token/NFT';
+    }
+  }
+
   return (
-    <div className={'lms-w-full lms-flex lms-flex-col lms-items-center lms-px-4 lms-py-4 lms-bg-white'}>
-      <h3 className={'lms-mb-4 md:lms-mb-0 lms-w-full'}>Which wallet should be able to access this asset?</h3>
-      <h3 className={'lms-w-full lms-mb-2 lms-text-spacing'}>Select blockchain:</h3>
-      <LitSelectScreen options={context.chainOptions}
+    <div className={'lms-select-container lms-bg-white'}>
+      <h3 className={'lms-select-prompt lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Which wallet should be able to access this asset?</h3>
+      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Select blockchain:</h3>
+      <LitReusableSelect options={context.chainOptions}
                          label={'Select blockchain'}
                          option={chain}
                          setOption={setChain}
                          turnOffSearch={true}
       />
-      <h3 className={'lms-mt-4 lms-mb-2 lms-w-full lms-text-spacing'}>Select token/NFT or enter contract address:</h3>
+      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Select token/NFT or enter contract address:</h3>
       {(!contractAddress.length) && (
         <LitTokenSelect option={selectedToken}
                         label={(!selectedToken || !selectedToken['label']) ? 'Search for a token/NFT' : selectedToken.label}
@@ -213,18 +231,17 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
         />
       )}
       {((!selectedToken || !selectedToken['label']) && !contractAddress.length) && (
-        <p className={'lms-text-sm md:lms-text-base lms-w-full lms-my-1 lms-condition-spacing'}>OR</p>
+        <p className={'lms-text-sm md:lms-text-base lms-w-full lms-my-1 lms-condition-spacing lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>OR</p>
       )}
       {(!selectedToken || !selectedToken['label']) && (
         <input placeholder={'ERC20 or ERC721 or ERC1155 address'}
                value={contractAddress}
                onChange={(e) => setContractAddress(e.target.value)}
-               className={'lms-duration-200 lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
+               className={'lms-border-brand-4 lms-input'}/>
       )}
       {(!!contractAddress.length) && (
-        // <span className={'lms-flex lms-w-full lms-justify-around lms-items-center lms-h-8'}>
         <div className={'lms-w-full'}>
-          <h3 className={'lms-mt-2 lms-mb-2 lms-w-full'}>Token Contract Type:</h3>
+          <h3 className={'lms-mt-2 lms-mb-2 lms-w-full lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Token Contract Type:</h3>
           <span onChange={(e) => handleChangeContractType(e.target.value)} className={'lms-flex lms-w-full lms-justify-around lms-items-center lms-mt-2 lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}>
             <div>
               <input readOnly checked={contractType === 'ERC20'} type="radio" id="erc20" name="addressType" value="ERC20"/>
@@ -247,23 +264,21 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
           <input placeholder={'ERC1155 Token Id'}
           value={erc1155TokenId}
           onChange={(e) => setErc1155TokenId(e.target.value)}
-          className={'lms-duration-200 lms-w-full lms-mt-2 lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
+          className={'lms-border-brand-4 lms-input'}/>
       )}
-      {(!!selectedToken && !!selectedToken['label']) && (
-        <button
-          className={"lms-w-full lms-h-12 lms-text-brand-light lms-bg-brand-4 lms-rounded hover:lms-border-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4 lms-mt-4"}
-          onClick={() => setSelectedToken(null)}>
-          Clear token/NFT
-        </button>
-      )}
-      <h3 className={'lms-mt-4 lms-mb-2 lms-w-full lms-text-spacing'}>How many tokens does the wallet need to own?</h3>
+      {/*{(!!selectedToken && !!selectedToken['label']) && (*/}
+      {/*  <button*/}
+      {/*    className={"lms-h-12 lms-text-brand-light lms-bg-brand-4 lms-rounded hover:lms-border-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4 lms-mt-4"}*/}
+      {/*    onClick={() => setSelectedToken(null)}>*/}
+      {/*    Clear token/NFT*/}
+      {/*  </button>*/}
+      {/*)}*/}
+      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>How many tokens does the wallet need to own?</h3>
       <input value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={'##'}
-             className={'lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
-      <div className={'lms-flex lms-flex-row lms-bg-white lms-justify-between lms-w-full lms-h-12 lms-my-4 lms-px-4 lms-absolute lms-bottom-0'}>
-        <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
-        <LitNextButton disableConditions={!amount || (!selectedToken && !contractAddress) || !chain || (contractType === 'ERC1155' && !erc1155TokenId.length)}
-                       onClick={() => handleSubmit()}/>
-      </div>
+             className={'lms-border-brand-4 lms-input'}/>
+      <LitFooter backAction={() => setSelectPage('chooseAccess')}
+                 nextAction={handleSubmit}
+                 nextDisableConditions={!amount || (!selectedToken && !contractAddress) || !chain || (contractType === 'ERC1155' && !erc1155TokenId.length)} />
     </div>
   );
 };

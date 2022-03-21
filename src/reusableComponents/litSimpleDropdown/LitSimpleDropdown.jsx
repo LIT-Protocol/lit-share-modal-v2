@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useMemo, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
+import chevronDown from '../../assets/chevronDown.svg';
 import './LitSimpleDropdown.css';
-import chevronDown from '../assets/chevronDown.svg';
 
 const LitSimpleDropdown = ({ label, options, selected, setSelected}) => {
 
@@ -10,15 +10,15 @@ const LitSimpleDropdown = ({ label, options, selected, setSelected}) => {
   useEffect(() => {
     console.log('check show Menu', showMenu)
     if (!showMenu) {
-      setDropdownStyle("lms-hidden lms-w-full lms-rounded lms-border lms-border-gray");
+      setDropdownStyle("lms-hidden");
     } else {
-      setDropdownStyle("lms-block lms-absolute lms-w-full lms-rounded lms-border lms-border-gray");
+      setDropdownStyle("lms-dropdown-menu lms-border-gray");
     }
   }, [showMenu])
 
   return (
     <div className="lms-w-full lms-relative lms-block">
-      <button className={"lms-w-full lms-bg-white lms-h-12 lms-border lms-border-brand-4 lms-rounded hover:lms-border-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4"}
+      <button className={"lms-w-full lms-bg-white lms-h-12 lms-border lms-border-brand-4 lms-rounded hover:lms-border-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4 lms-text-title-gray lms-font-segoe lms-text-sm lms-font-light"}
         onClick={() => {
           setShowMenu(!showMenu)
         }}>
@@ -34,7 +34,7 @@ const LitSimpleDropdown = ({ label, options, selected, setSelected}) => {
                       setShowMenu(false);
                     }
                   }
-                  ><li className={"lms-w-full lms-text-left lms-m-0 lms-p-3 hover:lms-bg-gray"}
+                  ><li className={"lms-dropdown-item hover:lms-bg-gray lms-text-title-gray lms-font-segoe lms-text-sm lms-font-light"}
                   >{option.name}</li>
                   </span>
                 )

@@ -2,65 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
+.lms-select-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: calc(100% - 2rem);
 }
 
-.modal {
-  max-width: 24rem;
-  left: 50%;
-  top: 45%;
-  transform: translate(-50%, -50%);
-}
-
-button {
-  cursor: pointer;
-}
-
-.lms-condition-shadow {
-  background: rgba(0, 148, 255, 0.22);
-  box-shadow: 1px 1px 4px rgba(4, 19, 71, 0.25);
-  border-radius: 2px;
+.lms-select-prompt {
+  margin: 1rem 0;
+  width: 100%;
+  text-align: left;
 }
 
 .lms-capitalize-and-size {
   font-weight: bold;
   font-size: 0.8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.lms-delete-transparent {
-  background-color: transparent;
+.lms-text-spacing {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
 }
 
-@media (min-width: 768px) {
-  .lsm-top-modal {
-    /* z-index: 100; */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 45rem;
-    height: 46rem;
-    border-radius: 0.25rem;
-  }
+.lms-input {
+  height: 2.7rem;
+  width: calc(100% - 2rem);
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-style: solid;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
-  .lms-choose-access-button {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
+.lms-input:focus {
 
-  .lms-input {
-    height: 3rem;
-  }
+}
 
-  .lms-text-spacing {
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    text-align: left;
-  }
 
-  .lms-condition-spacing {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    text-align: left;
-  }
+.lms-select-label {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.lms-interior-scroll {
+  height: calc(100% - 10rem);
+}
+
+.lms-condition-shadow{
+  background:rgba(0,148,255,.22);
+  box-shadow:1px 1px 4px #04134740;
+  border-radius:2px
 }

@@ -2114,6 +2114,11 @@ eventemitter3@4.0.7, eventemitter3@^4.0.7:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
 
+events@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
+  integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
+
 eyes@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/eyes/-/eyes-0.1.8.tgz#62cf120234c683785d902348a800ef3e0cc20bc0"
@@ -2706,7 +2711,7 @@ lit-connect-modal@^0.1.7:
   dependencies:
     micromodal "^0.4.10"
 
-lit-js-sdk@^1.1.99:
+lit-js-sdk@^1.1.149:
   version "1.1.149"
   resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.149.tgz#526769878fbffbac541ced5eb5b420c6c5650143"
   integrity sha512-byJh7J1T9pv5JwZ2Fo6dlcSqmdsJuNXjTmDP4u3J9bXj9581W/H3jsqMy6q8Cn8M4GlOxnlSX0Oopic3wB6tjQ==

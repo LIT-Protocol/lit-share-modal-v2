@@ -1,2 +1,2 @@
 
-export { default as ShareModal } from './generalComponents/ShareModal';
+export { default as ShareModal } from './shareModal/ShareModal';

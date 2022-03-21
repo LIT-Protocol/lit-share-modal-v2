@@ -7,7 +7,7 @@ const MultipleChooseAccess = ({ setSelectPage, isNested = false }) => {
 
   return (
     <div className={'lms-flex lms-flex-col lms-items-center'}>
-      <h3 className={'lms-mt-6 lms-mb-4'}>Choose who can access this:</h3>
+      <h3 className={'lms-mt-6 lms-mb-4 lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Choose who can access this:</h3>
       <LitChooseAccessButton onClick={() => setSelectPage('wallet')} label={'An Individual Wallet'}/>
       <LitChooseAccessButton onClick={() => setSelectPage('group')} label={'A Group of Token or NFT Holders'}/>
       {/*<LitChooseAccessButton onClick={() => setSelectPage('nft')} label={'NFT Ownership'}/>*/}

@@ -1,13 +1,14 @@
 import React, { createContext, useEffect, useContext, useReducer, useMemo, useState } from 'react';
-import SingleCondition from "./SingleCondition";
-import ReviewConditions from "./ReviewConditions";
-import MultipleConditions from "./MultipleConditions";
+import SingleCondition from "../generalComponents/SingleCondition";
+import ReviewConditions from "../generalComponents/reviewConditions/ReviewConditions";
+import MultipleConditions from "../generalComponents/MultipleConditions";
 import '../index.css'
+import './ShareModal.css'
 
 import LitJsSdk from "lit-js-sdk";
 import { TOP_LIST } from "../helpers/topList";
 import { humanizeNestedConditions, cleanAccessControlConditions } from "../helpers/multipleConditionHelpers";
-import LitConfirmationModal from "../reusableComponents/LitConfirmationModal";
+import LitConfirmationModal from "../reusableComponents/litConfirmationModal/LitConfirmationModal";
 
 export const ShareModalContext = createContext({});
 
@@ -28,7 +29,7 @@ const ShareModal = (props) => {
   const [flow, setFlow] = useState('singleCondition');
   const [tokenList, setTokenList] = useState(null);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  
+
     useEffect(() => {
       const getTokens = async () => {
         // get token list and cache it
@@ -175,8 +176,8 @@ const ShareModal = (props) => {
   return (
     <div>
       {showModal && (
-        <div className={'lms-absolute lms-w-full lms-h-full lms-top-0 lms-left-0 lms-bg-modal-overlay lms-z-[9999] lms-modal-overlay'}>
-          <div className={'lms-absolute lms-top-0 lms-left-0 lms-w-full lms-h-full lms-bg-white lms-border lms-border-brand-4 lsm-top-modal lms-slide-in'}>
+        <div className={'lms-top-modal-overlay md:lms-bg-modal-overlay'}>
+          <div className={'lms-bg-white lms-border lms-border-brand-4 lsm-top-modal'}>
             <ShareModalContext.Provider value={{
               handleUpdateAccessControlConditions,
               handleDeleteAccessControlCondition,

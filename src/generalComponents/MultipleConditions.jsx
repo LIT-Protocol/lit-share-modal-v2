@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import LitBackButton from "../reusableComponents/LitBackButton";
-import LitNextButton from "../reusableComponents/LitNextButton";
-import { ShareModalContext } from "./ShareModal";
+import React, { useContext, useState } from 'react';
+import { ShareModalContext } from "../shareModal/ShareModal";
 import MultipleCreateCondition from "./MultipleCreateCondition";
-import union from "../assets/union.svg";
-import LitConfirmationModal from "../reusableComponents/LitConfirmationModal";
-import LitMultipleConditionOrganizer from "../reusableComponents/LitMultipleConditionOrganizer";
+import LitConfirmationModal from "../reusableComponents/litConfirmationModal/LitConfirmationModal";
+import LitMultipleConditionOrganizer from "../reusableComponents/litMultipeConditionOrganizer/LitMultipleConditionOrganizer";
+import LitFooter from "../reusableComponents/litFooter/LitFooter";
+import LitHeader from "../reusableComponents/litHeader/LitHeader";
 
 const MultipleConditions = ({ humanizedAccessControlConditions }) => {
   const {
@@ -41,28 +40,25 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
 
   return (
     <>
-      <header className={'lms-w-full lms-h-14 lms-bg-brand-light lms-flex lms-justify-between lms-items-center lms-px-4 lms-rounded-t-lg'}>
-        <h3 className={'lms-text-slate-500'}>ACCESS CONTROL</h3>
-        <button><img alt={'close'} className={'lms-h-4 font-os'} src={union} onClick={() => handleClose()}/></button>
-      </header>
+      <LitHeader handleClose={handleClose} />
       {!showAddCondition ? (
         <>
-          <div className={'lms-overflow-scroll lms-h-5/6 lms-px-4 lms-mt-4'}>
+          <div className={'lms-overflow-scroll lms-pt-4 lms-interior-scroll'}>
             <LitMultipleConditionOrganizer createCondition={createCondition}
                                           humanizedAccessControlConditions={humanizedAccessControlConditions}/>
           </div>
-          <div className={'lms-flex lms-flex-row lms-bg-white lms-justify-between lms-w-full lms-h-12 lms-my-4 lms-px-4 lms-absolute lms-bottom-0'}>
-            <LitBackButton onClick={() => {
+          <LitFooter
+            backAction={() => {
               if (humanizedAccessControlConditions.length < 1) {
                 setFlow('singleCondition');
                 setDisplayedPage('single');
               } else {
                 setShowConfirmationModal(true);
               }
-            }}/>
-            <LitNextButton disableConditions={!humanizedAccessControlConditions || !humanizedAccessControlConditions.length}
-                           onClick={() => setDisplayedPage('review')}/>
-          </div>
+            }}
+            nextAction={() => setDisplayedPage('review')}
+            nextDisableConditions={!humanizedAccessControlConditions || !humanizedAccessControlConditions.length}
+          />
           <LitConfirmationModal showConfirmationModal={showConfirmationModal}
                                 onClick={handleConfirmGoBack}/>
         </>

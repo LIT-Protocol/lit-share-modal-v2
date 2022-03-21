@@ -1,9 +1,7 @@
 import React, { useContext, useState } from 'react';
-import LitBackButton from "../reusableComponents/LitBackButton";
-import LitNextButton from "../reusableComponents/LitNextButton";
-import { ShareModalContext } from "../generalComponents/ShareModal";
-import LitSelectScreen from "../reusableComponents/LitSelectScreen";
-import LitSimpleDropdown from '../reusableComponents/LitSimpleDropdown';
+import { ShareModalContext } from "../shareModal/ShareModal";
+import LitSimpleDropdown from '../reusableComponents/litSimpleDropdown/LitSimpleDropdown';
+import LitFooter from "../reusableComponents/litFooter/LitFooter";
 
 const matchConditionOptions = [
   {
@@ -63,44 +61,19 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'lms-w-full lms-h-full lms-flex lms-flex-col lms-items-center lms-px-4 lms-py-4 '}>
-      <h3 className={'lms-mb-8 lms-w-full'}>Which POAP should be able to access this asset?</h3>
-      <h3 className={'lms-mb-4 lms-w-full'}>POAP Name:</h3>
+    <div className={'lms-select-container lms-bg-white'}>
+      <h3 className={'lms-select-prompt lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Which POAP should be able to access this asset?</h3>
+      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>POAP Name:</h3>
       <input value={POAPName} onChange={(e) => setPOAPName(e.target.value)}
-             className={'lms-w-full lms-py-2 lms-px-4 lms-border lms-rounded lms-border-brand-4 focus:outline-0 lms-input'}/>
-      <h3 className={'lms-mt-12 lms-w-full lms-mb-4 lms-text-spacing'}>Match conditions:</h3>
-      {/* <LitSelectScreen options={matchConditionOptions}
-                         label={'Select match condition'}
-                         option={setMatchCondition}
-                         setOption={setMatchCondition}
-                         turnOffSearch={true}
-      /> */}
-      {/* <label>
-        Select match condition
-        <select id="lms" value={matchCondition} onChange={(e) => console.log('event', e)}>
-          {matchConditionOptions.map((c, i) => {
-            <option key={i} value={c.value}>{c.name}</option>
-          })}
-        </select>
-      </label> */}
+             className={'lms-border-brand-4 lms-input'}/>
+      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Match conditions:</h3>
       <LitSimpleDropdown label={'Select match condition'}
                          options={matchConditionOptions}
-                         setSelected={setMatchCondition} 
+                         setSelected={setMatchCondition}
                          selected={matchCondition} />
-      {/* <div>
-        <label for="cars">Choose a car:</label>
-        <select name="cars" id="cars">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-      </div> */}
-      
-      <div className={'lms-flex lms-flex-row lms-bg-white lms-justify-between lms-w-full lms-h-12 lms-my-4 lms-px-4 lms-absolute lms-bottom-0'}>
-        <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
-        <LitNextButton disableConditions={(!POAPName.length || !matchCondition)} onClick={() => handleSubmit()}/>
-      </div>
+      <LitFooter backAction={() => setSelectPage('chooseAccess')}
+                 nextAction={handleSubmit}
+                 nextDisableConditions={(!POAPName.length || !matchCondition)} />
     </div>
   );
 };
