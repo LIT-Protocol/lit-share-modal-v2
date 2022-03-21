@@ -1,4 +1,4 @@
-#Installation
+# Installation
 
 ---
 with npm
@@ -11,7 +11,7 @@ with yarn
 yarn add lit-share-modal
 ```
 
-#Usage
+# Usage
 
 ---
 with React Hooks
@@ -43,15 +43,15 @@ export default App;
 
 ```
 
-#Props
+# Props
 
 ---
-###Required
+### Required
 - `onClose` - actions to take on closing the modal 
 - `showModal` - boolean that signals whether modal is open (true) or closed (false)
 - `onAccessControlConditionsSelected` - function to send the share modal output 
 
-###Optional
+### Optional
 
 - `defaultTokens` - set quick access tokens that appear in the `Select a Token/NFT` menu
 
