@@ -6,8 +6,8 @@ import venn from "../assets/venn.svg";
 const MultipleChooseAccess = ({ setSelectPage, isNested = false }) => {
 
   return (
-    <div className={'lms-flex lms-flex-col lms-items-center'}>
-      <h3 className={'lms-mt-6 lms-mb-4 lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Choose who can access this:</h3>
+    <div className={'lsm-flex lsm-flex-col lsm-items-center'}>
+      <h3 className={'lsm-mt-6 lsm-mb-4 lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Choose who can access this:</h3>
       <LitChooseAccessButton onClick={() => setSelectPage('wallet')} label={'An Individual Wallet'}/>
       <LitChooseAccessButton onClick={() => setSelectPage('group')} label={'A Group of Token or NFT Holders'}/>
       {/*<LitChooseAccessButton onClick={() => setSelectPage('nft')} label={'NFT Ownership'}/>*/}

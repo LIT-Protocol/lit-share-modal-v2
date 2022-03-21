@@ -10,15 +10,15 @@ const LitSimpleDropdown = ({ label, options, selected, setSelected}) => {
   useEffect(() => {
     console.log('check show Menu', showMenu)
     if (!showMenu) {
-      setDropdownStyle("lms-hidden");
+      setDropdownStyle("lsm-hidden");
     } else {
-      setDropdownStyle("lms-dropdown-menu lms-border-gray");
+      setDropdownStyle("lsm-dropdown-menu lsm-border-gray");
     }
   }, [showMenu])
 
   return (
-    <div className="lms-w-full lms-relative lms-block">
-      <button className={"lms-w-full lms-bg-white lms-h-12 lms-border lms-border-brand-4 lms-rounded hover:lms-border-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-4 lms-text-title-gray lms-font-segoe lms-text-sm lms-font-light"}
+    <div className="lsm-w-full lsm-relative lsm-block">
+      <button className={"lsm-w-full lsm-bg-white lsm-h-12 lsm-border lsm-border-brand-4 lsm-rounded hover:lsm-border-2 lsm-flex lsm-flex-row lsm-items-center lsm-justify-between lsm-px-4 lsm-text-title-gray lsm-font-segoe lsm-text-sm lsm-font-light"}
         onClick={() => {
           setShowMenu(!showMenu)
         }}>
@@ -34,7 +34,7 @@ const LitSimpleDropdown = ({ label, options, selected, setSelected}) => {
                       setShowMenu(false);
                     }
                   }
-                  ><li className={"lms-dropdown-item hover:lms-bg-gray lms-text-title-gray lms-font-segoe lms-text-sm lms-font-light"}
+                  ><li className={"lsm-dropdown-item hover:lsm-bg-gray lsm-text-title-gray lsm-font-segoe lsm-text-sm lsm-font-light"}
                   >{option.name}</li>
                   </span>
                 )

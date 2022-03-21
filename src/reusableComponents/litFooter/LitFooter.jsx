@@ -6,10 +6,10 @@ import LitNextButton from "./LitNextButton";
 const LitFooter = ({ backAction = null,
                      nextAction = null,
                      nextDisableConditions = null,
-                     backgroundColor = 'lms-bg-white',
+                     backgroundColor = 'lsm-bg-white',
                      nextButtonLabel = null }) => {
   return (
-    <div className={`${backgroundColor} lms-lit-footer`}>
+    <div className={`${backgroundColor} lsm-lit-footer`}>
       {!!backAction && (
         <LitBackButton onClick={backAction} backgroundColor={backgroundColor}/>
       )}

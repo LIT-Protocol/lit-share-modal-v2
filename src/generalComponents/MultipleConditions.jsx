@@ -43,7 +43,7 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
       <LitHeader handleClose={handleClose} />
       {!showAddCondition ? (
         <>
-          <div className={'lms-overflow-scroll lms-pt-4 lms-interior-scroll'}>
+          <div className={'lsm-overflow-scroll lsm-pt-4 lsm-interior-scroll'}>
             <LitMultipleConditionOrganizer createCondition={createCondition}
                                           humanizedAccessControlConditions={humanizedAccessControlConditions}/>
           </div>

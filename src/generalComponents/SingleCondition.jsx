@@ -21,7 +21,7 @@ const SingleCondition = () => {
   return (
     <>
       <LitHeader handleClose={handleClose} />
-      <div className={'lms-width'}>
+      <div className={'lsm-width'}>
         {(() => {
           switch (selectPage) {
             case 'chooseAccess':

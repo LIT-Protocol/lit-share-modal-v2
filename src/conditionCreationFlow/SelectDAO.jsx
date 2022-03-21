@@ -43,19 +43,19 @@ const SelectDAO = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'lms-select-container lms-bg-white'}>
-      <h3 className={'lms-select-prompt lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Which DAO's members should be able to access this asset?</h3>
-      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Select blockchain:</h3>
+    <div className={'lsm-select-container lsm-bg-white'}>
+      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which DAO's members should be able to access this asset?</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select blockchain:</h3>
       <LitReusableSelect options={chainOptions}
                          label={'Select blockchain'}
                          option={chain}
                          setOption={setChain}
                          turnOffSearch={true}
       />
-      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Add DAO contract address:</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Add DAO contract address:</h3>
       <input value={DAOAddress} onChange={(e) => setDAOAddress(e.target.value)}
-             className={'lms-border-brand-4 lms-input'}/>
-      <p className={'lms-mt-4 lms-mb-4 lms-w-full lms-text-sm lms-text-title-gray lms-font-segoe lms-font-light'}>Lit Gateway currently supports DAOs using the MolochDAOv2.1 contract (includes
+             className={'lsm-border-brand-4 lsm-input'}/>
+      <p className={'lsm-mt-4 lsm-mb-4 lsm-w-full lsm-text-sm lsm-text-title-gray lsm-font-segoe lsm-font-light'}>Lit Gateway currently supports DAOs using the MolochDAOv2.1 contract (includes
         DAOhaus)</p>
       <LitFooter backAction={() => setSelectPage('chooseAccess')}
                  nextAction={handleSubmit}

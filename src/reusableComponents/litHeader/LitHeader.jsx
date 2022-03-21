@@ -4,9 +4,9 @@ import './LitHeader.css';
 
 const LitHeader = ({ handleClose }) => {
   return (
-    <header className={'lms-bg-brand-light lms-header-container'}>
-      <h3 className={'lms-text-title-gray lms-font-light lms-font-segoe'}>ACCESS CONTROL</h3>
-      <button className={'lms-border-none lms-cursor-pointer'}><img alt={'close'} className={'lms-h-4'} src={union} onClick={handleClose}/></button>
+    <header className={'lsm-bg-brand-light lsm-header-container'}>
+      <h3 className={'lsm-text-title-gray lsm-font-light lsm-font-segoe'}>ACCESS CONTROL</h3>
+      <button className={'lsm-border-none lsm-cursor-pointer'}><img alt={'close'} className={'lsm-h-4'} src={union} onClick={handleClose}/></button>
     </header>
   );
 };

@@ -61,12 +61,12 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'lms-select-container lms-bg-white'}>
-      <h3 className={'lms-select-prompt lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Which POAP should be able to access this asset?</h3>
-      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>POAP Name:</h3>
+    <div className={'lsm-select-container lsm-bg-white'}>
+      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which POAP should be able to access this asset?</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>POAP Name:</h3>
       <input value={POAPName} onChange={(e) => setPOAPName(e.target.value)}
-             className={'lms-border-brand-4 lms-input'}/>
-      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Match conditions:</h3>
+             className={'lsm-border-brand-4 lsm-input'}/>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Match conditions:</h3>
       <LitSimpleDropdown label={'Select match condition'}
                          options={matchConditionOptions}
                          setSelected={setMatchCondition}

@@ -4,11 +4,11 @@ import './LitNextButton.css';
 const LitNextButton = ({ disableConditions, onClick, label}) => {
 
   return (
-    <button className={'lms-bg-brand-4 disabled:lms-bg-gray disabled:lms-text-dark-gray lms-next-button'}
+    <button className={'lsm-bg-brand-4 disabled:lsm-bg-gray disabled:lsm-text-dark-gray lsm-next-button'}
             disabled={!!disableConditions ? disableConditions : false}
             onClick={onClick}>
         {!label ? 'NEXT' : label}
-      <span className={'lms-ml-2'}>→</span>
+      <span className={'lsm-ml-2'}>→</span>
     </button>
   );
 };

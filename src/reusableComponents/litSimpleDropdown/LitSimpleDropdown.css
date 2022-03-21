@@ -1,4 +1,4 @@
-.lms-dropdown-menu {
+.lsm-dropdown-menu {
     display: block;
     list-style-type: none;
     position: absolute;
@@ -11,7 +11,7 @@
     margin-top: 0;
 }
 
-.lms-dropdown-item {
+.lsm-dropdown-item {
     width: calc(100% - 1.5rem);
     margin: 0;
     padding: 0.75rem;

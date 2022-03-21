@@ -27,35 +27,35 @@ const LitReusableSelect = ({options, label, setOption, option, turnOffSearch = f
       option &&
       chain["name"] === option["name"]
     ) {
-      return 'lms-reusable-select-option lms-border-brand-5 lms-bg-white lms-border-2';
+      return 'lsm-reusable-select-option lsm-border-brand-5 lsm-bg-white lsm-border-2';
     } else {
-      return 'lms-reusable-select-option lms-border-brand-5 lms-bg-white lms-border';
+      return 'lsm-reusable-select-option lsm-border-brand-5 lsm-bg-white lsm-border';
     }
   };
 
   return (
-    <div className={'lms-w-full'}>
-      <button className={"lms-bg-white lms-border-brand-4 hover:lms-border-2 lms-select-none focus:lms-outline-0 focus:lms-outline-transparent lms-reusable-select-button"}
+    <div className={'lsm-w-full'}>
+      <button className={"lsm-bg-white lsm-border-brand-4 hover:lsm-border-2 lsm-select-none focus:lsm-outline-0 focus:lsm-outline-transparent lsm-reusable-select-button"}
               onClick={() => setSelectIsOpen(true)}>
         {option ? option.name : label}
         <img src={chevronDown}/>
       </button>
       {!!selectIsOpen && (
-        <div className={'lms-reusable-select-container lms-bg-brand-2'}>
+        <div className={'lsm-reusable-select-container lsm-bg-brand-2'}>
             {!!turnOffSearch ? (
-              <div className={'lms-reusable-select-title lms-bg-brand-4'}>
-                <h3 className={'lms-text-gray lms-font-segoe lms-font-light'}>{label.toUpperCase()}</h3>
+              <div className={'lsm-reusable-select-title lsm-bg-brand-4'}>
+                <h3 className={'lsm-text-gray lsm-font-segoe lsm-font-light'}>{label.toUpperCase()}</h3>
               </div>
             ) : (
-              <div className={'lms-fixed lms-top-0 lms-left-0 lms-w-full lms-pt-4 lms-pb-2 lms-bg-brand-2'}>
-                <span className={'lms-w-11/12 lms-mx-auto lms-border-b lms-border-brand-2 lms-flex lms-flex-row lms-items-center lms-justify-between lms-px-2'}>
-                  <input className={'lms-w-full lms-py-2 focus:outline-0 lms-bg-brand-light lms-input'} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
-                  <img alt={'clear input'} className={'lms-h-4 font-os'} src={union} onClick={() => setSearchTerm('')}/>
+              <div className={'lsm-fixed lsm-top-0 lsm-left-0 lsm-w-full lsm-pt-4 lsm-pb-2 lsm-bg-brand-2'}>
+                <span className={'lsm-w-11/12 lsm-mx-auto lsm-border-b lsm-border-brand-2 lsm-flex lsm-flex-row lsm-items-center lsm-justify-between lsm-px-2'}>
+                  <input className={'lsm-w-full lsm-py-2 focus:outline-0 lsm-bg-brand-light lsm-input'} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+                  <img alt={'clear input'} className={'lsm-h-4 font-os'} src={union} onClick={() => setSearchTerm('')}/>
                 </span>
-                <p className={"lms-w-11/12 lms-mx-auto lms-mt-2 lms-mr-2"}>No. of results: {filteredOptions.length}</p>
+                <p className={"lsm-w-11/12 lsm-mx-auto lsm-mt-2 lsm-mr-2"}>No. of results: {filteredOptions.length}</p>
               </div>
             )}
-          <span className={!!turnOffSearch ? 'lms-reusable-select-option-container' : 'lms-flex lms-flex-row lms-flex-wrap lms-justify-start lms-w-full lms-mt-20'}>
+          <span className={!!turnOffSearch ? 'lsm-reusable-select-option-container' : 'lsm-flex lsm-flex-row lsm-flex-wrap lsm-justify-start lsm-w-full lsm-mt-20'}>
               {filteredOptions.map((t, i) => (
                 <span
                   className={checkForSelected(t)}
@@ -65,16 +65,16 @@ const LitReusableSelect = ({options, label, setOption, option, turnOffSearch = f
                   }}
                 >
                   {!!t['logo'] && (
-                    <img className={'lms-h-6 lms-w-6 lms-mr-2'} src={t['logo']} />
+                    <img className={'lsm-h-6 lsm-w-6 lsm-mr-2'} src={t['logo']} />
                   )}
-                  <div className={'lms-text-base lms-font-segoe lms-font-light'}>{t.name}</div>
+                  <div className={'lsm-text-base lsm-font-segoe lsm-font-light'}>{t.name}</div>
                   </span>
               ))}
             </span>
           <LitFooter backAction={() => setSelectIsOpen(false)}
                      nextAction={() => setSelectIsOpen(false)}
                      nextDisableConditions={!option}
-                     backgroundColor={'lms-bg-transparent'} />
+                     backgroundColor={'lsm-bg-transparent'} />
         </div>
       )}
     </div>

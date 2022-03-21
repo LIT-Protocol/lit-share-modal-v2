@@ -6,16 +6,16 @@ const LitDeleteModal = ({ showDeleteModal, modalResponse, onClick, message }) =>
   return (
     <div>
       {!!showDeleteModal && (
-        <div className={'lms-bg-light-modal-overlay lms-delete-modal-container'}>
-          <div className={'lms-border-brand-4 lms-bg-white lms-delete-modal'}>
-            <h3 className={'lms-w-full lms-text-left lms-mt-0 lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Are you sure you want to delete this access control condition?</h3>
-            <span className={'lms-flex lms-flex-row lms-justify-around lms-w-full lms-h-12 lms-mt-8'}>
-                <button className={'lms-cursor-pointer lms-bg-brand-4 lms-text-white lms-px-10 lms-py-0 lms-mx-4 lms-rounded lms-border-none lms-flex lms-items-center disabled:lms-bg-gray'}
+        <div className={'lsm-bg-light-modal-overlay lsm-delete-modal-container'}>
+          <div className={'lsm-border-brand-4 lsm-bg-white lsm-delete-modal'}>
+            <h3 className={'lsm-w-full lsm-text-left lsm-mt-0 lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Are you sure you want to delete this access control condition?</h3>
+            <span className={'lsm-flex lsm-flex-row lsm-justify-around lsm-w-full lsm-h-12 lsm-mt-8'}>
+                <button className={'lsm-cursor-pointer lsm-bg-brand-4 lsm-text-white lsm-px-10 lsm-py-0 lsm-mx-4 lsm-rounded lsm-border-none lsm-flex lsm-items-center disabled:lsm-bg-gray'}
                         onClick={() => onClick('no')}>
                 NO
               </button>
               <button
-                className={'lms-cursor-pointer lms-bg-white lms-border lms-border-brand-4 lms-text-brand-4 lms-px-10 lms-py-0 lms-mx-4 lms-rounded lms-flex lms-items-center disabled:lms-bg-gray'}
+                className={'lsm-cursor-pointer lsm-bg-white lsm-border lsm-border-brand-4 lsm-text-brand-4 lsm-px-10 lsm-py-0 lsm-mx-4 lsm-rounded lsm-flex lsm-items-center disabled:lsm-bg-gray'}
                 onClick={() => onClick('yes')}>
                 YES
               </button>

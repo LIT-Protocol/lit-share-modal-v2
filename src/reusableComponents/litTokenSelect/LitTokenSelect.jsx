@@ -24,15 +24,15 @@ const LitTokenSelect = ({ label, setSelectedToken, option, selectedToken }) => {
     const newProps = Object.assign(props, { innerProps: rest });
 
     return (
-      <components.Option {...newProps} className={'lms-z-100 lms-p-0'} style={{ padding: 0, zIndex: 105 }}>
-        <div className={'lms-flex lms-items-center lms-cursor-pointer'}>
+      <components.Option {...newProps} className={'lsm-z-100 lsm-p-0'} style={{ padding: 0, zIndex: 105 }}>
+        <div className={'lsm-flex lsm-items-center lsm-cursor-pointer'}>
           <div
-            className={'lms-h-8 lms-w-8 radius-full lms-ml-1 lms-mr-4 lms-bg-no-repeat lms-bg-contain lms-bg-center'}
+            className={'lsm-h-8 lsm-w-8 radius-full lsm-ml-1 lsm-mr-4 lsm-bg-no-repeat lsm-bg-contain lsm-bg-center'}
             style={{ backgroundImage: logo ? `url(${logo})` : undefined }}
           />
           <div>
-            <div className={'lms-text-base lms-leading-normal lms-text-black lms-font-segoe lms-font-light'}>{label}</div>
-            <div className={'lms-text-sm lms-text-secondary lms-text-gray lms-font-segoe lms-font-light'}>{symbol}</div>
+            <div className={'lsm-text-base lsm-leading-normal lsm-text-black lsm-font-segoe lsm-font-light'}>{label}</div>
+            <div className={'lsm-text-sm lsm-text-secondary lsm-text-gray lsm-font-segoe lsm-font-light'}>{symbol}</div>
           </div>
         </div>
       </components.Option>
@@ -64,37 +64,37 @@ const LitTokenSelect = ({ label, setSelectedToken, option, selectedToken }) => {
       selectedToken &&
       token["symbol"] === selectedToken["symbol"]
       ) {
-        return 'lms-reusable-select-option lms-border-brand-5 lms-bg-white lms-border-2';
+        return 'lsm-reusable-select-option lsm-border-brand-5 lsm-bg-white lsm-border-2';
       } else {
-        return 'lms-reusable-select-option lms-border-brand-5 lms-bg-white lms-border';
+        return 'lsm-reusable-select-option lsm-border-brand-5 lsm-bg-white lsm-border';
       }
   };
 
   return (
-    <div className={'lms-w-full'}>
-      <span className={'lms-flex lms-items-center'}>
+    <div className={'lsm-w-full'}>
+      <span className={'lsm-flex lsm-items-center'}>
         <button
-          className={"lms-mr-3 lms-bg-white lms-border-brand-4 lms-text-brand-4 lms-token-select-button"}
+          className={"lsm-mr-3 lsm-bg-white lsm-border-brand-4 lsm-text-brand-4 lsm-token-select-button"}
           onClick={() => setSelectIsOpen(true)}>
           {option ? `${option.label}` : label}
         </button>
         {selectedToken && selectedToken.label && (
-          <button className={'lms-bg-white lms-border-black lms-text-title-gray lms-token-clear-select-button'}
+          <button className={'lsm-bg-white lsm-border-black lsm-text-title-gray lsm-token-clear-select-button'}
             onClick={() => setSelectedToken(null)}
           >
             Clear selection
-            {/*<img alt={'close'} className={'lms-ml-4 lms-h-3 lms-bg-transparent'} src={union} onClick={() => setSelectedToken(null)}/>*/}
+            {/*<img alt={'close'} className={'lsm-ml-4 lsm-h-3 lsm-bg-transparent'} src={union} onClick={() => setSelectedToken(null)}/>*/}
           </button>
         )}
       </span>
       {!!selectIsOpen && (
-        <div className={'lms-token-select-container lms-bg-brand-2'}>
-          <header className={'lms-token-select-header lms-bg-brand-4'}>
-              <h3 className={'lms-text-gray lms-font-segoe lms-font-light'}>SELECT A TOKEN/NFT</h3>
+        <div className={'lsm-token-select-container lsm-bg-brand-2'}>
+          <header className={'lsm-token-select-header lsm-bg-brand-4'}>
+              <h3 className={'lsm-text-gray lsm-font-segoe lsm-font-light'}>SELECT A TOKEN/NFT</h3>
           </header>
-          <div className={'lms-top-tokens-container'}>
-            <p className={'lms-w-full lms-capitalize-and-size'}>TOP TOKENS/NFTS</p>
-            <span className={'lms-top-token-chips'}>
+          <div className={'lsm-top-tokens-container'}>
+            <p className={'lsm-w-full lsm-capitalize-and-size'}>TOP TOKENS/NFTS</p>
+            <span className={'lsm-top-token-chips'}>
               {defaultTokens.map((t, i) => (
                 <span
                   className={checkForSelected(t)}
@@ -104,9 +104,9 @@ const LitTokenSelect = ({ label, setSelectedToken, option, selectedToken }) => {
                   }}
                 >
                   {!!t['logo'] && (
-                    <img className={'lms-h-6 lms-w-6 lms-mr-2'} src={t['logo']}/>
+                    <img className={'lsm-h-6 lsm-w-6 lsm-mr-2'} src={t['logo']}/>
                   )}
-                  <div className={'lms-text-black lms-font-segoe lms-font-light'}>{t.symbol}</div>
+                  <div className={'lsm-text-black lsm-font-segoe lsm-font-light'}>{t.symbol}</div>
                   </span>
               ))}
             </span>
@@ -117,13 +117,13 @@ const LitTokenSelect = ({ label, setSelectedToken, option, selectedToken }) => {
                     }}
                      nextAction={() => setSelectIsOpen(false)}
                      nextDisableConditions={!selectedToken}
-                     backgroundColor={'lms-bg-transparent'}
+                     backgroundColor={'lsm-bg-transparent'}
           />
-          <div className={'lms-token-select-dropdown-container lms-mx-auto'}>
-            <label className="lms-capitalize-and-size lms-pb-4 lms-font-sans">SEARCH</label>
+          <div className={'lsm-token-select-dropdown-container lsm-mx-auto'}>
+            <label className="lsm-capitalize-and-size lsm-pb-4 lsm-font-sans">SEARCH</label>
             <CreatableSelect
-              className={'lms-token-select-dropdown'}
-              classNamePrefix={'lms-token-select'}
+              className={'lsm-token-select-dropdown'}
+              classNamePrefix={'lsm-token-select'}
               filterOption={createFilter({ ignoreAccents: false })}
               components={{ Option, MenuList: WindowedMenuList }}
               isClearable

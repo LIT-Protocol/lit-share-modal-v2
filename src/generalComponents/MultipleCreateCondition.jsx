@@ -27,7 +27,7 @@ const MultipleCreateCondition = ({ endOfCreateCondition, isNested, nestedIndex }
   if (selectPage === 'chooseAccess') {
     return <>
       <MultipleChooseAccess setSelectPage={setSelectPage} isNested={isNested}/>
-      {/*<div className={'lms-flex lms-flex-row lms-bg-white lms-justify-between lms-width lms-h-12 lms-my-4 lms-absolute lms-bottom-0'}>*/}
+      {/*<div className={'lsm-flex lsm-flex-row lsm-bg-white lsm-justify-between lsm-width lsm-h-12 lsm-my-4 lsm-absolute lsm-bottom-0'}>*/}
       {/*  <LitBackButton onClick={() => endOfCreateCondition(false)}/>*/}
       {/*  /!* <LitNextButton disableConditions={false} onClick={() => console.log('HEY HEY')}/> *!/*/}
       {/*</div>*/}
@@ -36,7 +36,7 @@ const MultipleCreateCondition = ({ endOfCreateCondition, isNested, nestedIndex }
   }
 
   return (
-    <div className={'lms-width'}>
+    <div className={'lsm-width'}>
       {(() => {
         switch (selectPage) {
           case 'wallet':

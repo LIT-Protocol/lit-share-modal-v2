@@ -4,7 +4,7 @@ module.exports = {
     preflight: false,
   },
   darkMode: "media",
-  prefix: 'lms-',
+  prefix: 'lsm-',
   theme: {
     textColor: {
       "black": "#000",

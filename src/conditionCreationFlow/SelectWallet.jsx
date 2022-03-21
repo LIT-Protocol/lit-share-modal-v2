@@ -66,19 +66,19 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
   };
 
   return (
-    <div className={'lms-select-container lms-bg-white'}>
-      <h3 className={'lms-select-prompt lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Which wallet should be able to access this asset?</h3>
-      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Select blockchain:</h3>
+    <div className={'lsm-select-container lsm-bg-white'}>
+      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which wallet should be able to access this asset?</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select blockchain:</h3>
       <LitReusableSelect options={chainOptions}
                          label={'Select blockchain'}
                          option={chain}
                          setOption={setChain}
                          turnOffSearch={true}
       />
-      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Add Wallet Address or Blockchain Domain (e.g. ENS, UNS) here:</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Add Wallet Address or Blockchain Domain (e.g. ENS, UNS) here:</h3>
       <input value={walletAddress} onChange={(e) => setWalletAddress(e.target.value)}
-             className={'lms-border-brand-4 lms-input'}/>
-      <p className={'lms-text-sm lms-w-full lms-cursor-pointer md:lms-text-base lms-mb-4 lms-mt-8 lms-text-brand-4 lms-text-left lms-font-segoe lms-font-light'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
+             className={'lsm-border-brand-4 lsm-input'}/>
+      <p className={'lsm-text-sm lsm-w-full lsm-cursor-pointer md:lsm-text-base lsm-mb-4 lsm-mt-8 lsm-text-brand-4 lsm-text-left lsm-font-segoe lsm-font-light'} onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
       <LitFooter backAction={() => setSelectPage('chooseAccess')} nextAction={() => handleSubmit()} nextDisableConditions={(!chain['name'] || !walletAddress.length)} />
     </div>
   );

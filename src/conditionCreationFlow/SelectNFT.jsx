@@ -35,25 +35,25 @@ const SelectNFT = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'lms-select-container lms-bg-white'}>
-      <h3 className={'lms-select-prompt lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Which wallet should be able to access this asset?</h3>
-      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Select blockchain:</h3>
+    <div className={'lsm-select-container lsm-bg-white'}>
+      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which wallet should be able to access this asset?</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select blockchain:</h3>
       <LitReusableSelect options={chainOptions}
                          label={'Select blockchain'}
                          option={chain}
                          setOption={setChain}
                          turnOffSearch={true}
       />
-      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Select token or enter contract address</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select token or enter contract address</h3>
       <LitTokenSelect option={selectedToken}
                       label={(!selectedToken || !selectedToken['label']) ? 'Search for a token/NFT' : selectedToken.label}
                       selectedToken={selectedToken}
                       setSelectedToken={setSelectedToken}
       />
-      <h3 className={'lms-select-label lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>Select token or enter contract address</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select token or enter contract address</h3>
       <input value={tokenId} onChange={(e) => setTokenId(e.target.value)}
-             className={'lms-border-brand-4 lms-input'}/>
-      <p className={'lms-text-sm md:lms-text-base lms-w-full lms-mt-8 lms-cursor-pointer lms-mb-4 lms-text-brand-4 lms-text-left lms-font-segoe lms-font-light'} onClick={() => setSelectPage('wallet')}>
+             className={'lsm-border-brand-4 lsm-input'}/>
+      <p className={'lsm-text-sm md:lsm-text-base lsm-w-full lsm-mt-8 lsm-cursor-pointer lsm-mb-4 lsm-text-brand-4 lsm-text-left lsm-font-segoe lsm-font-light'} onClick={() => setSelectPage('wallet')}>
         Grant Access to Wallet or
         Blockchain Domain</p>
       <LitFooter backAction={() => setSelectPage('chooseAccess')}

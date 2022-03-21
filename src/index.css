@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.lms-select-container {
+.lsm-select-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,26 +10,26 @@
   width: calc(100% - 2rem);
 }
 
-.lms-select-prompt {
+.lsm-select-prompt {
   margin: 1rem 0;
   width: 100%;
   text-align: left;
 }
 
-.lms-capitalize-and-size {
+.lsm-capitalize-and-size {
   font-weight: bold;
   font-size: 0.8rem;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
-.lms-text-spacing {
+.lsm-text-spacing {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   text-align: left;
 }
 
-.lms-input {
+.lsm-input {
   height: 2.7rem;
   width: calc(100% - 2rem);
   border-radius: 0.25rem;
@@ -39,23 +39,23 @@
   padding-right: 1rem;
 }
 
-.lms-input:focus {
+.lsm-input:focus {
 
 }
 
 
-.lms-select-label {
+.lsm-select-label {
   margin-top: 2rem;
   margin-bottom: 1rem;
   text-align: left;
   width: 100%;
 }
 
-.lms-interior-scroll {
+.lsm-interior-scroll {
   height: calc(100% - 10rem);
 }
 
-.lms-condition-shadow{
+.lsm-condition-shadow{
   background:rgba(0,148,255,.22);
   box-shadow:1px 1px 4px #04134740;
   border-radius:2px
