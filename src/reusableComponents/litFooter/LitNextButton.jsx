@@ -8,7 +8,7 @@ const LitNextButton = ({ disableConditions, onClick, label}) => {
             disabled={!!disableConditions ? disableConditions : false}
             onClick={onClick}>
         {!label ? 'NEXT' : label}
-      <p className={'lms-ml-2'}>→</p>
+      <span className={'lms-ml-2'}>→</span>
     </button>
   );
 };
