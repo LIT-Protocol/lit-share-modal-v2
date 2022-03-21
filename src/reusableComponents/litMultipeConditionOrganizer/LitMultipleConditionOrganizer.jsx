@@ -111,9 +111,9 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
                 }
               })}
               <span className={'lms-flex lms-flex-row lms-mt-4 lms-width lms-mx-auto lms-justify-center lms-border-brand-4 lms-border lms-rounded lms-text-brand-4 lms-choose-access-button'}>
-                <button className={'lms-flex lms-flex-row lms-px-4 lms-mx-auto lms-justify-center lms-bg-white lms-border-brand-4 lms-border lms-rounded lms-text-brand-4 lms-choose-access-button'}
+                <button className={'lms-bg-white lms-border-brand-4 lms-text-brand-4 lms-define-condition-button'}
                         onClick={() => createCondition(true, i)}>
-                  <p className={'lms-mx-auto lms-bg-white'}>Define Another Nested Condition</p>
+                  Define Another Nested Condition
                 </button>
               </span>
             </div>
@@ -140,7 +140,7 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
               <span className={'lms-flex lms-flex-row lms-mt-4 lms-width lms-mx-auto lms-justify-center lms-border-brand-4 lms-border lms-rounded lms-text-brand-4 lms-choose-access-button'}>
                 <button className={'lms-bg-white lms-border-brand-4 lms-text-brand-4 lms-define-condition-button'}
                         onClick={() => createCondition(true, i)}>
-                  <p className={'lms-mx-auto lms-bg-white'}>Define Another Nested Condition</p>
+                  Define Another Nested Condition
                   {/* <img src={add}/> */}
                 </button>
               </span>
@@ -165,14 +165,14 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
         {humanizedAccessControlConditions.length ? (
           <span className={'lms-flex lms-flex-row lms-width lms-justify-center lms-mx-auto lms-mt-4 lms-rounded'}>
             <button className={'lms-bg-white lms-border-brand-4 lms-text-brand-4 lms-define-condition-button'} onClick={() => createCondition()}>
-              <p className={'lms-bg-white'}>Define Another Condition</p>
+              Define Another Condition
             </button>
           </span>
         ) : (
           <div className={'lms-flex lms-flex-col lms-items-center'}>
             <span className={'lms-condition-organizer-group lms-bg-initial-blue'}>
               <button className={'lms-bg-white lms-border-brand-4 lms-text-brand-4 lms-define-condition-button'} onClick={() => createCondition()}>
-                <p className={'lms-bg-white'}>Define First Condition</p>
+                Define First Condition
               </button>
             </span>
             <img className="lms-mr-16 lms-h-28" src={uparrow}/>

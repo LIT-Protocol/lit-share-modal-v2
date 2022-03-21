@@ -6,9 +6,7 @@ const LitConfirmationModal = ({ showConfirmationModal, modalResponse, onClick, m
   return (
     <div>
       {!!showConfirmationModal && (
-        // <div className={'lms-w-full lms-h-full lms-bg-light-modal-overlay lms-fixed lms-top-0 lms-left-0'}>
         <div className={'lms-bg-light-modal-overlay lms-confirmation-modal-container'}>
-          {/*<div className={'lms-w-11/12 lms-h-auto lms-fixed lms-bg-white lms-border lms-border-brand-4 lms-rounded lms-z-30 modal lms-p-6'}>*/}
           <div className={'lms-border-brand-4 lms-bg-white lms-confirmation-modal'}>
             <h3 className={'lms-w-full lms-text-left lms-mt-0 lms-text-title-gray lms-font-segoe lms-text-base lms-font-light'}>{!message ? 'Are you sure you want to go back? Current conditions will be lost.' : message}</h3>
             <span className={'lms-flex lms-flex-row lms-justify-around lms-w-full lms-h-12 lms-mt-8'}>

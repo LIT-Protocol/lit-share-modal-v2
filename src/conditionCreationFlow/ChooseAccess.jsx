@@ -21,7 +21,7 @@ const ChooseAccess = ({ setSelectPage }) => {
           setDisplayedPage('multiple');
         }}>
           <img src={venn}/>
-          <p className={'lms-text-sm lms-font-segoe lms-w-6/12 lms-ml-4 lms-text-brand-4 lms-underline md:lms-text-base md:lms-w-11/12'}>Gate with multiple conditions using AND/OR operators</p>
+          <p className={'lms-text-sm lms-font-segoe lms-my-0 lms-w-6/12 lms-ml-4 lms-text-brand-4 lms-underline md:lms-text-base md:lms-w-11/12'}>Gate with multiple conditions using AND/OR operators</p>
         </span>
       <LitFooter backAction={() => setSelectPage('chooseAccess')} />
     </div>
