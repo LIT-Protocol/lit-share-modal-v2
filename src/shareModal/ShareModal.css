@@ -4,13 +4,13 @@
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 4;
+    z-index: 10;
 }
 
 .lsm-top-modal {
     height: 100vh;
     overflow-y: hidden;
-    z-index: 5;
+    z-index: 11;
 }
 
 
