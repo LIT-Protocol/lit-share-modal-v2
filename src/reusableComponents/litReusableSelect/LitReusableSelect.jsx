@@ -37,8 +37,8 @@ const LitReusableSelect = ({options, label, setOption, option, turnOffSearch = f
     <div className={'lsm-w-full'}>
       <button className={"lsm-bg-white lsm-border-brand-4 hover:lsm-border-brand-5 lsm-select-none focus:lsm-outline-0 focus:lsm-outline-transparent lsm-reusable-select-button"}
               onClick={() => setSelectIsOpen(true)}>
-        {option ? option.name : label}
-        <img src={chevronDown}/>
+        <span className={'lsm-ml-2'}>{option ? option.name : label}</span>
+        <img src={chevronDown} className={'lsm-mr-2'}/>
       </button>
       {!!selectIsOpen && (
         <div className={'lsm-reusable-select-container lsm-bg-brand-2'}>
