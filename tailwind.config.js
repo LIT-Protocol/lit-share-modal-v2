@@ -15,6 +15,7 @@ module.exports = {
       "brand-light": "#F0ECF8",
       "brand-5": "#2C0C72",
       "brand-4": "rgba(129, 89, 217, 1)",
+      "brand-3": "#8159D9",
       "brand-2": "#e6dcfa",
       "next-button": "rgba(0, 0, 0, 0.26)",
       "title-gray": "rgba(0, 5, 51, 0.6)"
@@ -29,6 +30,7 @@ module.exports = {
       "brand-light": "#F0ECF8",
       "brand-5": "#2C0C72",
       "brand-4": "rgba(129, 89, 217, 1)",
+      "brand-3": "#8159D9",
       "brand-2": "#e6dcfa",
       "initial-blue": "rgba(0, 148, 255, .22)",
       "transparent": "rgba(0, 0, 0, 0)"

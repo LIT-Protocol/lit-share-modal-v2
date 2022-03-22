@@ -1,7 +1,7 @@
 .lsm-token-select-button {
     /*width: 75%;*/
     height: 2.5rem;
-    border-width: 2px;
+    border-width: 1px;
     border-radius: 0.25rem;
     display: flex;
     align-items: center;

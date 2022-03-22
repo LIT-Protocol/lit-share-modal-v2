@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ethers } from "ethers";
 import { ShareModalContext } from "../shareModal/ShareModal";
 import LitJsSdk from "lit-js-sdk";
-import LitReusableSelect from "../reusableComponents/litSelectScreen/LitReusableSelect";
+import LitReusableSelect from "../reusableComponents/litReusableSelect/LitReusableSelect";
 import LitTokenSelect from "../reusableComponents/litTokenSelect/LitTokenSelect";
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
 import union from '../assets/union.svg';

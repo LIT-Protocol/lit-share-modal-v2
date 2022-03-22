@@ -66,7 +66,7 @@ const LitTokenSelect = ({ label, setSelectedToken, option, selectedToken }) => {
       ) {
         return 'lsm-reusable-select-option lsm-border-brand-5 lsm-bg-white lsm-border-2';
       } else {
-        return 'lsm-reusable-select-option lsm-border-brand-5 lsm-bg-white lsm-border';
+        return 'lsm-reusable-select-option lsm-border-brand-2 lsm-bg-white lsm-border-2';
       }
   };
 
@@ -74,7 +74,7 @@ const LitTokenSelect = ({ label, setSelectedToken, option, selectedToken }) => {
     <div className={'lsm-w-full'}>
       <span className={'lsm-flex lsm-items-center'}>
         <button
-          className={"lsm-mr-3 lsm-bg-white lsm-border-brand-4 lsm-text-brand-4 lsm-token-select-button"}
+          className={"lsm-mr-3 lsm-bg-white lsm-border-brand-4 lsm-text-brand-4 lsm-token-select-button hover:lsm-border-brand-5"}
           onClick={() => setSelectIsOpen(true)}>
           {option ? `${option.label}` : label}
         </button>

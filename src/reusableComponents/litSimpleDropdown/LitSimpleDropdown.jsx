@@ -18,7 +18,7 @@ const LitSimpleDropdown = ({ label, options, selected, setSelected}) => {
 
   return (
     <div className="lsm-w-full lsm-relative lsm-block">
-      <button className={"lsm-w-full lsm-bg-white lsm-h-12 lsm-border lsm-border-brand-4 lsm-rounded hover:lsm-border-2 lsm-flex lsm-flex-row lsm-items-center lsm-justify-between lsm-px-4 lsm-text-title-gray lsm-font-segoe lsm-text-sm lsm-font-light"}
+      <button className={"lsm-w-full lsm-bg-white lsm-h-12 lsm-border lsm-border-brand-4 lsm-rounded hover:lsm-border-brand-5 lsm-flex lsm-flex-row lsm-items-center lsm-justify-between lsm-px-4 lsm-text-title-gray lsm-font-segoe lsm-text-sm lsm-font-light"}
         onClick={() => {
           setShowMenu(!showMenu)
         }}>

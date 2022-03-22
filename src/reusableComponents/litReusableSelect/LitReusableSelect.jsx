@@ -29,13 +29,13 @@ const LitReusableSelect = ({options, label, setOption, option, turnOffSearch = f
     ) {
       return 'lsm-reusable-select-option lsm-border-brand-5 lsm-bg-white lsm-border-2';
     } else {
-      return 'lsm-reusable-select-option lsm-border-brand-5 lsm-bg-white lsm-border';
+      return 'lsm-reusable-select-option lsm-border-brand-2 lsm-bg-white lsm-border-2';
     }
   };
 
   return (
     <div className={'lsm-w-full'}>
-      <button className={"lsm-bg-white lsm-border-brand-4 hover:lsm-border-2 lsm-select-none focus:lsm-outline-0 focus:lsm-outline-transparent lsm-reusable-select-button"}
+      <button className={"lsm-bg-white lsm-border-brand-4 hover:lsm-border-brand-5 lsm-select-none focus:lsm-outline-0 focus:lsm-outline-transparent lsm-reusable-select-button"}
               onClick={() => setSelectIsOpen(true)}>
         {option ? option.name : label}
         <img src={chevronDown}/>

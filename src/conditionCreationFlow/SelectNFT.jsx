@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import LitReusableSelect from "../reusableComponents/litSelectScreen/LitReusableSelect";
+import LitReusableSelect from "../reusableComponents/litReusableSelect/LitReusableSelect";
 import { ShareModalContext } from "../shareModal/ShareModal";
 import LitTokenSelect from "../reusableComponents/litTokenSelect/LitTokenSelect";
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
