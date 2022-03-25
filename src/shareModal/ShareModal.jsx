@@ -9,8 +9,20 @@ import React, {
 import SingleCondition from "../generalComponents/SingleCondition";
 import ReviewConditions from "../generalComponents/reviewConditions/ReviewConditions";
 import MultipleConditions from "../generalComponents/MultipleConditions";
+
 import baseCss from "../index.css";
 import modalCss from "./ShareModal.css";
+import cssFile0 from "../reusableComponents/litReusableSelect/LitReusableSelect.css";
+import cssFile1 from "../reusableComponents/litHeader/LitHeader.css";
+import cssFile2 from "../reusableComponents/litConfirmationModal/LitConfirmationModal.css";
+import cssFile3 from "../reusableComponents/litTokenSelect/LitTokenSelect.css";
+import cssFile4 from "../reusableComponents/litFooter/LitNextButton.css";
+import cssFile5 from "../reusableComponents/litFooter/LitFooter.css";
+import cssFile6 from "../reusableComponents/litFooter/LitBackButton.css";
+import cssFile7 from "../reusableComponents/litSimpleDropdown/LitSimpleDropdown.css";
+import cssFile8 from "../reusableComponents/litMultipeConditionOrganizer/LitMultipleConditionOrganizer.css";
+import cssFile9 from "../reusableComponents/litDeleteModal/LitDeleteModal.css";
+import cssFile10 from "../generalComponents/reviewConditions/ReviewConditions.css";
 
 import LitJsSdk from "lit-js-sdk";
 import { TOP_LIST } from "../helpers/topList";
@@ -55,13 +67,36 @@ const ShareModal = (props) => {
 
   useEffect(() => {
     if (injectCSS) {
+      // concat the CSS
+      const allCss =
+        baseCss +
+        "\n" +
+        modalCss +
+        "\n" +
+        cssFile0 +
+        "\n" +
+        cssFile1 +
+        "\n" +
+        cssFile2 +
+        "\n" +
+        cssFile3 +
+        "\n" +
+        cssFile4 +
+        "\n" +
+        cssFile5 +
+        "\n" +
+        cssFile6 +
+        "\n" +
+        cssFile7 +
+        "\n" +
+        cssFile8 +
+        "\n" +
+        cssFile9 +
+        "\n" +
+        cssFile10;
       // inject the CSS
       var style = document.createElement("style");
-      style.innerHTML = baseCss;
-      document.head.appendChild(style);
-
-      var style = document.createElement("style");
-      style.innerHTML = modalCss;
+      style.innerHTML = allCss;
       document.head.appendChild(style);
     }
   }, [injectCSS]);
