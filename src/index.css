@@ -2,16 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.lsm-select-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: calc(100% - 2rem);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.lsm-select-prompt {
+  margin: 1rem 0;
+  width: 100%;
+  text-align: left;
+}
+
+.lsm-capitalize-and-size {
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.lsm-text-spacing {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.lsm-input {
+  height: 2.7rem;
+  width: calc(100% - 2rem);
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-style: solid;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.lsm-input:focus {
+
+}
+
+
+.lsm-select-label {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.lsm-interior-scroll {
+  height: calc(100% - 10rem);
+}
+
+.lsm-condition-shadow{
+  background:rgba(0,148,255,.22);
+  box-shadow:1px 1px 4px #04134740;
+  border-radius:2px
 }

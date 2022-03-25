@@ -1,0 +1,61 @@
+.lsm-review-conditions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+    width: calc(100% - 2rem);
+}
+
+.lsm-review-conditions-prompt {
+    /*margin: 1rem 0;*/
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.lsm-review-scroll {
+    height: calc(100% - 18rem);
+    /*height: 30rem;*/
+}
+
+.lsm-review-condition-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /*margin: 0 auto;*/
+    width: calc(100% - 2rem);
+    /*margin-left: auto;*/
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+.lsm-review-condition-button {
+    display: flex;
+    justify-content: center;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    cursor: pointer;
+}
+
+.lsm-humanized-condition-text-container {
+    display: flex;
+    width: calc(100% - 2rem);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lsm-humanized-condition-text {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    overflow-wrap: break-word;
+    text-align: left;
+    width: 100%;
+}

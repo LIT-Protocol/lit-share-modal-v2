@@ -1,0 +1,9 @@
+.lsm-lit-footer {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    bottom: 0;
+    height: 3rem;
+    padding: 1rem;
+    width: calc(100% - 2rem);
+}

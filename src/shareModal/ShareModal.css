@@ -1,0 +1,42 @@
+.lsm-top-modal-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.lsm-top-modal {
+    height: 100vh;
+    overflow-y: hidden;
+    z-index: 1;
+}
+
+
+@media (min-width: 768px) {
+    .lsm-top-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 37.5rem;
+        height: 46rem;
+    }
+
+    .lsm-input {
+        height: 3rem;
+    }
+
+    .lsm-text-spacing {
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+
+    .lsm-condition-spacing {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+}

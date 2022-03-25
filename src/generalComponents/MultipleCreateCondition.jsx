@@ -5,9 +5,10 @@ import SelectGroup from "../conditionCreationFlow/SelectGroup";
 import SelectDAO from "../conditionCreationFlow/SelectDAO";
 import SelectPOAP from "../conditionCreationFlow/SelectPOAP";
 import SelectNFT from "../conditionCreationFlow/SelectNFT";
-import LitBackButton from "../reusableComponents/LitBackButton";
-import LitNextButton from "../reusableComponents/LitNextButton";
-import { ShareModalContext } from "../ShareModal";
+import LitBackButton from "../reusableComponents/litFooter/LitBackButton";
+import LitNextButton from "../reusableComponents/litFooter/LitNextButton";
+import { ShareModalContext } from "../shareModal/ShareModal";
+import LitFooter from "../reusableComponents/litFooter/LitFooter";
 
 const MultipleCreateCondition = ({ endOfCreateCondition, isNested, nestedIndex }) => {
   const { handleUpdateAccessControlConditions } = useContext(ShareModalContext);
@@ -25,16 +26,17 @@ const MultipleCreateCondition = ({ endOfCreateCondition, isNested, nestedIndex }
 
   if (selectPage === 'chooseAccess') {
     return <>
-      <MultipleChooseAccess setSelectPage={setSelectPage}/>
-      <footer className={'flex flex-row justify-between w-full h-12 mb-4 mt-8 fixed bottom-0 left-0'}>
-        <LitBackButton onClick={() => endOfCreateCondition(false)}/>
-        <LitNextButton disableConditions={false} onClick={() => console.log('HEY HEY')}/>
-      </footer>
+      <MultipleChooseAccess setSelectPage={setSelectPage} isNested={isNested}/>
+      {/*<div className={'lsm-flex lsm-flex-row lsm-bg-white lsm-justify-between lsm-width lsm-h-12 lsm-my-4 lsm-absolute lsm-bottom-0'}>*/}
+      {/*  <LitBackButton onClick={() => endOfCreateCondition(false)}/>*/}
+      {/*  /!* <LitNextButton disableConditions={false} onClick={() => console.log('HEY HEY')}/> *!/*/}
+      {/*</div>*/}
+      <LitFooter backAction={() => endOfCreateCondition(false)} />
     </>
   }
 
   return (
-    <>
+    <div className={'lsm-width'}>
       {(() => {
         switch (selectPage) {
           case 'wallet':
@@ -55,7 +57,7 @@ const MultipleCreateCondition = ({ endOfCreateCondition, isNested, nestedIndex }
         }
       })()
       }
-    </>
+    </div>
   )
 };
 

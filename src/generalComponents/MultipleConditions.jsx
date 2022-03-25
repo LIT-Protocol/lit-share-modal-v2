@@ -1,19 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
-import LitBackButton from "../reusableComponents/LitBackButton";
-import LitNextButton from "../reusableComponents/LitNextButton";
-import { ShareModalContext } from "../ShareModal";
+import React, { useContext, useState } from 'react';
+import { ShareModalContext } from "../shareModal/ShareModal";
 import MultipleCreateCondition from "./MultipleCreateCondition";
-import union from "../assets/union.svg";
-import LitConfirmationModal from "../reusableComponents/LitConfirmationModal";
-import LitMultipleConditionOrganizer from "../reusableComponents/LitMultipleConditionOrganizer";
+import LitConfirmationModal from "../reusableComponents/litConfirmationModal/LitConfirmationModal";
+import LitMultipleConditionOrganizer from "../reusableComponents/litMultipeConditionOrganizer/LitMultipleConditionOrganizer";
+import LitFooter from "../reusableComponents/litFooter/LitFooter";
+import LitHeader from "../reusableComponents/litHeader/LitHeader";
 
 const MultipleConditions = ({ humanizedAccessControlConditions }) => {
   const {
     setDisplayedPage,
-    accessControlConditions,
     setFlow,
+    resetModal,
     handleClose,
-    clearAllAccessControlConditions,
   } = useContext(ShareModalContext);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [showAddCondition, setShowAddCondition] = useState(false);
@@ -22,9 +20,7 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
 
   const handleConfirmGoBack = (modalResponse) => {
     if (modalResponse === 'yes') {
-      setFlow('singleCondition');
-      setDisplayedPage('single');
-      clearAllAccessControlConditions();
+      resetModal();
     }
 
     setShowConfirmationModal(false);
@@ -44,26 +40,25 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
 
   return (
     <>
-      <header className={'w-full h-14 bg-brand-light flex justify-between items-center px-5'}>
-        <h3 className={'text-slate-500'}>ACCESS CONTROL</h3>
-        <button><img alt={'close'} className={'h-4 font-os'} src={union} onClick={() => handleClose()}/></button>
-      </header>
+      <LitHeader handleClose={handleClose} />
       {!showAddCondition ? (
         <>
-          <LitMultipleConditionOrganizer createCondition={createCondition}
-                                         humanizedAccessControlConditions={humanizedAccessControlConditions}/>
-          <footer className={'flex bg-white flex-row justify-between items-center w-full h-20 fixed bottom-0 left-0'}>
-            <LitBackButton onClick={() => {
-              if (accessControlConditions.length < 1) {
+          <div className={'lsm-overflow-scroll lsm-pt-4 lsm-interior-scroll'}>
+            <LitMultipleConditionOrganizer createCondition={createCondition}
+                                          humanizedAccessControlConditions={humanizedAccessControlConditions}/>
+          </div>
+          <LitFooter
+            backAction={() => {
+              if (humanizedAccessControlConditions.length < 1) {
                 setFlow('singleCondition');
                 setDisplayedPage('single');
               } else {
                 setShowConfirmationModal(true);
               }
-            }}/>
-            <LitNextButton disableConditions={!accessControlConditions}
-                           onClick={() => setDisplayedPage('review')}/>
-          </footer>
+            }}
+            nextAction={() => setDisplayedPage('review')}
+            nextDisableConditions={!humanizedAccessControlConditions || !humanizedAccessControlConditions.length}
+          />
           <LitConfirmationModal showConfirmationModal={showConfirmationModal}
                                 onClick={handleConfirmGoBack}/>
         </>

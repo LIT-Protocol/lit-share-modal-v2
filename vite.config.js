@@ -8,15 +8,22 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.js'),
-      name: 'lit-modal-vite',
-      fileName: (format) => `lit-modal-vite.${format}.js`,
+      name: 'lit-share-modal',
+      fileName: (format) => `lit-share-modal.${format}.js`,
     },
+    cssCodeSplit: false,
     rollupOptions: {
       external: [
         'lit-js-sdk',
         'react',
         'react-dom'
-      ]
+      ],
+      output: {
+        globals: {
+          react: 'React',
+          LitJsSdk: 'lit-js-sdk',
+        }
+      }
     }
   },
   plugins: [react()],

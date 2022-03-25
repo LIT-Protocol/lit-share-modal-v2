@@ -2,26 +2,28 @@ import React, { useContext, useState } from 'react';
 import LitChooseAccessButton from "../reusableComponents/LitChooseAccessButton";
 import POAP from "../assets/POAP.svg";
 import venn from "../assets/venn.svg";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "../shareModal/ShareModal";
+import LitFooter from "../reusableComponents/litFooter/LitFooter";
 
 const ChooseAccess = ({ setSelectPage }) => {
   const { setDisplayedPage, setFlow } = useContext(ShareModalContext);
 
   return (
-    <div className={'flex flex-col items-center'}>
-      <h3 className={'mt-6 mb-4'}>Choose who can access this:</h3>
+    <div className={'lsm-flex lsm-flex-col lsm-items-center'}>
+      <h3 className={'lsm-mt-8 lsm-mb-4 lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Choose who can access this:</h3>
       <LitChooseAccessButton onClick={() => setSelectPage('wallet')} label={'An Individual Wallet'}/>
-      <LitChooseAccessButton onClick={() => setSelectPage('group')} label={'A Group of Token or NFT'}/>
+      <LitChooseAccessButton onClick={() => setSelectPage('group')} label={'A Group of Token or NFT Holders'}/>
       {/*<LitChooseAccessButton onClick={() => setSelectPage('nft')} label={'NFT Ownership'}/>*/}
       <LitChooseAccessButton onClick={() => setSelectPage('dao')} label={'DAO Members'}/>
       <LitChooseAccessButton onClick={() => setSelectPage('poap')} img={POAP} label={'POAP Collectors'}/>
-        <span className={'flex justify-center mt-8 mx-auto'} onClick={() => {
+        <span className={'lsm-flex lsm-justify-center lsm-mt-8 lsm-mx-auto lsm-items-center lsm-cursor-pointer'} onClick={() => {
           setFlow('multipleCondition');
           setDisplayedPage('multiple');
         }}>
           <img src={venn}/>
-          <p className={'text-xs w-6/12 ml-4 text-brand-4 underline'}>Gate with multiple conditions using AND/OR operators</p>
+          <p className={'lsm-text-sm lsm-font-segoe lsm-my-0 lsm-w-6/12 lsm-ml-4 lsm-text-brand-4 lsm-underline md:lsm-text-base md:lsm-w-11/12'}>Gate with multiple conditions using AND/OR operators</p>
         </span>
+      {/*<LitFooter backAction={() => setSelectPage('chooseAccess')} />*/}
     </div>
   );
 };

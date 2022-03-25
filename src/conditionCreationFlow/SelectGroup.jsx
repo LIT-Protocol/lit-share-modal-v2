@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import LitBackButton from "../reusableComponents/LitBackButton";
-import LitNextButton from "../reusableComponents/LitNextButton";
+import React, { useContext, useEffect, useState } from 'react';
 import { ethers } from "ethers";
-import { ShareModalContext } from "../ShareModal";
+import { ShareModalContext } from "../shareModal/ShareModal";
 import LitJsSdk from "lit-js-sdk";
-import LitSelectDropdown from "../reusableComponents/LitSelectDropdown";
-import LitSelectToken from "../reusableComponents/LitSelectToken";
+import LitReusableSelect from "../reusableComponents/litReusableSelect/LitReusableSelect";
+import LitTokenSelect from "../reusableComponents/litTokenSelect/LitTokenSelect";
+import LitFooter from "../reusableComponents/litFooter/LitFooter";
+import union from '../assets/union.svg';
 
 const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   const context = useContext(ShareModalContext);
@@ -14,6 +14,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
   const [contractAddress, setContractAddress] = useState("");
   const [chain, setChain] = useState(null);
   const [contractType, setContractType] = useState("ERC721");
+  const [erc1155TokenId, setErc1155TokenId] = useState("");
 
   useEffect(
     () =>
@@ -26,25 +27,64 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
   );
 
   const handleSubmit = async () => {
-    console.log("handleSubmit and selectedToken is", selectedToken);
-
 
     if (contractAddress && contractAddress.length) {
-      const accessControlConditions = [
-        {
-          contractAddress: contractAddress,
-          standardContractType: contractType,
-          chain: chain.value,
-          method: "balanceOf",
-          parameters: [":userAddress"],
-          returnValueTest: {
-            comparator: ">=",
-            value: amount.toString(),
+      let accessControlConditions;
+      if (contractType === "ERC20") {
+        let decimals = 0;
+        try {
+          decimals = await LitJsSdk.decimalPlaces({
+            chain: chain.value,
+            contractAddress: contractAddress,
+          });
+        } catch (e) {
+          console.log(e);
+        }
+        console.log(`decimals`, decimals);
+        const amountInBaseUnit = ethers.utils.parseUnits(amount, decimals);
+        accessControlConditions = [
+          {
+            contractAddress: contractAddress,
+            standardContractType: contractType,
+            chain: chain.value,
+            method: "balanceOf",
+            parameters: [":userAddress"],
+            returnValueTest: {
+              comparator: ">=",
+              value: amountInBaseUnit.toString(),
+            },
           },
-        },
-      ];
+        ];
+      } else if (contractType === "ERC721") {
+        accessControlConditions = [
+          {
+            contractAddress: contractAddress,
+            standardContractType: contractType,
+            chain: chain.value,
+            method: "balanceOf",
+            parameters: [":userAddress"],
+            returnValueTest: {
+              comparator: ">=",
+              value: amount.toString(),
+            },
+          },
+        ];
+      } else if (contractType === "ERC1155") {
+        accessControlConditions = [
+          {
+            contractAddress: contractAddress,
+            standardContractType: contractType,
+            chain: chain.value,
+            method: "balanceOf",
+            parameters: [":userAddress", erc1155TokenId],
+            returnValueTest: {
+              comparator: ">=",
+              value: amount.toString(),
+            },
+          },
+        ];
+      }
       handleUpdateAccessControlConditions(accessControlConditions);
-
     } else if (selectedToken && selectedToken.value === "ethereum") {
       // ethereum
       const amountInWei = ethers.utils.parseEther(amount);
@@ -61,11 +101,8 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
           },
         },
       ];
-      console.log("accessControlConditions token", accessControlConditions);
       handleUpdateAccessControlConditions(accessControlConditions);
-
     } else {
-      console.log("selectedToken", selectedToken);
 
       let tokenType;
       if (selectedToken && selectedToken.standard?.toLowerCase() === "erc721") {
@@ -106,10 +143,6 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
             },
           },
         ];
-        console.log(
-          "accessControlConditions typeerc721",
-          accessControlConditions
-        );
         handleUpdateAccessControlConditions(accessControlConditions);
       } else {
         // erc20 token
@@ -130,7 +163,6 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
           } catch (e) {
             console.log(e);
           }
-          console.log(`decimals in ${selectedToken.value}`, decimals);
           amountInBaseUnit = ethers.utils.parseUnits(amount, decimals);
         }
         const accessControlConditions = [
@@ -146,10 +178,10 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
             },
           },
         ];
-        console.log("accessControlConditions else", accessControlConditions);
         handleUpdateAccessControlConditions(accessControlConditions);
       }
     }
+
 
     if (context.flow === 'singleCondition') {
       context.setDisplayedPage('review');
@@ -158,49 +190,95 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
     }
   };
 
+  const handleChangeContractType = (value) => {
+    setContractType(value);
+  };
+
+  const createTokenSelectLabel = () => {
+    if (selectedToken && selectedToken.label) {
+      return (
+        <span>
+          {selectedToken.label}
+          <button className={'lsm-border-none lsm-cursor-pointer'}>
+            <img alt={'close'}
+                 className={'lsm-h-4'}
+                 src={union}
+                 onClick={() => setSelectedToken(null)}/>
+          </button>
+        </span>
+      )
+    } else {
+      return 'Search for a token/NFT';
+    }
+  }
+
   return (
-    <div className={'w-full h-full flex flex-col items-center px-8 py-4 bg-white'}>
-      <h3 className={'mb-4'}>Which wallet should be able to access this asset?</h3>
-      <h3 className={'w-full mb-2'}>Select blockchain:</h3>
-      <LitSelectDropdown options={context.chainOptions}
+    <div className={'lsm-select-container lsm-bg-white'}>
+      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which wallet should be able to access this asset?</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select blockchain:</h3>
+      <LitReusableSelect options={context.chainOptions}
                          label={'Select blockchain'}
                          option={chain}
                          setOption={setChain}
                          turnOffSearch={true}
-                         backButtonLabel={'BACK TO SELECT WALLET'}
       />
-      <h3 className={'mt-4 mb-2'}>Select token/NFT or enter contract address:</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select token/NFT or enter contract address:</h3>
       {(!contractAddress.length) && (
-        <LitSelectToken option={selectedToken}
+        <LitTokenSelect option={selectedToken}
                         label={(!selectedToken || !selectedToken['label']) ? 'Search for a token/NFT' : selectedToken.label}
                         selectedToken={selectedToken}
                         setSelectedToken={setSelectedToken}
         />
       )}
       {((!selectedToken || !selectedToken['label']) && !contractAddress.length) && (
-        <p className={'text-sm w-full my-1'}>OR</p>
+        <p className={'lsm-text-sm md:lsm-text-base lsm-w-full lsm-my-1 lsm-condition-spacing lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>OR</p>
       )}
       {(!selectedToken || !selectedToken['label']) && (
-        <input placeholder={'ERC20 or ERC721 address'}
+        <input placeholder={'ERC20 or ERC721 or ERC1155 address'}
                value={contractAddress}
                onChange={(e) => setContractAddress(e.target.value)}
-               className={'duration-200 w-full py-2 px-4 border rounded border-brand-4 focus:outline-0'}/>
+               className={'lsm-border-brand-4 lsm-input'}/>
       )}
-      {(!!selectedToken && !!selectedToken['label']) && (
-        <button
-          className={"w-full h-12 text-brand-light bg-brand-4 rounded hover:border-2 flex flex-row items-center justify-between px-4 mt-4"}
-          onClick={() => setSelectedToken(null)}>
-          Clear token/NFT
-        </button>
+      {(!!contractAddress.length) && (
+        <div className={'lsm-w-full'}>
+          <h3 className={'lsm-mt-2 lsm-mb-2 lsm-w-full lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-select-label'}>Token Contract Type:</h3>
+          <span onChange={(e) => handleChangeContractType(e.target.value)} className={'lsm-flex lsm-w-full lsm-justify-around lsm-items-center lsm-mt-2 lsm-px-4 lsm-border lsm-rounded lsm-border-brand-4 focus:outline-0 lsm-input'}>
+            <div>
+              <input readOnly checked={contractType === 'ERC20'} type="radio" id="erc20" name="addressType" value="ERC20"/>
+              <label className={'lsm-ml-2'} htmlFor="erc20">ERC20</label>
+            </div>
+
+            <div>
+              <input readOnly checked={contractType === 'ERC721'} type="radio" id="erc721" name="addressType" value="ERC721"/>
+              <label className={'lsm-ml-2'} htmlFor="erc721">ERC721</label>
+            </div>
+
+            <div>
+              <input readOnly checked={contractType === 'ERC1155'} type="radio" id="erc1155" name="addressType" value="ERC1155"/>
+              <label className={'lsm-ml-2'} htmlFor="erc1155">ERC1155</label>
+            </div>
+          </span>
+        </div>
       )}
-      <h3 className={'mt-4 mb-2'}>How many tokens does the wallet need to own?</h3>
-      <input value={amount} onChange={(e) => setAmount(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0'}/>
-      <footer className={'flex flex-row justify-between w-full h-12 bottom-0 my-4'}>
-        <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
-        <LitNextButton disableConditions={!amount || (!selectedToken && !contractAddress) || !chain}
-                       onClick={() => handleSubmit()}/>
-      </footer>
+      {(!!contractAddress.length && contractType === 'ERC1155') && (
+          <input placeholder={'ERC1155 Token Id'}
+          value={erc1155TokenId}
+          onChange={(e) => setErc1155TokenId(e.target.value)}
+          className={'lsm-border-brand-4 lsm-input'}/>
+      )}
+      {/*{(!!selectedToken && !!selectedToken['label']) && (*/}
+      {/*  <button*/}
+      {/*    className={"lsm-h-12 lsm-text-brand-light lsm-bg-brand-4 lsm-rounded hover:lsm-border-2 lsm-flex lsm-flex-row lsm-items-center lsm-justify-between lsm-px-4 lsm-mt-4"}*/}
+      {/*    onClick={() => setSelectedToken(null)}>*/}
+      {/*    Clear token/NFT*/}
+      {/*  </button>*/}
+      {/*)}*/}
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>How many tokens does the wallet need to own?</h3>
+      <input value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={'##'}
+             className={'lsm-border-brand-4 lsm-input'}/>
+      <LitFooter backAction={() => setSelectPage('chooseAccess')}
+                 nextAction={handleSubmit}
+                 nextDisableConditions={!amount || (!selectedToken && !contractAddress) || !chain || (contractType === 'ERC1155' && !erc1155TokenId.length)} />
     </div>
   );
 };

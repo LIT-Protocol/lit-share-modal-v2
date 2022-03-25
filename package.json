@@ -1,8 +1,18 @@
 {
-  "name": "lit-modal-vite",
-  "version": "0.0.7",
-  "main": "./dist/LitModalVite.umd.js",
-  "module": "./dist/LitModalVite.es.js",
+  "name": "lit-share-modal",
+  "version": "0.1.26",
+  "main": "./dist/lit-share-modal.umd.js",
+  "module": "./dist/lit-share-modal.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/lit-share-modal.es.js",
+      "require": "./dist/lit-share-modal.umd.js"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,6 +20,8 @@
   },
   "dependencies": {
     "ethers": "^5.5.4",
+    "events": "^3.3.0",
+    "lit-js-sdk": "^1.1.149",
     "react-select": "^5.2.2",
     "react-windowed-select": "^3.1.2",
     "util": "^0.12.4"
@@ -24,12 +36,10 @@
     "eslint": "^8.10.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "postcss": "^8.4.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "tailwindcss": "^3.0.23",
     "vite": "^2.8.6"
   },
-  "peerDependencies": {
-    "lit-js-sdk": "^1.1.99",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  }
+  "peerDependencies": {}
 }

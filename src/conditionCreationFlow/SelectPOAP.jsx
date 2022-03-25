@@ -1,19 +1,18 @@
 import React, { useContext, useState } from 'react';
-import LitBackButton from "../reusableComponents/LitBackButton";
-import LitNextButton from "../reusableComponents/LitNextButton";
-import { ShareModalContext } from "../ShareModal";
-import LitSelectDropdown from "../reusableComponents/LitSelectDropdown";
+import { ShareModalContext } from "../shareModal/ShareModal";
+import LitSimpleDropdown from '../reusableComponents/litSimpleDropdown/LitSimpleDropdown';
+import LitFooter from "../reusableComponents/litFooter/LitFooter";
 
 const matchConditionOptions = [
-  {
-    name: "Equals POAP Name exactly",
-    id: "equals",
-    value: "=",
-  },
   {
     name: "Contains POAP Name",
     id: "contains",
     value: "contains",
+  },
+  {
+    name: "Equals POAP Name exactly",
+    id: "equals",
+    value: "=",
   },
 ];
 
@@ -24,7 +23,7 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
 
   const handleSubmit = () => {
     const chain = "xdai";
-    const accessControlConditions = [
+    const accessControlConditions = [[
       {
         contractAddress: "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
         standardContractType: "ERC721",
@@ -36,6 +35,7 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
           value: "0",
         },
       },
+      {operator: "and"},
       {
         contractAddress: "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
         standardContractType: "POAP",
@@ -47,10 +47,11 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
           value: POAPName,
         },
       },
-    ];
+    ]];
 
     handleUpdateAccessControlConditions(accessControlConditions);
     setSelectPage('chooseAccess');
+    console.log('check conditions', accessControlConditions);
 
     if (flow === 'singleCondition') {
       setDisplayedPage('review');
@@ -60,23 +61,19 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'w-full h-full flex flex-col items-center px-8 py-4 '}>
-      <h3 className={'mb-8 w-full'}>Which POAP should be able to access this asset?</h3>
-      <h3 className={'mb-4 w-full'}>POAP Name:</h3>
+    <div className={'lsm-select-container lsm-bg-white'}>
+      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which POAP should be able to access this asset?</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>POAP Name:</h3>
       <input value={POAPName} onChange={(e) => setPOAPName(e.target.value)}
-             className={'w-full py-2 px-4 border rounded border-brand-4 focus:outline-0'}/>
-      <h3 className={'mt-12 w-full mb-4'}>Match conditions:</h3>
-      <LitSelectDropdown options={matchConditionOptions}
-                         label={'Select match condition'}
-                         option={matchCondition}
-                         setOption={setMatchCondition}
-                         turnOffSearch={true}
-                         backButtonLabel={'BACK TO SELECT POAP'}
-      />
-      <footer className={'flex flex-row justify-between w-full h-12 mb-4 mt-8'}>
-        <LitBackButton onClick={() => setSelectPage('chooseAccess')}/>
-        <LitNextButton disableConditions={(!POAPName.length || !matchCondition)} onClick={() => handleSubmit()}/>
-      </footer>
+             className={'lsm-border-brand-4 lsm-input'}/>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Match conditions:</h3>
+      <LitSimpleDropdown label={'Select match condition'}
+                         options={matchConditionOptions}
+                         setSelected={setMatchCondition}
+                         selected={matchCondition} />
+      <LitFooter backAction={() => setSelectPage('chooseAccess')}
+                 nextAction={handleSubmit}
+                 nextDisableConditions={(!POAPName.length || !matchCondition)} />
     </div>
   );
 };
