@@ -3,11 +3,13 @@ For use with Lit Protocol. [Click here to visit the developer docs.](https://dev
 # Installation
 
 with npm
+
 ```
 npm install --save lit-share-modal
 ```
 
 with yarn
+
 ```
 yarn add lit-share-modal
 ```
@@ -47,7 +49,7 @@ export default App;
 
 ### Required
 
-- `onClose` - callback for actions to take on closing the modal 
+- `onClose` - callback for actions to take on closing the modal
 - `showModal` - boolean that signals whether modal is open (true) or closed (false)
 - `onAccessControlConditionsSelected` - callback for the share modal output
 
@@ -60,6 +62,7 @@ Documentation on how these properties are used with the `LitJsSdk`, can be found
 
 ### Optional
 
+- `injectCSS` - a boolean that is set to true by default. When this is true, the CSS styles will be injected into the <head> of the page when the page loads, so there is no need to import any css. You can set this to "false" if you want to use your own CSS.
 - `defaultTokens` - set quick access tokens that appear in the `Select a Token/NFT` menu
 
 Three tokens/NFTs appear as default: `Ethereum`, `LitGate`, and `Blocks`
@@ -73,6 +76,7 @@ This list can be altered by passing an array of objects with the following prope
 - `standard` - token standard (ERC20, ERC721, or ERC1155)
 
 **Example of a single entry quick access array**
+
 ```
 export const defaultTokens = [
   {
