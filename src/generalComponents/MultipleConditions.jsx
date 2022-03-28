@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ShareModalContext } from "../shareModal/ShareModal";
+import { ShareModalContext } from "../shareModal/createShareContext.js";
 import MultipleCreateCondition from "./MultipleCreateCondition";
 import LitConfirmationModal from "../reusableComponents/litConfirmationModal/LitConfirmationModal";
 import LitMultipleConditionOrganizer from "../reusableComponents/litMultipeConditionOrganizer/LitMultipleConditionOrganizer";

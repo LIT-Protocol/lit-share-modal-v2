@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ShareModalContext } from "../shareModal/ShareModal";
+import { ShareModalContext } from "../shareModal/createShareContext.js";
 import LitSimpleDropdown from '../reusableComponents/litSimpleDropdown/LitSimpleDropdown';
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
 

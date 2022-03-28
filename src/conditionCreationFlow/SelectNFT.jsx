@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import LitReusableSelect from "../reusableComponents/litReusableSelect/LitReusableSelect";
-import { ShareModalContext } from "../shareModal/ShareModal";
+import { ShareModalContext } from "../shareModal/createShareContext.js";
 import LitTokenSelect from "../reusableComponents/litTokenSelect/LitTokenSelect";
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
 

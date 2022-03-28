@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import LitReusableSelect from "../reusableComponents/litReusableSelect/LitReusableSelect";
-import { ShareModalContext } from "../shareModal/ShareModal";
+import { ShareModalContext } from "../shareModal/createShareContext.js";
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
 
 const SelectDAO = ({ setSelectPage, handleUpdateAccessControlConditions }) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './LitBackButton.css';
 
 const LitBackButton = ({ onClick, label, backgroundColor = 'lsm-bg-white' }) => {

@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import LitChooseAccessButton from "../reusableComponents/LitChooseAccessButton";
 import POAP from "../assets/POAP.svg";
 import venn from "../assets/venn.svg";
-import { ShareModalContext } from "../shareModal/ShareModal";
-import LitFooter from "../reusableComponents/litFooter/LitFooter";
+import { ShareModalContext } from "../shareModal/createShareContext.js";
 
 const ChooseAccess = ({ setSelectPage }) => {
   const { setDisplayedPage, setFlow } = useContext(ShareModalContext);
@@ -23,7 +22,6 @@ const ChooseAccess = ({ setSelectPage }) => {
           <img src={venn}/>
           <p className={'lsm-text-sm lsm-font-segoe lsm-my-0 lsm-w-6/12 lsm-ml-4 lsm-text-brand-4 lsm-underline md:lsm-text-base md:lsm-w-11/12'}>Gate with multiple conditions using AND/OR operators</p>
         </span>
-      {/*<LitFooter backAction={() => setSelectPage('chooseAccess')} />*/}
     </div>
   );
 };

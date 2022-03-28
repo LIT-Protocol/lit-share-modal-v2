@@ -1,11 +1,11 @@
-import React, { useContext, useState, useMemo, useEffect } from 'react';
-import { ShareModalContext } from "../shareModal/ShareModal";
+import React, { useContext, useState, useEffect } from 'react';
+import { ShareModalContext } from "../shareModal/createShareContext.js";
 import LitReusableSelect from "../reusableComponents/litReusableSelect/LitReusableSelect";
 import LitJsSdk from "lit-js-sdk";
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
 
 const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
-  const { setError, setDisplayedPage, chainOptions, flow } = useContext(ShareModalContext);
+  const { setDisplayedPage, chainOptions, flow } = useContext(ShareModalContext);
   const [walletAddress, setWalletAddress] = useState("");
   const [chain, setChain] = useState({});
 
@@ -35,10 +35,6 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
       if (!resolvedAddress) {
         // ADD_ERROR_HANDLING
         console.log("failed to resolve ENS address");
-        setError({
-          title: "Could not resolve ENS address",
-          details: "Try another wallet address",
-        });
         return;
       }
     }

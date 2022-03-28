@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { ShareModalContext } from "../../shareModal/ShareModal";
+import React, { useContext, useState } from 'react';
+import { ShareModalContext } from "../../shareModal/createShareContext.js";
 import link from '../../assets/link.svg';
 import LitConfirmationModal from "../../reusableComponents/litConfirmationModal/LitConfirmationModal";
 import LitHeader from "../../reusableComponents/litHeader/LitHeader";

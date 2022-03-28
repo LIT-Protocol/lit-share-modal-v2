@@ -1,8 +1,5 @@
-import React, { useEffect, useState, useMemo, useContext } from 'react';
-import LitNextButton from "../litFooter/LitNextButton";
+import React, { useState, useMemo, useContext } from 'react';
 import './LitTokenSelect.css';
-import chevronDown from "../../assets/chevronDown.svg";
-import union from "../../assets/union.svg";
 
 import {
   WindowedMenuList,
@@ -10,8 +7,7 @@ import {
   components,
 } from "react-windowed-select";
 
-import LitBackButton from "../litFooter/LitBackButton";
-import { ShareModalContext } from "../../shareModal/ShareModal";
+import { ShareModalContext } from "../../shareModal/createShareContext.js";
 import CreatableSelect from "react-select/creatable";
 import LitFooter from "../litFooter/LitFooter";
 

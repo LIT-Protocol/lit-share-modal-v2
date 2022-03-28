@@ -1,5 +1,5 @@
 .lsm-header-container {
-    width: calc(100% - 2rem);
+    width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
     display: flex;
@@ -7,4 +7,5 @@
     align-items: center;
     height: 3.5rem;
     border-radius: .25rem 0.25rem 0 0;
+    box-sizing: border-box;
 }

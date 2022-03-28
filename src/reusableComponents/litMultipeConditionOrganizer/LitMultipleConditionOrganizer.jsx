@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import trashcan from "../../assets/trashcan.svg";
 import uparrow from "../../assets/uparrow.svg";
-import { ShareModalContext } from "../../shareModal/ShareModal";
+import { ShareModalContext } from "../../shareModal/createShareContext.js";
 import LitDeleteModal from "../litDeleteModal/LitDeleteModal";
 import './LitMultipleConditionOrganizer.css';
 import { colorArray, darkColorArray } from "../../helpers/colorArray";

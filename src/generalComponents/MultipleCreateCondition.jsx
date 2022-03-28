@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import MultipleChooseAccess from "../conditionCreationFlow/MultipleChooseAccess";
 import SelectWallet from "../conditionCreationFlow/SelectWallet";
 import SelectGroup from "../conditionCreationFlow/SelectGroup";
 import SelectDAO from "../conditionCreationFlow/SelectDAO";
 import SelectPOAP from "../conditionCreationFlow/SelectPOAP";
 import SelectNFT from "../conditionCreationFlow/SelectNFT";
-import LitBackButton from "../reusableComponents/litFooter/LitBackButton";
-import LitNextButton from "../reusableComponents/litFooter/LitNextButton";
-import { ShareModalContext } from "../shareModal/ShareModal";
+import { ShareModalContext } from "../shareModal/createShareContext.js";
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
 
 const MultipleCreateCondition = ({ endOfCreateCondition, isNested, nestedIndex }) => {

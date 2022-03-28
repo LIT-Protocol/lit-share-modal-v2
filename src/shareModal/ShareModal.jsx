@@ -1,14 +1,12 @@
 import React, {
-  createContext,
   useEffect,
-  useContext,
-  useReducer,
   useMemo,
   useState,
 } from "react";
 import SingleCondition from "../generalComponents/SingleCondition";
 import ReviewConditions from "../generalComponents/reviewConditions/ReviewConditions";
 import MultipleConditions from "../generalComponents/MultipleConditions";
+import { ShareModalContext } from "./createShareContext";
 
 import baseCss from "../index.css";
 import modalCss from "./ShareModal.css";
@@ -32,19 +30,7 @@ import {
 } from "../helpers/multipleConditionHelpers";
 import LitConfirmationModal from "../reusableComponents/litConfirmationModal/LitConfirmationModal";
 
-export const ShareModalContext = createContext({});
-
 const ShareModal = (props) => {
-  const {
-    onClose = () => false,
-    onBack = () => false,
-    // TODO: showModal needs to start as false
-    showModal = true,
-    onAccessControlConditionsSelected,
-    defaultTokens = TOP_LIST,
-    injectCSS = true,
-  } = props;
-
   const [displayPage, setDisplayedPage] = useState("single");
   const [error, setError] = useState(null);
   const [accessControlConditions, setAccessControlConditions] = useState([]);
@@ -55,6 +41,17 @@ const ShareModal = (props) => {
   const [flow, setFlow] = useState("singleCondition");
   const [tokenList, setTokenList] = useState(null);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  // export const ShareModalContext = createContext({});
+
+  const {
+    onClose = () => false,
+    onBack = () => false,
+    // TODO: showModal needs to start as false
+    showModal = true,
+    onAccessControlConditionsSelected,
+    defaultTokens = TOP_LIST,
+    injectCSS = true,
+  } = props;
 
   useEffect(() => {
     const getTokens = async () => {
@@ -256,7 +253,7 @@ const ShareModal = (props) => {
         <div className={"lsm-top-modal-overlay md:lsm-bg-modal-overlay"}>
           <div
             className={
-              "lsm-bg-white lsm-border lsm-border-brand-4 lsm-top-modal "
+              " lsm-css-reset lsm-bg-white lsm-border lsm-border-brand-4 lsm-top-modal"
             }
           >
             <ShareModalContext.Provider

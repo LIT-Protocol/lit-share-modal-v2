@@ -3,7 +3,8 @@
     position: absolute;
     justify-content: space-between;
     bottom: 0;
-    height: 3rem;
-    padding: 1rem;
-    width: calc(100% - 2rem);
+    height: 4rem;
+    padding: 0 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }

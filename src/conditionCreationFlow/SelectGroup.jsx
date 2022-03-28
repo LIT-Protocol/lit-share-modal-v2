@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ethers } from "ethers";
-import { ShareModalContext } from "../shareModal/ShareModal";
+import { ShareModalContext } from "../shareModal/createShareContext.js";
 import LitJsSdk from "lit-js-sdk";
 import LitReusableSelect from "../reusableComponents/litReusableSelect/LitReusableSelect";
 import LitTokenSelect from "../reusableComponents/litTokenSelect/LitTokenSelect";
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
-import union from '../assets/union.svg';
 
 const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   const context = useContext(ShareModalContext);
@@ -194,23 +193,23 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
     setContractType(value);
   };
 
-  const createTokenSelectLabel = () => {
-    if (selectedToken && selectedToken.label) {
-      return (
-        <span>
-          {selectedToken.label}
-          <button className={'lsm-border-none lsm-cursor-pointer'}>
-            <img alt={'close'}
-                 className={'lsm-h-4'}
-                 src={union}
-                 onClick={() => setSelectedToken(null)}/>
-          </button>
-        </span>
-      )
-    } else {
-      return 'Search for a token/NFT';
-    }
-  }
+  // const createTokenSelectLabel = () => {
+  //   if (selectedToken && selectedToken.label) {
+  //     return (
+  //       <span>
+  //         {selectedToken.label}
+  //         <button className={'lsm-border-none lsm-cursor-pointer'}>
+  //           <img alt={'close'}
+  //                className={'lsm-h-4'}
+  //                src={union}
+  //                onClick={() => setSelectedToken(null)}/>
+  //         </button>
+  //       </span>
+  //     )
+  //   } else {
+  //     return 'Search for a token/NFT';
+  //   }
+  // }
 
   return (
     <div className={'lsm-select-container lsm-bg-white'}>

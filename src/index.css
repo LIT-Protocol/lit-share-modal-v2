@@ -7,7 +7,8 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  width: calc(100% - 2rem);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .lsm-select-prompt {
@@ -31,12 +32,13 @@
 
 .lsm-input {
   height: 2.7rem;
-  width: calc(100% - 2rem);
+  width: 100%;
   border-radius: 0.25rem;
   border-width: 1px;
   border-style: solid;
   padding-left: 1rem;
   padding-right: 1rem;
+  box-sizing: border-box;
 }
 
 .lsm-input:focus {
@@ -49,6 +51,7 @@
   margin-bottom: 1rem;
   text-align: left;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .lsm-interior-scroll {

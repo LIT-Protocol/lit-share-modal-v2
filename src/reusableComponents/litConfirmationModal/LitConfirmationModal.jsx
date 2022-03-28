@@ -1,7 +1,7 @@
 import React from "react";
 import './LitConfirmationModal.css';
 
-const LitConfirmationModal = ({ showConfirmationModal, modalResponse, onClick, message = null }) => {
+const LitConfirmationModal = ({ showConfirmationModal, onClick, message = null }) => {
 
   return (
     <div>

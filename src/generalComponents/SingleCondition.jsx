@@ -5,7 +5,7 @@ import SelectGroup from "../conditionCreationFlow/SelectGroup";
 import SelectDAO from "../conditionCreationFlow/SelectDAO";
 import SelectPOAP from "../conditionCreationFlow/SelectPOAP";
 import SelectNFT from "../conditionCreationFlow/SelectNFT";
-import { ShareModalContext } from "../shareModal/ShareModal";
+import { ShareModalContext } from "../shareModal/createShareContext.js";
 import LitHeader from "../reusableComponents/litHeader/LitHeader";
 
 const SingleCondition = () => {
