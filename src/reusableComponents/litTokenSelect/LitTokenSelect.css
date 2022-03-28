@@ -46,7 +46,7 @@
 }
 
 .lsm-top-tokens-container {
-    width: calc(100% - 2rem);
+    width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
     margin: 0 auto 4rem;
@@ -54,6 +54,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 
 .lsm-top-token-chips {
@@ -65,9 +66,10 @@
 }
 
 .lsm-token-select-dropdown-container {
-    width: calc(100% - 2rem);
+    width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
+    box-sizing: border-box;
 }
 
 .lsm-token-select-dropdown {

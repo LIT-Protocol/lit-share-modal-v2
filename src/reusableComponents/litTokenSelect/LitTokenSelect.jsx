@@ -89,7 +89,7 @@ const LitTokenSelect = ({ label, setSelectedToken, option, selectedToken }) => {
               <h3 className={'lsm-text-gray lsm-font-segoe lsm-font-light'}>SELECT A TOKEN/NFT</h3>
           </header>
           <div className={'lsm-top-tokens-container'}>
-            <p className={'lsm-w-full lsm-capitalize-and-size'}>TOP TOKENS/NFTS</p>
+            <p className={'lsm-w-full lsm-font-segoe lsm-capitalize-and-size'}>TOP TOKENS/NFTS</p>
             <span className={'lsm-top-token-chips'}>
               {defaultTokens.map((t, i) => (
                 <span
@@ -116,7 +116,7 @@ const LitTokenSelect = ({ label, setSelectedToken, option, selectedToken }) => {
                      backgroundColor={'lsm-bg-transparent'}
           />
           <div className={'lsm-token-select-dropdown-container lsm-mx-auto'}>
-            <label className="lsm-capitalize-and-size lsm-pb-4 lsm-font-sans">SEARCH</label>
+            <label className="lsm-capitalize-and-size lsm-pb-4 lsm-font-segoe">SEARCH</label>
             <CreatableSelect
               className={'lsm-token-select-dropdown'}
               classNamePrefix={'lsm-token-select'}
