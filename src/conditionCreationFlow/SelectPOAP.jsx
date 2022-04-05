@@ -23,7 +23,7 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
 
   const handleSubmit = () => {
     const chain = "xdai";
-    const accessControlConditions = [[
+    const accessControlConditions = [
       {
         contractAddress: "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
         standardContractType: "ERC721",
@@ -47,11 +47,10 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
           value: POAPName,
         },
       },
-    ]];
+    ];
 
     handleUpdateAccessControlConditions(accessControlConditions);
     setSelectPage('chooseAccess');
-    console.log('check conditions', accessControlConditions);
 
     if (flow === 'singleCondition') {
       setDisplayedPage('review');

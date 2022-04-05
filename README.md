@@ -19,8 +19,7 @@ yarn add lit-share-modal
 with React Hooks
 
 ```
-import { ShareModal } from 'lit-share-modal';
-import 'lit-share-modal/dist/style.css'
+import ShareModal from 'lit-share-modal';
 import { useState } from 'react';
 import './App.css'
 

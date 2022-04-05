@@ -7,7 +7,7 @@ import NodeGlobalsPolyfillPlugin from "@esbuild-plugins/node-globals-polyfill";
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/index.js"),
+      entry: path.resolve(__dirname, "src/shareModal/ShareModal.jsx"),
       name: "lit-share-modal",
       fileName: (format) => `lit-share-modal.${format}.js`,
     },
@@ -16,7 +16,8 @@ export default defineConfig({
       external: ["lit-js-sdk", "react", "react-dom"],
       output: {
         globals: {
-          react: "React",
+          React: "react",
+          ReactDom: "react-dom",
           LitJsSdk: "lit-js-sdk",
         },
       },

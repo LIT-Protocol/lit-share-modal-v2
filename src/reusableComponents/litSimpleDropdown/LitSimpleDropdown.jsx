@@ -8,7 +8,6 @@ const LitSimpleDropdown = ({ label, options, selected, setSelected}) => {
   const [ dropdownStyle, setDropdownStyle ] = useState('')
 
   useEffect(() => {
-    console.log('check show Menu', showMenu)
     if (!showMenu) {
       setDropdownStyle("lsm-hidden");
     } else {

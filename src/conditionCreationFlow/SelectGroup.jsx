@@ -39,7 +39,6 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
         } catch (e) {
           console.log(e);
         }
-        console.log(`decimals`, decimals);
         const amountInBaseUnit = ethers.utils.parseUnits(amount, decimals);
         accessControlConditions = [
           {
@@ -125,7 +124,6 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
         }
       }
 
-      console.log("tokenType is", tokenType);
 
       if (tokenType == "erc721") {
         // erc721
