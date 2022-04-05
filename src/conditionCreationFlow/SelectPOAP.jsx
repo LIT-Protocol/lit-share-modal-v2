@@ -23,23 +23,11 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
 
   const handleSubmit = () => {
     const chain = "xdai";
-    const accessControlConditions = [
-      {
-        contractAddress: "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
-        standardContractType: "ERC721",
-        chain,
-        method: "balanceOf",
-        parameters: [":userAddress"],
-        returnValueTest: {
-          comparator: ">",
-          value: "0",
-        },
-      },
-      {operator: "and"},
+    const accessControlConditions = [[
       {
         contractAddress: "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
         standardContractType: "POAP",
-        chain,
+        chain: "xdai",
         method: "tokenURI",
         parameters: [],
         returnValueTest: {
@@ -47,7 +35,19 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
           value: POAPName,
         },
       },
-    ];
+      {operator: "or"},
+      {
+        contractAddress: "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
+        standardContractType: "POAP",
+        chain: "ethereum",
+        method: "tokenURI",
+        parameters: [],
+        returnValueTest: {
+          comparator: matchCondition.value,
+          value: POAPName,
+        },
+      },
+    ]];
 
     handleUpdateAccessControlConditions(accessControlConditions);
     setSelectPage('chooseAccess');

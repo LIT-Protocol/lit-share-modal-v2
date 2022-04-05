@@ -283,12 +283,18 @@ const ShareModal = (props) => {
                   humanizedAccessControlConditions={
                     humanizedAccessControlConditions
                   }
+                  accessControlConditions={
+                    accessControlConditions
+                  }
                 />
               )}
               {displayPage === "review" && (
                 <ReviewConditions
                   humanizedAccessControlConditions={
                     humanizedAccessControlConditions
+                  }
+                  accessControlConditions={
+                    accessControlConditions
                   }
                 />
               )}

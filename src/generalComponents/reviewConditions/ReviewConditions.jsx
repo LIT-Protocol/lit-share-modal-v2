@@ -7,7 +7,7 @@ import LitFooter from "../../reusableComponents/litFooter/LitFooter";
 import { colorArray } from "../../helpers/colorArray";
 import './ReviewConditions.css';
 
-const ReviewConditions = ({ humanizedAccessControlConditions }) => {
+const ReviewConditions = ({ humanizedAccessControlConditions, accessControlConditions }) => {
   const {
     sendAccessControlConditions,
     flow,
@@ -15,6 +15,8 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
     resetModal,
     setDisplayedPage,
   } = useContext(ShareModalContext);
+
+  console.log('humanizedAccessControlConditions', humanizedAccessControlConditions)
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [conditionsAreUpdatable, setConditionsAreUpdatable] = useState(false);
@@ -45,7 +47,10 @@ const ReviewConditions = ({ humanizedAccessControlConditions }) => {
             className={'lsm-w-full lsm-h-auto lsm-mx-auto lsm-rounded lsm-flex lsm-flex-col items-align lsm-overflow-scroll'}
           >
             {!!humanizedAccessControlConditions && humanizedAccessControlConditions.map((h, i) => {
-              if (Array.isArray(h) && h[0].humanizedAcc === 'Owns any POAP') {
+              if (Array.isArray(h)
+                && h.length === 3
+                && h[0].humanizedAcc.includes('POAP')
+                && h[2].humanizedAcc.includes('POAP')) {
                 return (
                   <div className={'lsm-review-condition-group  lsm-condition-shadow'}
                        key={i}

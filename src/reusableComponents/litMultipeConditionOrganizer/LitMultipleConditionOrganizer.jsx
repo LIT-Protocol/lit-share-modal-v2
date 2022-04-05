@@ -11,7 +11,7 @@ const poapKeys = {
   "contains": "containing"
 }
 
-const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControlConditions }) => {
+const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControlConditions, accessControlConditions }) => {
   const {
     handleDeleteAccessControlCondition,
     updateLogicOperator,
@@ -48,7 +48,10 @@ const LitMultipleConditionOrganizer = ({ createCondition, humanizedAccessControl
   return (
     <div className={'lsm-mb-20 lsm-width lsm-interior-scroll'}>
       {humanizedAccessControlConditions.length > 0 && humanizedAccessControlConditions.map((a, i) => {
-        if (Array.isArray(a) && a[0].humanizedAcc === 'Owns any POAP') {
+        if (Array.isArray(a)
+          && a.length === 3
+          && a[0].humanizedAcc.includes('POAP')
+          && a[2].humanizedAcc.includes('POAP')) {
           return (
             <div
               className={'lsm-condition-organizer-group lsm-condition-shadow'}

@@ -51,3 +51,10 @@ export const humanizeNestedConditions = async (acc) => {
   }
   return newHumanizedAcc;
 }
+
+export const checkIfPoap = (acc) => {
+  if (acc.length === 3 && acc[0]['standardContractType'] === 'POAP') {
+    return true;
+  }
+  return false;
+}

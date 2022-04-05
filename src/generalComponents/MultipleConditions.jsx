@@ -6,7 +6,7 @@ import LitMultipleConditionOrganizer from "../reusableComponents/litMultipeCondi
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
 import LitHeader from "../reusableComponents/litHeader/LitHeader";
 
-const MultipleConditions = ({ humanizedAccessControlConditions }) => {
+const MultipleConditions = ({ humanizedAccessControlConditions, accessControlConditions }) => {
   const {
     setDisplayedPage,
     setFlow,
@@ -45,7 +45,9 @@ const MultipleConditions = ({ humanizedAccessControlConditions }) => {
         <>
           <div className={'lsm-overflow-scroll lsm-pt-4 lsm-interior-scroll'}>
             <LitMultipleConditionOrganizer createCondition={createCondition}
-                                          humanizedAccessControlConditions={humanizedAccessControlConditions}/>
+                                          humanizedAccessControlConditions={humanizedAccessControlConditions}
+                                           accessControlConditions={accessControlConditions}
+            />
           </div>
           <LitFooter
             backAction={() => {
