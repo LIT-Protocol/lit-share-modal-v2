@@ -1,6 +1,12 @@
-For use with Lit Protocol. [Click here to visit the developer docs.](https://developer.litprotocol.com/docs/intro/)
+The Lit Share Modal is a tool for creating access control conditions for securing content with Lit Protocol.
+[Click here to visit the Lit Protocol developer docs.](https://developer.litprotocol.com/docs/intro/)
+
+- Secure content based on wallet address, token/NFT holdings, POAP ownership, or DAO membership.
+- Create multiple paths for unlocking content by using AND/OR operators.
+- Set your most used tokens/NFTs as defaults for quick and easy access.
 
 ![Lit Share Modal](./assets/sharemodal.jpg)
+
 
 # Installation
 
