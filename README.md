@@ -1,6 +1,6 @@
 For use with Lit Protocol. [Click here to visit the developer docs.](https://developer.litprotocol.com/docs/intro/)
 
-![Lit Share Modal](./assets/sharemodal.png)
+![Lit Share Modal](./assets/sharemodal.jpg)
 
 # Installation
 
