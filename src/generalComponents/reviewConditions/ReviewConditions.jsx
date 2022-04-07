@@ -16,8 +16,6 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
     setDisplayedPage,
   } = useContext(ShareModalContext);
 
-  console.log('humanizedAccessControlConditions', humanizedAccessControlConditions)
-
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [conditionsAreUpdatable, setConditionsAreUpdatable] = useState(false);
 
@@ -117,7 +115,8 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
               alt={'clear input'} className={'lsm-h-4 font-os lsm-ml-2'} src={link}/></a>
         </div>
         <LitFooter backAction={() => navigateBack()}
-                   nextAction={() => sendAccessControlConditions(conditionsAreUpdatable)}
+                   // nextAction={() => sendAccessControlConditions(conditionsAreUpdatable)}
+                   nextAction={() => console.log('accessControlConditions', accessControlConditions)}
                    nextDisableConditions={false}
                    nextButtonLabel={'DONE'}/>
       </footer>
