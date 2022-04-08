@@ -42,7 +42,8 @@
         left: 50%;
         transform: translate(-50%, -50%);
         width: 37.5rem;
-        height: 46rem;
+        max-height: 46rem;
+        height: calc(100% - 48px);
     }
 
     .lsm-input {
