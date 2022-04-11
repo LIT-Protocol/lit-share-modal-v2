@@ -54,6 +54,10 @@ const ShareModal = (props) => {
   } = props;
 
   useEffect(() => {
+    resetModal();
+  }, [])
+
+  useEffect(() => {
     const getTokens = async () => {
       // get token list and cache it
       const tokens = await LitJsSdk.getTokenList();
@@ -242,7 +246,6 @@ const ShareModal = (props) => {
       accessControlConditions,
       permanent: !conditionsAreUpdatable,
     };
-    resetModal();
     onAccessControlConditionsSelected(keyParams);
   };
 
