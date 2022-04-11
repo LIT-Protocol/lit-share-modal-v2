@@ -250,12 +250,11 @@ const ShareModal = (props) => {
   return (
     <div>
       {showModal && (
-        <div className={"lsm-top-modal-overlay md:lsm-bg-modal-overlay"} onClick={() => onClose()}>
+        <div className={"lsm-top-modal-overlay md:lsm-bg-modal-overlay"}>
           <div
             className={
               " lsm-css-reset lsm-bg-white lsm-border lsm-border-brand-4 lsm-top-modal"
             }
-            onClick={e => e.stopPropagation()}
           >
             <ShareModalContext.Provider
               value={{
