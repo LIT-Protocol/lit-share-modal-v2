@@ -13,6 +13,7 @@ module.exports = {
       "gray": "#d4d4d4",
       "dark-gray": "#616161",
       "brand-light": "#F0ECF8",
+      "brand-6": "rgba(0, 5, 51, 0.6)",
       "brand-5": "#2C0C72",
       "brand-4": "rgba(129, 89, 217, 1)",
       "brand-3": "#8159D9",

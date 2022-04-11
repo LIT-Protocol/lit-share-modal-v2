@@ -7,5 +7,10 @@
     align-items: center;
     height: 3.5rem;
     border-radius: .25rem 0.25rem 0 0;
+    /*font-size: 16px;*/
+    line-height: 26px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    /*color: rgba(0, 5, 51, 0.6);*/
     box-sizing: border-box;
 }
