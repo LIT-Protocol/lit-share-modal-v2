@@ -242,9 +242,8 @@ const ShareModal = (props) => {
       accessControlConditions,
       permanent: !conditionsAreUpdatable,
     };
-    onAccessControlConditionsSelected(keyParams);
     resetModal();
-    onClose();
+    onAccessControlConditionsSelected(keyParams);
   };
 
   return (
