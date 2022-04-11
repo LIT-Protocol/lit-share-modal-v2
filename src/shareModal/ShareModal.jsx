@@ -114,7 +114,8 @@ const ShareModal = (props) => {
     []
   );
 
-  document.addEventListener("lit-ready", function (e) {}, false);
+  document.addEventListener("lit-ready", function (e) {
+  }, false);
 
   const handleDeleteAccessControlCondition = async (
     localIndex,
@@ -200,7 +201,7 @@ const ShareModal = (props) => {
 
   const updateLogicOperator = async (value, localIndex, nestedIndex = null) => {
     let updatedAcc = [...accessControlConditions];
-    if (!!nestedIndex) {
+    if (nestedIndex) {
       updatedAcc[localIndex][nestedIndex].operator = value;
     } else {
       updatedAcc[localIndex].operator = value;
@@ -252,11 +253,10 @@ const ShareModal = (props) => {
   return (
     <div>
       {showModal && (
-        <div className={"lsm-top-modal-overlay md:lsm-bg-modal-overlay"}>
+        <div className={"lsm-top-modal-overlay md:lsm-bg-modal-overlay"} onClick={() => onClose()}>
           <div
-            className={
-              " lsm-css-reset lsm-bg-white lsm-border lsm-border-brand-4 lsm-top-modal"
-            }
+            className={"lsm-css-reset lsm-bg-white lsm-border lsm-border-brand-4 lsm-top-modal"}
+            onClick={e => e.stopPropagation()}
           >
             <ShareModalContext.Provider
               value={{
@@ -279,7 +279,7 @@ const ShareModal = (props) => {
                 defaultTokens,
               }}
             >
-              {displayPage === "single" && <SingleCondition />}
+              {displayPage === "single" && <SingleCondition/>}
               {displayPage === "multiple" && (
                 <MultipleConditions
                   humanizedAccessControlConditions={
