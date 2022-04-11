@@ -115,8 +115,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
               alt={'clear input'} className={'lsm-h-4 font-os lsm-ml-2'} src={link}/></a>
         </div>
         <LitFooter backAction={() => navigateBack()}
-                   // nextAction={() => sendAccessControlConditions(conditionsAreUpdatable)}
-                   nextAction={() => console.log('accessControlConditions', accessControlConditions)}
+                   nextAction={() => sendAccessControlConditions(conditionsAreUpdatable)}
                    nextDisableConditions={false}
                    nextButtonLabel={'DONE'}/>
       </footer>

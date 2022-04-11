@@ -7,6 +7,11 @@ The Lit Share Modal is a tool for creating access control conditions for securin
 
 ![Lit Share Modal](./assets/sharemodal.jpg)
 
+A Vanilla JS wrapper for the Lit Share Modal is also available.
+- [GitHub](https://github.com/LIT-Protocol/lit-share-modal-v2-vanilla-js)
+- [NPM](https://www.npmjs.com/package/lit-share-modal-v2-vanilla-js)
+
+
 
 # Installation
 
