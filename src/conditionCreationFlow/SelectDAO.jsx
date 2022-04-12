@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import LitReusableSelect from "../reusableComponents/litReusableSelect/LitReusableSelect";
 import { ShareModalContext } from "../shareModal/createShareContext.js";
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
+import LitInput from "../reusableComponents/litInput/LitInput";
 
 const SelectDAO = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   const { setDisplayedPage, chainOptions, flow } = useContext(ShareModalContext);
@@ -44,18 +45,21 @@ const SelectDAO = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
 
   return (
     <div className={'lsm-select-container lsm-bg-white'}>
-      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which DAO's members should be able to access this asset?</h3>
-      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select blockchain:</h3>
+      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which DAO's
+        members should be able to access this asset?</h3>
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
+        blockchain:</h3>
       <LitReusableSelect options={chainOptions}
                          label={'Select blockchain'}
                          option={chain}
                          setOption={setChain}
                          turnOffSearch={true}
       />
-      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Add DAO contract address:</h3>
-      <input value={DAOAddress} onChange={(e) => setDAOAddress(e.target.value)}
-             className={'lsm-border-brand-4 lsm-input'}/>
-      <p className={'lsm-mt-4 lsm-mb-4 lsm-w-full lsm-text-sm lsm-text-title-gray lsm-font-segoe lsm-font-light'}>Lit Gateway currently supports DAOs using the MolochDAOv2.1 contract (includes
+      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Add DAO
+        contract address:</h3>
+      <LitInput value={DAOAddress} setValue={setDAOAddress}/>
+      <p className={'lsm-mt-4 lsm-mb-4 lsm-w-full lsm-text-sm lsm-text-title-gray lsm-font-segoe lsm-font-light'}>Lit
+        Gateway currently supports DAOs using the MolochDAOv2.1 contract (includes
         DAOhaus)</p>
       <LitFooter backAction={() => setSelectPage('chooseAccess')}
                  nextAction={handleSubmit}

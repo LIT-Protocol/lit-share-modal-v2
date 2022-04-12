@@ -5,7 +5,7 @@ import './LitHeader.css';
 const LitHeader = ({ handleClose }) => {
   return (
     <header className={'lsm-bg-brand-light lsm-header-container'}>
-      <h3 className={'lsm-text-brand-6 lsm-font-light lsm-font-segoe'}>ACCESS CONTROL</h3>
+      <h3 className={'lsm-text-brand-6 lsm-header-text lsm-font-light lsm-font-segoe'}>ACCESS CONTROL</h3>
       <button className={'lsm-border-none lsm-cursor-pointer'} onClick={handleClose}>
         {/*<img alt={'close'} className={'lsm-h-4'} src={union} onClick={handleClose}/>*/}
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

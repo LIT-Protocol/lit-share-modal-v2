@@ -3,42 +3,42 @@
 @tailwind utilities;
 
 .lsm-select-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .lsm-select-prompt {
-  margin: 1rem 0;
-  width: 100%;
-  text-align: left;
+    margin: 0;
+    width: 100%;
+    text-align: left;
 }
 
 .lsm-capitalize-and-size {
-  font-weight: bold;
-  font-size: 0.8rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .lsm-text-spacing {
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-  text-align: left;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
 }
 
 .lsm-input {
-  height: 2.7rem;
-  width: 100%;
-  border-radius: 0.25rem;
-  border-width: 1px;
-  border-style: solid;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  box-sizing: border-box;
+    height: 2.7rem;
+    width: 100%;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
 }
 
 .lsm-input:focus {
@@ -47,19 +47,19 @@
 
 
 .lsm-select-label {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  text-align: left;
-  width: 100%;
-  box-sizing: border-box;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .lsm-interior-scroll {
-  height: calc(100% - 10rem);
+    height: calc(100% - 10rem);
 }
 
-.lsm-condition-shadow{
-  background:rgba(0,148,255,.22);
-  box-shadow:1px 1px 4px #04134740;
-  border-radius:2px
+.lsm-condition-shadow {
+    background: rgba(0, 148, 255, .22);
+    box-shadow: 1px 1px 4px #04134740;
+    border-radius: 2px
 }

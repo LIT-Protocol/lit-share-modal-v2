@@ -19,7 +19,8 @@ module.exports = {
       "brand-3": "#8159D9",
       "brand-2": "#e6dcfa",
       "next-button": "rgba(0, 0, 0, 0.26)",
-      "title-gray": "rgba(0, 5, 51, 0.8)"
+      "title-gray": "rgba(0, 5, 51, 0.8)",
+      "error": "rgba(168,0,0,0.7)"
     },
     colors: {
       "white": "#fff",

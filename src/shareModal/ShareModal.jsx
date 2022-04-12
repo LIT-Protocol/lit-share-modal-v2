@@ -55,6 +55,7 @@ const ShareModal = (props) => {
 
   useEffect(() => {
     resetModal();
+    console.log('SUPER BASIC')
   }, [])
 
   useEffect(() => {

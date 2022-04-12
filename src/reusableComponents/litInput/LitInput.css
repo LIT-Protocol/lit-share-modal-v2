@@ -1,0 +1,20 @@
+.lsm-lit-input-container {
+    box-sizing: border-box;
+}
+
+.lsm-lit-input {
+    height: 2.7rem;
+    width: 100%;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+.lsm-input-error {
+    margin: 0.25rem 0 0;
+    transition: 0.3s all;
+    min-height: 1.25rem;
+}
