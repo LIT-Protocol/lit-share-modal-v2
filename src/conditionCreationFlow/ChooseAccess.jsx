@@ -5,7 +5,6 @@ import venn from "../assets/venn.svg";
 import { ShareModalContext } from "../shareModal/createShareContext.js";
 
 const ChooseAccess = ({ setSelectPage }) => {
-  console.log('check ChooseAccess')
   const { setDisplayedPage, setFlow } = useContext(ShareModalContext);
 
   return (

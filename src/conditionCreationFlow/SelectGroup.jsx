@@ -50,6 +50,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
             contractAddress: contractAddress,
           });
         } catch (e) {
+          context.setError(e);
           console.log(e);
         }
         const amountInBaseUnit = ethers.utils.parseUnits(amount, decimals);
@@ -128,6 +129,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
             contractAddress: selectedToken.value,
           });
         } catch (e) {
+          context.setError(e);
           console.log(e);
         }
         if (decimals == 0) {
@@ -171,6 +173,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
               contractAddress: selectedToken.value,
             });
           } catch (e) {
+            context.setError(e);
             console.log(e);
           }
           amountInBaseUnit = ethers.utils.parseUnits(amount, decimals);

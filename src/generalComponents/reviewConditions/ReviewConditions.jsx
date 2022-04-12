@@ -18,6 +18,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [conditionsAreUpdatable, setConditionsAreUpdatable] = useState(false);
+  const [conditionsSent, setConditionsSent] = useState(false);
 
   const navigateBack = () => {
     if (flow === 'singleCondition') {
@@ -127,10 +128,20 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
             conditions <img
               alt={'clear input'} className={'lsm-h-4 font-os lsm-ml-2'} src={link}/></a>
         </div>
-        <LitFooter backAction={() => navigateBack()}
-                   nextAction={() => sendAccessControlConditions(conditionsAreUpdatable)}
-                   nextDisableConditions={false}
-                   nextButtonLabel={'DONE'}/>
+        {!conditionsSent ? (
+          <LitFooter backAction={() => navigateBack()}
+                     nextAction={() => {
+                       setConditionsSent(true);
+                       sendAccessControlConditions(conditionsAreUpdatable);
+                     }}
+                     nextDisableConditions={false}
+                     nextButtonLabel={'DONE'}/>
+        ) : (
+          <span className={'lsm-conditions-sent'}>
+            <span className="lsm-loader lsm-loader-quarter"></span>
+            <p className={'lsm-conditions-sent-text lsm-text-brand-5 lsm-font-segoe lsm-font-light'}>Loading...</p>
+          </span>
+        )}
       </footer>
       <LitConfirmationModal showConfirmationModal={showConfirmationModal}
                             onClick={handleConfirmGoBack}/>

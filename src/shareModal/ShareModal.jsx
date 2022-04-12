@@ -33,6 +33,7 @@ import LitConfirmationModal from "../reusableComponents/litConfirmationModal/Lit
 const ShareModal = (props) => {
   const [displayPage, setDisplayedPage] = useState("single");
   const [error, setError] = useState(null);
+  // const [error, setError] = useState('oh god something went wrong');
   const [accessControlConditions, setAccessControlConditions] = useState([]);
   const [
     humanizedAccessControlConditions,
@@ -55,15 +56,9 @@ const ShareModal = (props) => {
 
   useEffect(() => {
     resetModal();
-    console.log('SUPER BASIC')
   }, [])
 
   useEffect(() => {
-    const getTokens = async () => {
-      // get token list and cache it
-      const tokens = await LitJsSdk.getTokenList();
-      setTokenList(tokens);
-    };
     getTokens();
   }, []);
 
@@ -117,6 +112,16 @@ const ShareModal = (props) => {
 
   document.addEventListener("lit-ready", function (e) {
   }, false);
+
+  const getTokens = async () => {
+    // get token list and cache it
+    try {
+      const tokens = await LitJsSdk.getTokenList();
+      setTokenList(tokens);
+    } catch (err) {
+      setError(err)
+    }
+  };
 
   const handleDeleteAccessControlCondition = async (
     localIndex,
@@ -231,6 +236,7 @@ const ShareModal = (props) => {
     setFlow("singleCondition");
     setDisplayedPage("single");
     clearAllAccessControlConditions();
+    // setError(null);
   };
 
   const handleConfirmModalClose = (modalResponse) => {
@@ -247,6 +253,7 @@ const ShareModal = (props) => {
     const keyParams = {
       accessControlConditions,
       permanent: !conditionsAreUpdatable,
+      chain: 'ethereum'
     };
     onAccessControlConditionsSelected(keyParams);
   };
@@ -259,54 +266,63 @@ const ShareModal = (props) => {
             className={"lsm-css-reset lsm-bg-white lsm-border lsm-border-brand-4 lsm-top-modal"}
             onClick={e => e.stopPropagation()}
           >
-            <ShareModalContext.Provider
-              value={{
-                handleUpdateAccessControlConditions,
-                handleDeleteAccessControlCondition,
-                clearAllAccessControlConditions,
-                updateLogicOperator,
-                handleClose,
-                sendAccessControlConditions,
-                resetModal,
-                setError,
-                setDisplayedPage,
-                setFlow,
-                humanizedAccessControlConditions,
-                accessControlConditions,
-                displayPage,
-                tokenList,
-                flow,
-                chainOptions,
-                defaultTokens,
-              }}
-            >
-              {displayPage === "single" && <SingleCondition/>}
-              {displayPage === "multiple" && (
-                <MultipleConditions
-                  humanizedAccessControlConditions={
-                    humanizedAccessControlConditions
-                  }
-                  accessControlConditions={
-                    accessControlConditions
-                  }
+            {!error ? (
+              <ShareModalContext.Provider
+                value={{
+                  handleUpdateAccessControlConditions,
+                  handleDeleteAccessControlCondition,
+                  clearAllAccessControlConditions,
+                  updateLogicOperator,
+                  handleClose,
+                  sendAccessControlConditions,
+                  resetModal,
+                  setError,
+                  setDisplayedPage,
+                  setFlow,
+                  humanizedAccessControlConditions,
+                  accessControlConditions,
+                  displayPage,
+                  tokenList,
+                  flow,
+                  chainOptions,
+                  defaultTokens,
+                }}
+              >
+                {displayPage === "single" && <SingleCondition/>}
+                {displayPage === "multiple" && (
+                  <MultipleConditions
+                    humanizedAccessControlConditions={
+                      humanizedAccessControlConditions
+                    }
+                    accessControlConditions={
+                      accessControlConditions
+                    }
+                  />
+                )}
+                {displayPage === "review" && (
+                  <ReviewConditions
+                    humanizedAccessControlConditions={
+                      humanizedAccessControlConditions
+                    }
+                    accessControlConditions={
+                      accessControlConditions
+                    }
+                  />
+                )}
+                <LitConfirmationModal
+                  message={"Are you sure you want to close the modal?"}
+                  showConfirmationModal={showConfirmationModal}
+                  onClick={handleConfirmModalClose}
                 />
-              )}
-              {displayPage === "review" && (
-                <ReviewConditions
-                  humanizedAccessControlConditions={
-                    humanizedAccessControlConditions
-                  }
-                  accessControlConditions={
-                    accessControlConditions
-                  }
-                />
-              )}
-              <LitConfirmationModal
-                message={"Are you sure you want to close the modal?"}
-                showConfirmationModal={showConfirmationModal}
-                onClick={handleConfirmModalClose}
-              />
-            </ShareModalContext.Provider>
+              </ShareModalContext.Provider>
+            ) : (
+              <span className={'lsm-error-display'}>
+                <p className={'lsm-font-segoe lsm-text-brand-5'}>An error occurred with an external API:</p>
+                <p className={'lsm-font-segoe'}>{error}</p>
+                <p className={'lsm-font-segoe lsm-text-brand-5'}>Please close and reopen the modal to reconnect.</p>
+                <button className={'lsm-error-button lsm-bg-brand-4'} onClick={onClose}>Close</button>
+              </span>
+            )}
           </div>
         </div>
       )}
