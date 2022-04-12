@@ -138,7 +138,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
                      nextButtonLabel={'DONE'}/>
         ) : (
           <span className={'lsm-conditions-sent'}>
-            <span className="lsm-loader lsm-loader-quarter"></span>
+            <span className="lsm-loader lsm-loader-quarter"/>
             <p className={'lsm-conditions-sent-text lsm-text-brand-5 lsm-font-segoe lsm-font-light'}>Loading...</p>
           </span>
         )}

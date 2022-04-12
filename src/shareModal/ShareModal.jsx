@@ -33,7 +33,6 @@ import LitConfirmationModal from "../reusableComponents/litConfirmationModal/Lit
 const ShareModal = (props) => {
   const [displayPage, setDisplayedPage] = useState("single");
   const [error, setError] = useState(null);
-  // const [error, setError] = useState('oh god something went wrong');
   const [accessControlConditions, setAccessControlConditions] = useState([]);
   const [
     humanizedAccessControlConditions,
