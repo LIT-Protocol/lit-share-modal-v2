@@ -55,7 +55,7 @@ const ShareModal = (props) => {
 
   useEffect(() => {
     resetModal();
-  }, [])
+  }, [props.showModal])
 
   useEffect(() => {
     getTokens();
@@ -235,7 +235,7 @@ const ShareModal = (props) => {
     setFlow("singleCondition");
     setDisplayedPage("single");
     clearAllAccessControlConditions();
-    // setError(null);
+    setError(null);
   };
 
   const handleConfirmModalClose = (modalResponse) => {
