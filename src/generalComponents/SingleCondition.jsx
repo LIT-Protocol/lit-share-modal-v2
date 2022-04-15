@@ -9,7 +9,12 @@ import { ShareModalContext } from "../shareModal/createShareContext.js";
 import LitHeader from "../reusableComponents/litHeader/LitHeader";
 
 const SingleCondition = () => {
-  const { handleUpdateAccessControlConditions, handleClose, setDisplayedPage } = useContext(ShareModalContext);
+  const {
+    handleUpdateAccessControlConditions,
+    handleClose,
+    setDisplayedPage,
+    darkTheme
+  } = useContext(ShareModalContext);
   const [selectPage, setSelectPage] = useState('chooseAccess');
 
   const coordinateUpdateAccessControl = (accessControlConditions) => {
@@ -20,7 +25,7 @@ const SingleCondition = () => {
 
   return (
     <>
-      <LitHeader handleClose={handleClose} />
+      <LitHeader handleClose={handleClose} darkTheme={darkTheme}/>
       <div className={'lsm-width'}>
         {(() => {
           switch (selectPage) {
@@ -44,7 +49,7 @@ const SingleCondition = () => {
                                  handleUpdateAccessControlConditions={coordinateUpdateAccessControl}/>
           }
         })()
-      }
+        }
       </div>
 
     </>

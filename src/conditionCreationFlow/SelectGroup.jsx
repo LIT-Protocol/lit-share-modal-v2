@@ -226,10 +226,13 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
   // }
 
   return (
-    <div className={'lsm-select-container lsm-bg-white'}>
-      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which wallet
+    <div className={'lsm-select-container'}>
+      <h3
+        className={'lsm-select-prompt lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which
+        wallet
         should be able to access this asset?</h3>
-      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
+      <h3
+        className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
         blockchain:</h3>
       <LitReusableSelect options={context.chainOptions}
                          label={'Select blockchain'}
@@ -237,7 +240,8 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
                          setOption={setChain}
                          turnOffSearch={true}
       />
-      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
+      <h3
+        className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
         token/NFT or enter contract address:</h3>
       {(!contractAddress.length) && (
         <LitTokenSelect option={selectedToken}
@@ -248,7 +252,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
       )}
       {((!selectedToken || !selectedToken['label']) && !contractAddress.length) && (
         <p
-          className={'lsm-text-sm md:lsm-text-base lsm-w-full lsm-my-1 lsm-condition-spacing lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>OR</p>
+          className={'lsm-text-sm md:lsm-text-base lsm-w-full lsm-my-1 dark:lsm-text-gray lsm-condition-spacing lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>OR</p>
       )}
       {(!selectedToken || !selectedToken['label']) && (
         <LitInput value={contractAddress}
@@ -260,7 +264,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
       {(!!contractAddress.length) && (
         <div className={'lsm-w-full lsm-mb-2'}>
           <h3
-            className={'lsm-mt-2 lsm-mb-2 lsm-w-full lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-select-label'}>Token
+            className={'lsm-mt-2 lsm-mb-2 lsm-w-full lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-select-label'}>Token
             Contract Type:</h3>
           <span onChange={(e) => handleChangeContractType(e.target.value)}
                 className={'lsm-flex lsm-w-full lsm-justify-around lsm-items-center lsm-mt-2 lsm-px-4 lsm-border lsm-rounded lsm-border-brand-4 focus:outline-0 lsm-input'}>
@@ -268,20 +272,21 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
               <input readOnly checked={contractType === 'ERC20'} type="radio" id="erc20"
                      name="addressType"
                      value="ERC20"/>
-                  <label className={'lsm-ml-2 lsm-font-segoe lsm-text-sm lsm-font-light'} htmlFor="erc20">ERC20</label>
+                  <label className={'lsm-ml-2 lsm-font-segoe dark:lsm-text-gray lsm-text-sm lsm-font-light'}
+                         htmlFor="erc20">ERC20</label>
                   </div>
 
                   <div>
                   <input readOnly checked={contractType === 'ERC721'} type="radio" id="erc721" name="addressType"
                          value="ERC721"/>
-                  <label className={'lsm-ml-2 lsm-font-segoe lsm-text-sm lsm-font-light'}
+                  <label className={'lsm-ml-2 lsm-font-segoe dark:lsm-text-gray lsm-text-sm lsm-font-light'}
                          htmlFor="erc721">ERC721</label>
                   </div>
 
                   <div>
                   <input readOnly checked={contractType === 'ERC1155'} type="radio" id="erc1155" name="addressType"
                          value="ERC1155"/>
-                  <label className={'lsm-ml-2 lsm-font-segoe lsm-text-sm lsm-font-light'}
+                  <label className={'lsm-ml-2 lsm-font-segoe dark:lsm-text-gray lsm-text-sm lsm-font-light'}
                          htmlFor="erc1155">ERC1155</label>
                   </div>
                   </span>
@@ -293,10 +298,12 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
                   placeholder={'ERC1155 Token Id'}
         />
       )}
-      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>How many tokens
+      <h3
+        className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>How
+        many tokens
         does the wallet need to own?</h3>
       <input value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={'##'}
-             className={'lsm-border-brand-4 lsm-input'}/>
+             className={'lsm-border-brand-4 lsm-input dark:lsm-text-gray dark:lsm-bg-brand-7'}/>
       <LitFooter backAction={() => setSelectPage('chooseAccess')}
                  nextAction={handleSubmit}
                  nextDisableConditions={!amount ||

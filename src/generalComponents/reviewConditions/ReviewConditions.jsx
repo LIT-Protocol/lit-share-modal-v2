@@ -14,6 +14,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
     handleClose,
     resetModal,
     setDisplayedPage,
+    darkTheme
   } = useContext(ShareModalContext);
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
@@ -38,10 +39,10 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
 
   return (
     <>
-      <LitHeader handleClose={handleClose}/>
+      <LitHeader handleClose={handleClose} darkTheme={darkTheme}/>
       <div className={'lsm-review-conditions-container lsm-review-scroll lsm-overflow-auto'}>
         <h3
-          className={'lsm-review-conditions-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Scroll
+          className={'lsm-review-conditions-prompt lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Scroll
           down to review your conditions and confirm at bottom</h3>
         <div className={'lsm-w-full lsm-pb-4'}>
           <div
@@ -57,7 +58,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
                        key={i}
                        style={{ 'backgroundColor': colorArray[i / 2] }}>
                     <span
-                      className={'lsm-overflow-auto lsm-humanized-condition-text lsm-text-black lsm-font-segoe lsm-text-base lsm-font-light'}
+                      className={'lsm-overflow-auto lsm-humanized-condition-text dark:lsm-text-gray lsm-text-black dark:lsm-text-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}
                       key={i}
                     > {h[2].humanizedAcc}
                     </span>
@@ -72,14 +73,14 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
                       if (!n['operator']) {
                         return (
                           <span
-                            className={'lsm-overflow-auto lsm-humanized-condition-text lsm-text-black lsm-font-segoe lsm-text-base lsm-font-light'}
+                            className={'lsm-overflow-auto lsm-humanized-condition-text dark:lsm-text-gray lsm-text-black dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}
                             key={`n-${ni}`}>
                             {n.humanizedAcc}
                           </span>
                         )
                       } else {
                         return <span
-                          className={'lsm-humanized-condition-text lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-py-2'}
+                          className={'lsm-humanized-condition-text dark:lsm-text-gray lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-py-2'}
                           key={`n-${ni}`}
                         >{n.operator === 'and' ? 'AND' : 'OR'}
                         </span>
@@ -90,7 +91,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
               } else if (h['operator']) {
                 return (
                   <span
-                    className={'lsm-overflow-auto lsm-ml-4 lsm-w-16 lsm-humanized-condition-text lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-py-2'}
+                    className={'lsm-overflow-auto lsm-ml-4 lsm-w-16 lsm-humanized-condition-text dark:lsm-text-gray lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-py-2'}
                     key={i}
                   >{h.operator === 'and' ? 'AND' : 'OR'}
                   </span>
@@ -101,7 +102,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
                        key={i}
                        style={{ 'backgroundColor': colorArray[i / 2] }}>
                     <span
-                      className={'lsm-overflow-auto lsm-humanized-condition-text lsm-text-black lsm-font-segoe lsm-text-base lsm-font-light'}
+                      className={'lsm-overflow-auto lsm-humanized-condition-text dark:lsm-text-gray lsm-text-black dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}
                       key={i}
                     > {h.humanizedAcc}
                     </span>
@@ -112,17 +113,18 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
           </div>
         </div>
       </div>
-      <footer className={'lsm-flex lsm-flex-col lsm-bg-white lsm-items-align lsm-review-conditions-group'}>
+      <footer className={'lsm-flex lsm-flex-col lsm-items-align lsm-review-conditions-group'}>
         <div
           className={'lsm-mt-4 lsm-flex lsm-items-center lsm-justify-center lsm-mx-auto lsm-px-4 lsm-text-title-gray lsm-text-left lsm-font-segoe lsm-font-light'}>
           <input className={'lsm-mr-4 lsm-h-4 lsm-w-4 lsm-p-2'} type="checkbox" id="edit" name="edit"
                  value={conditionsAreUpdatable} onChange={(e) => setConditionsAreUpdatable(e.target.checked)}/>
-          <label className={'lsm-text-sm md:lsm-text-base lsm-p-2'} htmlFor="edit">Make condition(s) editable; if
+          <label className={'lsm-text-sm md:lsm-text-base dark:lsm-text-gray lsm-p-2'} htmlFor="edit">Make condition(s)
+            editable; if
             selected, only you can edit</label>
         </div>
         <div
           className={'lsm-text-sm lsm-mx-auto lsm-cursor-pointer md:lsm-text-base lsm-mb-4 lsm-mt-4 lsm-text-brand-4 lsm-text-left lsm-font-segoe lsm-font-light'}>
-          <a className={'lsm-text-sm md:lsm-text-base lsm-flex lsm-items-center'}
+          <a className={'lsm-text-sm md:lsm-text-base lsm-flex dark:lsm-text-brand-4 lsm-items-center'}
              href={'https://developer.litprotocol.com/docs/AccessControlConditions/evmBasicExamples'} target={'_blank'}
              rel="noreferrer">More information about
             conditions <img
@@ -135,11 +137,13 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
                        sendAccessControlConditions(conditionsAreUpdatable);
                      }}
                      nextDisableConditions={false}
-                     nextButtonLabel={'DONE'}/>
+                     nextButtonLabel={'DONE'}
+          />
         ) : (
           <span className={'lsm-conditions-sent'}>
             <span className="lsm-loader lsm-loader-quarter"/>
-            <p className={'lsm-conditions-sent-text lsm-text-brand-5 lsm-font-segoe lsm-font-light'}>Loading...</p>
+            <p
+              className={'lsm-conditions-sent-text dark:lsm-text-gray lsm-text-brand-5 lsm-font-segoe lsm-font-light'}>Loading...</p>
           </span>
         )}
       </footer>

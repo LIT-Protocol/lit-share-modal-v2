@@ -35,7 +35,7 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
           value: POAPName,
         },
       },
-      {operator: "or"},
+      { operator: "or" },
       {
         contractAddress: "0x22C1f6050E56d2876009903609a2cC3fEf83B415",
         standardContractType: "POAP",
@@ -60,19 +60,26 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'lsm-select-container lsm-bg-white'}>
-      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which POAP should be able to access this asset?</h3>
-      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>POAP Name:</h3>
+    <div className={'lsm-select-container'}>
+      <h3
+        className={'lsm-select-prompt lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which
+        POAP
+        should be able to access this asset?</h3>
+      <h3
+        className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>POAP
+        Name:</h3>
       <input value={POAPName} onChange={(e) => setPOAPName(e.target.value)}
-             className={'lsm-border-brand-4 lsm-input'}/>
-      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Match conditions:</h3>
+             className={'lsm-border-brand-4 dark:lsm-text-gray dark:lsm-bg-brand-7 lsm-input'}/>
+      <h3
+        className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Match
+        conditions:</h3>
       <LitSimpleDropdown label={'Select match condition'}
                          options={matchConditionOptions}
                          setSelected={setMatchCondition}
-                         selected={matchCondition} />
+                         selected={matchCondition}/>
       <LitFooter backAction={() => setSelectPage('chooseAccess')}
                  nextAction={handleSubmit}
-                 nextDisableConditions={(!POAPName.length || !matchCondition)} />
+                 nextDisableConditions={(!POAPName.length || !matchCondition)}/>
     </div>
   );
 };

@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { ShareModalContext } from "../shareModal/createShareContext.js";
 import MultipleCreateCondition from "./MultipleCreateCondition";
 import LitConfirmationModal from "../reusableComponents/litConfirmationModal/LitConfirmationModal";
-import LitMultipleConditionOrganizer from "../reusableComponents/litMultipeConditionOrganizer/LitMultipleConditionOrganizer";
+import LitMultipleConditionOrganizer
+  from "../reusableComponents/litMultipleConditionOrganizer/LitMultipleConditionOrganizer";
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
 import LitHeader from "../reusableComponents/litHeader/LitHeader";
 
@@ -12,7 +13,9 @@ const MultipleConditions = ({ humanizedAccessControlConditions, accessControlCon
     setFlow,
     resetModal,
     handleClose,
+    darkTheme
   } = useContext(ShareModalContext);
+  console.log('multipleconditions', darkTheme)
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [showAddCondition, setShowAddCondition] = useState(false);
   const [isNested, setIsNested] = useState(false);
@@ -40,12 +43,12 @@ const MultipleConditions = ({ humanizedAccessControlConditions, accessControlCon
 
   return (
     <>
-      <LitHeader handleClose={handleClose} />
+      <LitHeader handleClose={handleClose} darkTheme={darkTheme}/>
       {!showAddCondition ? (
         <>
           <div className={'lsm-overflow-scroll lsm-pt-4 lsm-interior-scroll'}>
             <LitMultipleConditionOrganizer createCondition={createCondition}
-                                          humanizedAccessControlConditions={humanizedAccessControlConditions}
+                                           humanizedAccessControlConditions={humanizedAccessControlConditions}
                                            accessControlConditions={accessControlConditions}
             />
           </div>

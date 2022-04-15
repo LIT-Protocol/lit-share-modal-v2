@@ -43,10 +43,13 @@ const SelectNFT = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'lsm-select-container lsm-bg-white'}>
-      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which wallet
+    <div className={'lsm-select-container'}>
+      <h3
+        className={'lsm-select-prompt lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which
+        wallet
         should be able to access this asset?</h3>
-      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
+      <h3
+        className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
         blockchain:</h3>
       <LitReusableSelect options={chainOptions}
                          label={'Select blockchain'}
@@ -55,7 +58,8 @@ const SelectNFT = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
                          turnOffSearch={true}
       />
       <div className={'lsm-w-full'}>
-        <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
+        <h3
+          className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
           token or
           enter contract address</h3>
         <LitTokenSelect option={selectedToken}
@@ -65,7 +69,8 @@ const SelectNFT = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
         />
       </div>
       <div className={'lsm-w-full'}>
-        <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>
+        <h3
+          className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>
           Add Token ID</h3>
         <LitInput value={tokenId}
                   setValue={setTokenId}

@@ -9,7 +9,9 @@ const ChooseAccess = ({ setSelectPage }) => {
 
   return (
     <div className={'lsm-flex lsm-flex-col lsm-items-center'}>
-      <h3 className={'lsm-mt-8 lsm-mb-4 lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Choose who can
+      <h3
+        className={'lsm-mt-8 lsm-mb-4 lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Choose
+        who can
         access this:</h3>
       <LitChooseAccessButton onClick={() => setSelectPage('wallet')} label={'An Individual Wallet'}/>
       <LitChooseAccessButton onClick={() => setSelectPage('group')} label={'A Group of Token or NFT Holders'}/>

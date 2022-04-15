@@ -18,7 +18,7 @@ import cssFile4 from "../reusableComponents/litFooter/LitNextButton.css";
 import cssFile5 from "../reusableComponents/litFooter/LitFooter.css";
 import cssFile6 from "../reusableComponents/litFooter/LitBackButton.css";
 import cssFile7 from "../reusableComponents/litSimpleDropdown/LitSimpleDropdown.css";
-import cssFile8 from "../reusableComponents/litMultipeConditionOrganizer/LitMultipleConditionOrganizer.css";
+import cssFile8 from "../reusableComponents/litMultipleConditionOrganizer/LitMultipleConditionOrganizer.css";
 import cssFile9 from "../reusableComponents/litDeleteModal/LitDeleteModal.css";
 import cssFile10 from "../generalComponents/reviewConditions/ReviewConditions.css";
 
@@ -40,8 +40,9 @@ const ShareModal = (props) => {
   ] = useState([]);
   const [flow, setFlow] = useState("singleCondition");
   const [tokenList, setTokenList] = useState(null);
+  const [modalCss, setModalCss] = useState("lsm-bg-white lsm-border lsm-border-brand-4 lsm-top-modal")
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  // export const ShareModalContext = createContext({});
+  const [darkTheme, setDarkTheme] = useState(false);
 
   const {
     onClose = () => false,
@@ -51,6 +52,7 @@ const ShareModal = (props) => {
     onAccessControlConditionsSelected,
     defaultTokens = TOP_LIST,
     injectCSS = true,
+    darkMode = true,
   } = props;
 
   useEffect(() => {
@@ -108,6 +110,17 @@ const ShareModal = (props) => {
       }),
     []
   );
+
+  useEffect(() => {
+    if (darkMode) {
+      setModalCss("lsm-dark lsm-top-modal-overlay md:lsm-bg-modal-overlay");
+      setDarkTheme(true);
+    } else {
+      setModalCss("lsm-top-modal-overlay md:lsm-bg-modal-overlay");
+      setDarkTheme(false);
+    }
+  }, [darkMode]);
+
 
   document.addEventListener("lit-ready", function (e) {
   }, false);
@@ -260,9 +273,9 @@ const ShareModal = (props) => {
   return (
     <div>
       {showModal && (
-        <div className={"lsm-top-modal-overlay md:lsm-bg-modal-overlay"} onClick={() => onClose()}>
+        <div className={modalCss} onClick={() => onClose()}>
           <div
-            className={"lsm-css-reset lsm-bg-white lsm-border lsm-border-brand-4 lsm-top-modal"}
+            className={"lsm-bg-white dark:lsm-bg-brand-7 lsm-border lsm-border-brand-4 lsm-top-modal"}
             onClick={e => e.stopPropagation()}
           >
             {!error ? (
@@ -275,6 +288,7 @@ const ShareModal = (props) => {
                   handleClose,
                   sendAccessControlConditions,
                   resetModal,
+                  darkTheme,
                   setError,
                   setDisplayedPage,
                   setFlow,

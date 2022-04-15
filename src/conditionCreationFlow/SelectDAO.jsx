@@ -44,10 +44,13 @@ const SelectDAO = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'lsm-select-container lsm-bg-white'}>
-      <h3 className={'lsm-select-prompt lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which DAO's
+    <div className={'lsm-select-container'}>
+      <h3
+        className={'lsm-select-prompt lsm-text-title-gray dark:lsm-text-gray  lsm-font-segoe lsm-text-base lsm-font-light'}>Which
+        DAO's
         members should be able to access this asset?</h3>
-      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
+      <h3
+        className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray  lsm-font-segoe lsm-text-base lsm-font-light'}>Select
         blockchain:</h3>
       <LitReusableSelect options={chainOptions}
                          label={'Select blockchain'}
@@ -55,7 +58,9 @@ const SelectDAO = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
                          setOption={setChain}
                          turnOffSearch={true}
       />
-      <h3 className={'lsm-select-label lsm-text-title-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Add DAO
+      <h3
+        className={'lsm-select-label dark:lsm-text-gray lsm-text-title-gray dark:lsm-text-gray  lsm-font-segoe lsm-text-base lsm-font-light'}>Add
+        DAO
         contract address:</h3>
       <LitInput value={DAOAddress} setValue={setDAOAddress}/>
       <p className={'lsm-mt-4 lsm-mb-4 lsm-w-full lsm-text-sm lsm-text-title-gray lsm-font-segoe lsm-font-light'}>Lit
