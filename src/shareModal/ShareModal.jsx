@@ -52,7 +52,7 @@ const ShareModal = (props) => {
     onAccessControlConditionsSelected,
     defaultTokens = TOP_LIST,
     injectCSS = true,
-    darkMode = true,
+    darkMode = false,
   } = props;
 
   useEffect(() => {
