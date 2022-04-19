@@ -2,7 +2,6 @@ import React from 'react';
 import './LitHeader.css';
 
 const LitHeader = ({ handleClose, darkTheme }) => {
-  console.log('dark mode!', darkTheme)
   return (
     <header className={'lsm-bg-brand-light dark:lsm-bg-secondary lsm-header-container'}>
       <h3 className={'lsm-text-brand-6 dark:lsm-text-brand-2 lsm-header-text lsm-font-light lsm-font-segoe'}>ACCESS

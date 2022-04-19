@@ -15,7 +15,6 @@ const MultipleConditions = ({ humanizedAccessControlConditions, accessControlCon
     handleClose,
     darkTheme
   } = useContext(ShareModalContext);
-  console.log('multipleconditions', darkTheme)
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [showAddCondition, setShowAddCondition] = useState(false);
   const [isNested, setIsNested] = useState(false);

@@ -8,10 +8,9 @@ The Lit Share Modal is a tool for creating access control conditions for securin
 ![Lit Share Modal](./assets/sharemodal.jpg)
 
 A Vanilla JS wrapper for the Lit Share Modal is also available.
+
 - [Vanilla JS wrapper on GitHub](https://github.com/LIT-Protocol/lit-share-modal-v2-vanilla-js)
 - [Vanilla JS wrapper on NPM](https://www.npmjs.com/package/lit-share-modal-v2-vanilla-js)
-
-
 
 # Installation
 
@@ -68,14 +67,19 @@ export default App;
 `onAccessControlConditions` provides an object with the following properties:
 
 - `accessControlConditions` - an array of objects and nested arrays reflecting the selected conditions
-- `permanent` - a boolean signaling whether conditions will be permanent (true) or editable by the author in the future (false)
+- `permanent` - a boolean signaling whether conditions will be permanent (true) or editable by the author in the
+  future (false)
 
-Documentation on how these properties are used with the `LitJsSdk`, can be found in the [LitJsSdk docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#litnodeclientsavesigningcondition)
+Documentation on how these properties are used with the `LitJsSdk`, can be found in
+the [LitJsSdk docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#litnodeclientsavesigningcondition)
 
 ### Optional
 
-- `injectCSS` - a boolean that is set to true by default. When this is true, the CSS styles will be injected into the <head> of the page when the page loads, so there is no need to import any css. You can set this to "false" if you want to use your own CSS.
+- `injectCSS` - a boolean that is set to true by default. When this is true, the CSS styles will be injected into
+  the <head> of the page when the page loads, so there is no need to import any css. You can set this to "false" if you
+  want to use your own CSS.
 - `defaultTokens` - set quick access tokens that appear in the `Select a Token/NFT` menu
+- `darkTheme` - `false` by default. Set as 'true' to enable dark mode.
 
 Three tokens/NFTs appear as default: `Ethereum`, `LitGate`, and `Blocks`
 
