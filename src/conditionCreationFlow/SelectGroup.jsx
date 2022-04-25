@@ -13,7 +13,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
   const [selectedToken, setSelectedToken] = useState(null);
   const [contractAddress, setContractAddress] = useState("");
   const [chain, setChain] = useState(null);
-  const [contractType, setContractType] = useState("ERC721");
+  const [contractType, setContractType] = useState(null);
   const [erc1155TokenId, setErc1155TokenId] = useState("");
   const [erc1155TokenIdIsValid, setErc1155TokenIdIsValid] = useState(false);
   const [addressIsValid, setAddressIsValid] = useState(false);
@@ -34,6 +34,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
   }, [contractAddress])
 
   useEffect(() => {
+    // todo: maybe delete?  figure out if the address check works
     const isValid = utils.isAddress(erc1155TokenId);
     setErc1155TokenIdIsValid(isValid);
   }, [erc1155TokenId])
@@ -247,7 +248,15 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
         <LitTokenSelect option={selectedToken}
                         label={(!selectedToken || !selectedToken['label']) ? 'Search for a token/NFT' : selectedToken.label}
                         selectedToken={selectedToken}
-                        setSelectedToken={setSelectedToken}
+                        setSelectedToken={(e) => {
+                          if (!!e?.['standard']) {
+                            setContractType(e.standard.toUpperCase())
+                          } else {
+                            setContractType(null);
+                            setErc1155TokenId(null);
+                          }
+                          setSelectedToken(e)
+                        }}
         />
       )}
       {((!selectedToken || !selectedToken['label']) && !contractAddress.length) && (
@@ -261,7 +270,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
                   placeholder={'ERC20 or ERC721 or ERC1155 address'}
         />
       )}
-      {(!!contractAddress.length) && (
+      {(!!contractAddress.length || !!selectedToken) && (
         <div className={'lsm-w-full lsm-mb-2'}>
           <h3
             className={'lsm-mt-2 lsm-mb-2 lsm-w-full lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-select-label'}>Token
@@ -292,9 +301,9 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
                   </span>
         </div>
       )}
-      {(!!contractAddress.length && contractType === 'ERC1155') && (
+      {((!!contractAddress.length || !!selectedToken) && contractType === 'ERC1155') && (
         <LitInput value={erc1155TokenId} setValue={setErc1155TokenId}
-                  errorMessage={erc1155TokenIdIsValid ? null : 'ERC1155 token id is invalid'}
+                  // errorMessage={erc1155TokenIdIsValid ? null : 'ERC1155 token id is invalid'}
                   placeholder={'ERC1155 Token Id'}
         />
       )}
@@ -307,7 +316,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
       <LitFooter backAction={() => setSelectPage('chooseAccess')}
                  nextAction={handleSubmit}
                  nextDisableConditions={!amount ||
-                 (!selectedToken && !addressIsValid) ||
+                 (!selectedToken && !addressIsValid) || !contractType ||
                  !chain || (contractType === 'ERC1155' && !erc1155TokenId.length)}/>
     </div>
   );

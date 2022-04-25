@@ -131,7 +131,9 @@ const LitTokenSelect = ({ label, setSelectedToken, option, selectedToken }) => {
               options={tokenSelectBoxRows}
               styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
               menuPortalTarget={document.body}
-              onChange={setSelectedToken}
+              onChange={(e) => {
+                setSelectedToken(e)
+              }}
             />
           </div>
         </div>
