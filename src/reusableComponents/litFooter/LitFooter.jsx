@@ -7,7 +7,7 @@ const LitFooter = ({
                      backAction = null,
                      nextAction = null,
                      nextDisableConditions = null,
-                     backgroundColor = 'lsm-bg-white dark:lsm-bg-brand-7',
+                     backgroundColor = 'lsm-bg-white dark:lsm-bg-gray-7',
                      nextButtonLabel = null
                    }) => {
   return (

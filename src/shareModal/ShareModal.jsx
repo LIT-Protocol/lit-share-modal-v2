@@ -40,7 +40,7 @@ const ShareModal = (props) => {
   ] = useState([]);
   const [flow, setFlow] = useState("singleCondition");
   const [tokenList, setTokenList] = useState(null);
-  const [modalCss, setModalCss] = useState("lsm-bg-white lsm-border lsm-border-brand-4 lsm-top-modal")
+  const [modalCss, setModalCss] = useState("lsm-bg-white lsm-border-standard lsm-border-gray-4 lsm-top-modal")
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [darkTheme, setDarkTheme] = useState(false);
 
@@ -53,6 +53,7 @@ const ShareModal = (props) => {
     defaultTokens = TOP_LIST,
     injectCSS = true,
     darkMode = false,
+    loadingState = false
   } = props;
 
   useEffect(() => {
@@ -267,7 +268,8 @@ const ShareModal = (props) => {
       permanent: !conditionsAreUpdatable,
       chain: 'ethereum'
     };
-    onAccessControlConditionsSelected(keyParams);
+    console.log('key Params', keyParams)
+    // onAccessControlConditionsSelected(keyParams);
   };
 
   return (
@@ -275,7 +277,7 @@ const ShareModal = (props) => {
       {showModal && (
         <div className={modalCss} onClick={() => onClose()}>
           <div
-            className={"lsm-bg-white dark:lsm-bg-brand-7 lsm-border lsm-border-brand-4 lsm-top-modal"}
+            className={"lsm-bg-white dark:lsm-bg-gray-7 lsm-border-standard lsm-border-gray-4 lsm-top-modal dark:lsm-border-gray-6"}
             onClick={e => e.stopPropagation()}
           >
             {!error ? (
@@ -320,6 +322,7 @@ const ShareModal = (props) => {
                     accessControlConditions={
                       accessControlConditions
                     }
+                    loadingState={loadingState}
                   />
                 )}
                 <LitConfirmationModal
@@ -330,10 +333,10 @@ const ShareModal = (props) => {
               </ShareModalContext.Provider>
             ) : (
               <span className={'lsm-error-display'}>
-                <p className={'lsm-font-segoe lsm-text-brand-5'}>An error occurred with an external API:</p>
+                <p className={'lsm-font-segoe lsm-text-gray-5'}>An error occurred with an external API:</p>
                 <p className={'lsm-font-segoe'}>{error}</p>
-                <p className={'lsm-font-segoe lsm-text-brand-5'}>Please close and reopen the modal to reconnect.</p>
-                <button className={'lsm-error-button lsm-bg-brand-4'} onClick={onClose}>Close</button>
+                <p className={'lsm-font-segoe lsm-text-gray-5'}>Please close and reopen the modal to reconnect.</p>
+                <button className={'lsm-error-button lsm-bg-gray-4'} onClick={onClose}>Close</button>
               </span>
             )}
           </div>

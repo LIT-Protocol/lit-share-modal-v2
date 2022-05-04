@@ -5,7 +5,7 @@ const LitNextButton = ({ disableConditions, onClick, label }) => {
 
   return (
     <button
-      className={'lsm-bg-brand-4 lsm-text-gray dark:lsm-text-gray dark:lsm-bg-brand-4 disabled:lsm-cursor-auto disabled:lsm-bg-gray dark:disabled:lsm-bg-darker-gray dark:disabled:lsm-text-dark-gray disabled:lsm-text-dark-gray lsm-next-button'}
+      className={'lsm-text-gray lsm-bg-initial-blue disabled:lsm-cursor-auto disabled:lsm-bg-gray-light disabled:lsm-text-gray lsm-next-button'}
       disabled={disableConditions ? disableConditions : false}
       onClick={onClick}>
       {!label ? 'NEXT' : label}

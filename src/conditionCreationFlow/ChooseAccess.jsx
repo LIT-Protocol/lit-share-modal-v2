@@ -25,7 +25,7 @@ const ChooseAccess = ({ setSelectPage }) => {
             }}>
           <img src={venn}/>
           <p
-            className={'lsm-text-sm lsm-font-segoe lsm-my-0 lsm-w-6/12 lsm-ml-4 lsm-text-brand-4 lsm-underline md:lsm-text-base md:lsm-w-11/12'}>Gate with multiple conditions using AND/OR operators</p>
+            className={'lsm-text-sm lsm-font-segoe lsm-my-0 lsm-w-6/12 lsm-ml-4 dark:lsm-text-gray-3 lsm-text-dark-gray lsm-underline md:lsm-text-base md:lsm-w-11/12'}>Gate with multiple conditions using AND/OR operators</p>
         </span>
     </div>
   );

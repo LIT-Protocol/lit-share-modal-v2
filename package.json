@@ -1,6 +1,6 @@
 {
   "name": "lit-share-modal",
-  "version": "0.1.82",
+  "version": "0.1.83",
   "repository": "https://github.com/LIT-Protocol/lit-share-modal-v2",
   "main": "./dist/lit-share-modal.umd.js",
   "module": "./dist/lit-share-modal.es.js",
@@ -22,7 +22,7 @@
   "dependencies": {
     "ethers": "^5.5.4",
     "events": "^3.3.0",
-    "lit-js-sdk": "^1.1.156",
+    "lit-js-sdk": "^1.1.176",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-select": "^5.2.2",

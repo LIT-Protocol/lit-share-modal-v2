@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ShareModalContext } from "../../shareModal/createShareContext.js";
 import link from '../../assets/link.svg';
 import LitConfirmationModal from "../../reusableComponents/litConfirmationModal/LitConfirmationModal";
@@ -7,7 +7,7 @@ import LitFooter from "../../reusableComponents/litFooter/LitFooter";
 import { colorArray } from "../../helpers/colorArray";
 import './ReviewConditions.css';
 
-const ReviewConditions = ({ humanizedAccessControlConditions, accessControlConditions }) => {
+const ReviewConditions = ({ humanizedAccessControlConditions, accessControlConditions, loadingState }) => {
   const {
     sendAccessControlConditions,
     flow,
@@ -16,6 +16,14 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
     setDisplayedPage,
     darkTheme
   } = useContext(ShareModalContext);
+
+  useEffect(() => {
+    setConditionsSent(!!loadingState);
+  }, [loadingState])
+
+  useEffect(() => {
+    console.log('humanizedAccessControlConditions', humanizedAccessControlConditions)
+  }, [humanizedAccessControlConditions]);
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [conditionsAreUpdatable, setConditionsAreUpdatable] = useState(false);
@@ -123,8 +131,8 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
             selected, only you can edit</label>
         </div>
         <div
-          className={'lsm-text-sm lsm-mx-auto lsm-cursor-pointer md:lsm-text-base lsm-mb-4 lsm-mt-4 lsm-text-brand-4 lsm-text-left lsm-font-segoe lsm-font-light'}>
-          <a className={'lsm-text-sm md:lsm-text-base lsm-flex dark:lsm-text-brand-4 lsm-items-center'}
+          className={'lsm-text-sm lsm-mx-auto lsm-cursor-pointer md:lsm-text-base lsm-mb-4 lsm-mt-4 lsm-text-gray-4 lsm-text-left lsm-font-segoe lsm-font-light'}>
+          <a className={'lsm-text-sm md:lsm-text-base lsm-flex dark:lsm-text-gray-4 lsm-items-center'}
              href={'https://developer.litprotocol.com/docs/AccessControlConditions/evmBasicExamples'} target={'_blank'}
              rel="noreferrer">More information about
             conditions <img
@@ -143,7 +151,7 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
           <span className={'lsm-conditions-sent'}>
             <span className="lsm-loader lsm-loader-quarter"/>
             <p
-              className={'lsm-conditions-sent-text dark:lsm-text-gray lsm-text-brand-5 lsm-font-segoe lsm-font-light'}>Loading...</p>
+              className={'lsm-conditions-sent-text dark:lsm-text-gray lsm-text-gray-5 lsm-font-segoe lsm-font-light'}>Loading...</p>
           </span>
         )}
       </footer>
