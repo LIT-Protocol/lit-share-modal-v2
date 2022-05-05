@@ -92,6 +92,9 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
         className={'lsm-select-prompt lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which
         POAP
         should be able to access this asset?</h3>
+      <h3
+        className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>POAP
+        How would you like to reference this POAP?</h3>
       <LitSimpleDropdown label={'Select Type of Gate'}
                          options={typeOfPoapGate}
                          setSelected={setPoapGateType}
@@ -99,7 +102,7 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
       {poapGateType.id === 'eventId' ? (
         <div className={'lsm-w-full'}>
           <h3
-            className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>POAP
+            className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>
             POAP ID:</h3>
           <input type={'number'} value={poapId} onChange={(e) => setPoapId(e.target.value)}
                  className={'lsm-border-gray-4 dark:lsm-text-gray dark:lsm-bg-gray-7 lsm-input'}/>
@@ -107,7 +110,7 @@ const SelectPOAP = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
       ) : (
         <div className={'lsm-w-full'}>
           <h3
-            className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>POAP
+            className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>
             POAP Name:</h3>
           <input value={poapName} onChange={(e) => setPoapName(e.target.value)}
                  className={'lsm-border-gray-4 dark:lsm-text-gray dark:lsm-bg-gray-7 lsm-input'}/>
