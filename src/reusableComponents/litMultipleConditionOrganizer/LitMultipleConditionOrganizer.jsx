@@ -203,7 +203,8 @@ const LitMultipleConditionOrganizer = ({
           </span>
       ) : (
         <div className={'lsm-flex lsm-flex-col lsm-items-center'}>
-            <span className={'lsm-condition-organizer-group lsm-bg-initial-blue'}>
+            <span className={'lsm-condition-organizer-group'}
+                  style={{ 'backgroundColor': colorArray[0] }}>
               <button
                 className={'lsm-bg-white lsm-duration-200 hover:lsm-border-gray-5 lsm-border-gray-4 lsm-text-title-gray lsm-define-condition-button dark:lsm-border-gray-2 dark:lsm-bg-gray-7 dark:lsm-text-gray'}
                 onClick={() => createCondition()}>
