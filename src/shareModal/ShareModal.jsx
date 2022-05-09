@@ -268,8 +268,8 @@ const ShareModal = (props) => {
       permanent: !conditionsAreUpdatable,
       chain: 'ethereum'
     };
-    console.log('key Params', keyParams)
-    // onAccessControlConditionsSelected(keyParams);
+    // console.log('key Params', keyParams)
+    onAccessControlConditionsSelected(keyParams);
   };
 
   return (
