@@ -23,6 +23,7 @@ const SelectDAO = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   const handleSubmit = () => {
     const accessControlConditions = [
       {
+        conditionType: "evmBasic",
         contractAddress: DAOAddress,
         standardContractType: "MolochDAOv2.1",
         chain: chain.value,
