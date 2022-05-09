@@ -95,7 +95,7 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
                 errorMessage={addressIsValid ? null : 'Address is invalid'}
       />
       <p
-        className={'lsm-text-sm lsm-w-full lsm-cursor-pointer md:lsm-text-base dark:lsm-text-brand-3 lsm-mb-4 lsm-mt-8 lsm-text-brand-4 lsm-text-left lsm-font-segoe lsm-font-light'}
+        className={'lsm-text-sm lsm-w-full lsm-cursor-pointer lsm-underline  md:lsm-text-base dark:lsm-text-gray-3 lsm-mb-4 lsm-mt-8 lsm-text-title-gray lsm-text-left lsm-font-segoe lsm-font-light'}
         onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
       <LitFooter backAction={() => setSelectPage('chooseAccess')}
                  nextAction={() => handleSubmit()}

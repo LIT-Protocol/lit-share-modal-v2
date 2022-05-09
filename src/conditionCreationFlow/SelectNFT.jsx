@@ -77,7 +77,7 @@ const SelectNFT = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
         />
       </div>
       <p
-        className={'lsm-text-sm md:lsm-text-base lsm-w-full lsm-mt-8 lsm-cursor-pointer lsm-mb-4 lsm-text-brand-4 lsm-text-left lsm-font-segoe lsm-font-light'}
+        className={'lsm-text-sm md:lsm-text-base lsm-underline  lsm-w-full lsm-mt-8 lsm-cursor-pointer lsm-mb-4 lsm-text-title-gray lsm-text-left lsm-font-segoe lsm-font-light'}
         onClick={() => setSelectPage('wallet')}>
         Grant Access to Wallet or
         Blockchain Domain</p>

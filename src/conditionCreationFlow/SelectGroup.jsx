@@ -276,7 +276,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
             className={'lsm-mt-2 lsm-mb-2 lsm-w-full lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-select-label'}>Token
             Contract Type:</h3>
           <span onChange={(e) => handleChangeContractType(e.target.value)}
-                className={'lsm-flex lsm-w-full lsm-justify-around lsm-items-center lsm-mt-2 lsm-px-4 lsm-border lsm-rounded lsm-border-brand-4 focus:outline-0 lsm-input'}>
+                className={'lsm-flex lsm-w-full lsm-justify-around lsm-items-center lsm-mt-2 lsm-px-4 lsm-border-standard lsm-rounded lsm-border-gray-4 focus:outline-0 lsm-input'}>
             <div>
               <input readOnly checked={contractType === 'ERC20'} type="radio" id="erc20"
                      name="addressType"
@@ -312,7 +312,7 @@ const SelectGroup = ({ setSelectPage, handleUpdateAccessControlConditions }) => 
         many tokens
         does the wallet need to own?</h3>
       <input value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={'##'}
-             className={'lsm-border-brand-4 lsm-input dark:lsm-text-gray dark:lsm-bg-brand-7'}/>
+             className={'lsm-border-gray-4 lsm-input dark:lsm-text-gray dark:lsm-bg-gray-7'}/>
       <LitFooter backAction={() => setSelectPage('chooseAccess')}
                  nextAction={handleSubmit}
                  nextDisableConditions={!amount ||

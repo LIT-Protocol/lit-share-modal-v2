@@ -4,12 +4,13 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto 1rem;
-    width: calc(100% - 2rem);
+    width: 2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     /*margin-left: auto;*/
     /*padding: 2rem;*/
     border-radius: 0.25rem;
+    box-sizing: border-box;
 }
 
 .lsm-define-condition-button {
@@ -22,10 +23,21 @@
     cursor: pointer;
 }
 
+.lsm-multiple-condition-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+}
+
 .lsm-humanized-condition-text-container {
     display: flex;
-    width: calc(100% - 2rem);
+    width: 100%;
     padding-left: 1rem;
+    box-sizing: border-box;
     padding-right: 1rem;
     justify-content: space-between;
     align-items: center;

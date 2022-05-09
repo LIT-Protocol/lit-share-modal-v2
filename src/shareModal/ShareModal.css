@@ -33,6 +33,11 @@
     cursor: pointer;
 }
 
+.lsm-border-standard {
+    border-width: 1px;
+    border-style: solid;
+}
+
 
 @media (min-width: 768px) {
     .lsm-top-modal {

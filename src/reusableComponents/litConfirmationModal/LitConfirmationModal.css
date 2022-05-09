@@ -10,7 +10,7 @@
 .lsm-confirmation-modal {
     max-width: 70%;
     height: auto;
-    border-width: 10px;
+    border-width: 1px;
     border-radius: 0.25rem;
     z-index: 30;
     padding: 1.5rem;

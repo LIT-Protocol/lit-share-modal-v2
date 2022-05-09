@@ -3,8 +3,8 @@ import './LitHeader.css';
 
 const LitHeader = ({ handleClose, darkTheme }) => {
   return (
-    <header className={'lsm-bg-brand-light dark:lsm-bg-secondary lsm-header-container'}>
-      <h3 className={'lsm-text-brand-6 dark:lsm-text-brand-2 lsm-header-text lsm-font-light lsm-font-segoe'}>ACCESS
+    <header className={'lsm-bg-gray-light dark:lsm-bg-gray-7 lsm-header-container'}>
+      <h3 className={'lsm-text-gray-6 dark:lsm-text-gray-2 lsm-header-text lsm-font-light lsm-font-segoe'}>ACCESS
         CONTROL</h3>
       {/*<img alt={'close'} className={'lsm-h-4'} src={union} onClick={handleClose}/>*/}
       {!darkTheme ? (

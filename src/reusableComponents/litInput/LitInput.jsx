@@ -12,7 +12,7 @@ const LitInput = ({
       <input placeholder={placeholder}
              value={value}
              onChange={(e) => setValue(e.target.value)}
-             className={'lsm-border-brand-4 lsm-input dark:lsm-bg-brand-7 dark:lsm-text-gray'}/>
+             className={'lsm-border-gray-4 lsm-input dark:lsm-bg-gray-7 dark:lsm-text-white'}/>
       <p className={'lsm-input-error lsm-text-error dark:lsm-text-dark-error lsm-font-segoe lsm-text-sm'}>
         {(errorMessage && value.length) ? errorMessage : ''}</p>
     </div>

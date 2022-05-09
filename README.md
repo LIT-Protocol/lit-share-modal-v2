@@ -7,6 +7,8 @@ The Lit Share Modal is a tool for creating access control conditions for securin
 
 ![Lit Share Modal](./assets/sharemodal.jpg)
 
+[comment]: <> (If you are using NextJS, the CSS injection will not work.  Follow these  )
+
 A Vanilla JS wrapper for the Lit Share Modal is also available.
 
 - [Vanilla JS wrapper on GitHub](https://github.com/LIT-Protocol/lit-share-modal-v2-vanilla-js)
@@ -80,6 +82,8 @@ the [LitJsSdk docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/inde
   want to use your own CSS.
 - `defaultTokens` - set quick access tokens that appear in the `Select a Token/NFT` menu
 - `darkTheme` - `false` by default. Set as 'true' to enable dark mode.
+- `loadingState` - `false` initially, but reflects the loading state on the `Review Conditions` screen. Allows the loader status to be reset
+from outside the modal.
 
 Three tokens/NFTs appear as default: `Ethereum`, `LitGate`, and `Blocks`
 

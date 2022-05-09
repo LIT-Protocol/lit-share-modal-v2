@@ -27,31 +27,31 @@ const LitReusableSelect = ({ options, label, setOption, option, turnOffSearch = 
       option &&
       chain["name"] === option["name"]
     ) {
-      return 'lsm-reusable-select-option lsm-border-brand-5 dark:lsm-border-brand-2 lsm-bg-white dark:lsm-text-gray dark:lsm-bg-brand-7 lsm-border-2';
+      return 'lsm-reusable-select-option lsm-border-gray-5 dark:lsm-border-gray-2 lsm-bg-white dark:lsm-text-gray dark:lsm-bg-gray-7 lsm-border-2';
     } else {
-      return 'lsm-reusable-select-option lsm-border-brand-2 dark:lsm-border-brand-5 lsm-bg-white dark:lsm-text-gray dark:lsm-bg-brand-7 lsm-border-2';
+      return 'lsm-reusable-select-option lsm-border-gray-2 dark:lsm-border-gray-5 lsm-bg-white dark:lsm-text-gray dark:lsm-bg-gray-7 lsm-border-2';
     }
   };
 
   return (
     <div className={'lsm-w-full'}>
       <button
-        className={"lsm-bg-white dark:lsm-bg-brand-7 dark:lsm-text-gray lsm-border-brand-4 hover:lsm-border-brand-5 lsm-select-none focus:lsm-outline-0 focus:lsm-outline-transparent lsm-reusable-select-button"}
+        className={"lsm-bg-white dark:lsm-bg-gray-7 lsm-border-gray-4 hover:lsm-border-gray-5 lsm-select-none focus:lsm-outline-0 focus:lsm-outline-transparent lsm-reusable-select-button"}
         onClick={() => setSelectIsOpen(true)}>
-        <span className={'lsm-ml-2'}>{option ? option.name : label}</span>
+        <span className={'lsm-ml-2 lsm-text-title-gray dark:lsm-text-gray-2'}>{option ? option.name : label}</span>
         <img src={chevronDown} className={'lsm-mr-2'}/>
       </button>
       {!!selectIsOpen && (
-        <div className={'lsm-reusable-select-container lsm-bg-brand-2 dark:lsm-bg-brand-7'}>
+        <div className={'lsm-reusable-select-container lsm-bg-gray-2 dark:lsm-bg-gray-7'}>
           {turnOffSearch ? (
-            <div className={'lsm-reusable-select-title lsm-bg-brand-4 dark:lsm-bg-brand-7'}>
-              <h3 className={'lsm-text-gray lsm-font-segoe lsm-font-light'}>{label.toUpperCase()}</h3>
+            <div className={'lsm-reusable-select-title lsm-bg-gray-4 dark:lsm-bg-gray-7'}>
+              <h3 className={'lsm-text-title-gray dark:lsm-text-gray-2 lsm-font-segoe lsm-font-light'}>{label.toUpperCase()}</h3>
             </div>
           ) : (
-            <div className={'lsm-fixed lsm-top-0 lsm-left-0 lsm-w-full lsm-pt-4 lsm-pb-2 lsm-bg-brand-2'}>
+            <div className={'lsm-fixed lsm-top-0 lsm-left-0 lsm-w-full lsm-pt-4 lsm-pb-2 lsm-bg-gray-2'}>
                 <span
-                  className={'lsm-w-11/12 lsm-mx-auto lsm-border-b lsm-border-brand-2 lsm-flex lsm-flex-row lsm-items-center lsm-justify-between lsm-px-2'}>
-                  <input className={'lsm-w-full lsm-py-2 focus:outline-0 lsm-bg-brand-light lsm-input'}
+                  className={'lsm-w-11/12 lsm-mx-auto lsm-border-b lsm-border-gray-2 lsm-flex lsm-flex-row lsm-items-center lsm-justify-between lsm-px-2'}>
+                  <input className={'lsm-w-full lsm-py-2 focus:outline-0 lsm-bg-gray-light lsm-input'}
                          value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
                   <img alt={'clear input'} className={'lsm-h-4 font-os'} src={union} onClick={() => setSearchTerm('')}/>
                 </span>
