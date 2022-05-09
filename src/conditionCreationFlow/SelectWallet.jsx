@@ -1,14 +1,21 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from "react";
 import { ShareModalContext } from "../shareModal/createShareContext.js";
 import LitReusableSelect from "../reusableComponents/litReusableSelect/LitReusableSelect";
 import LitJsSdk from "lit-js-sdk";
 import LitFooter from "../reusableComponents/litFooter/LitFooter";
-import { utils } from 'ethers';
+import { utils } from "ethers";
 import LitInput from "../reusableComponents/litInput/LitInput";
+import {
+  generateUnifiedCondition,
+  CONDITION_TYPES,
+} from "../helpers/conditionGenerator.js";
 
-
-const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
-  const { setDisplayedPage, chainOptions, flow } = useContext(ShareModalContext);
+const SelectWallet = ({
+  setSelectPage,
+  handleUpdateAccessControlConditions,
+}) => {
+  const { setDisplayedPage, chainOptions, flow } =
+    useContext(ShareModalContext);
   const [walletAddress, setWalletAddress] = useState("");
   const [chain, setChain] = useState({});
   const [addressIsValid, setAddressIsValid] = useState(false);
@@ -24,9 +31,17 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
   );
 
   useEffect(() => {
-    const isValid = utils.isAddress(walletAddress);
-    setAddressIsValid(isValid);
-  }, [walletAddress])
+    if (
+      chain &&
+      chain.value &&
+      LitJsSdk.ALL_LIT_CHAINS[chain.value].vmType === "EVM"
+    ) {
+      const isValid = utils.isAddress(walletAddress);
+      setAddressIsValid(isValid);
+    } else {
+      setAddressIsValid(true);
+    }
+  }, [walletAddress]);
 
   const handleSubmit = async () => {
     let resolvedAddress = walletAddress;
@@ -39,7 +54,9 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
           name: walletAddress,
         });
       } catch (err) {
-        alert('Error connecting.  If using mobile, use the Metamask Mobile Browser to connect.')
+        alert(
+          "Error connecting.  If using mobile, use the Metamask Mobile Browser to connect."
+        );
         return;
       }
       if (!resolvedAddress) {
@@ -48,61 +65,87 @@ const SelectWallet = ({ setSelectPage, handleUpdateAccessControlConditions }) =>
         return;
       }
     }
-    const accessControlConditions = [
-      {
-        contractAddress: "",
-        standardContractType: "",
-        chain: chain.value,
-        method: "",
-        parameters: [":userAddress"],
-        returnValueTest: {
-          comparator: "=",
-          value: resolvedAddress,
-        },
-      },
-    ];
+    // const accessControlConditions = [
+    //   {
+    //     contractAddress: "",
+    //     standardContractType: "",
+    //     chain: chain.value,
+    //     method: "",
+    //     parameters: [":userAddress"],
+    //     returnValueTest: {
+    //       comparator: "=",
+    //       value: resolvedAddress,
+    //     },
+    //   },
+    // ];
+
+    const accessControlConditions = generateUnifiedCondition({
+      chain: chain.value,
+      conditionType: CONDITION_TYPES.INDIVIDUAL_WALLET,
+      params: { resolvedAddress },
+    });
 
     handleUpdateAccessControlConditions(accessControlConditions);
 
-    if (flow === 'singleCondition') {
-      setDisplayedPage('review');
-    } else if (flow === 'multipleConditions') {
-      setDisplayedPage('multiple');
+    if (flow === "singleCondition") {
+      setDisplayedPage("review");
+    } else if (flow === "multipleConditions") {
+      setDisplayedPage("multiple");
     }
   };
 
   return (
-    <div className={'lsm-select-container'}>
+    <div className={"lsm-select-container"}>
       <h3
-        className={'lsm-select-prompt lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which
-        wallet
-        should be able to access this asset?</h3>
+        className={
+          "lsm-select-prompt lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light"
+        }
+      >
+        Which wallet should be able to access this asset?
+      </h3>
       <h3
-        className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Select
-        blockchain:</h3>
-      <LitReusableSelect options={chainOptions}
-                         label={'Select blockchain'}
-                         option={chain}
-                         setOption={setChain}
-                         turnOffSearch={true}
+        className={
+          "lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light"
+        }
+      >
+        Select blockchain:
+      </h3>
+      <LitReusableSelect
+        options={chainOptions}
+        label={"Select blockchain"}
+        option={chain}
+        setOption={setChain}
+        turnOffSearch={true}
       />
       <h3
-        className={'lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Add
-        Wallet
-        Address or Blockchain Domain (e.g. ENS, UNS) here:</h3>
-      <LitInput value={walletAddress}
-                setValue={setWalletAddress}
-                errorMessage={addressIsValid ? null : 'Address is invalid'}
+        className={
+          "lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light"
+        }
+      >
+        Add Wallet Address or Blockchain Domain (e.g. ENS, UNS) here:
+      </h3>
+      <LitInput
+        value={walletAddress}
+        setValue={setWalletAddress}
+        errorMessage={addressIsValid ? null : "Address is invalid"}
       />
       <p
-        className={'lsm-text-sm lsm-w-full lsm-cursor-pointer lsm-underline  md:lsm-text-base dark:lsm-text-gray-3 lsm-mb-4 lsm-mt-8 lsm-text-title-gray lsm-text-left lsm-font-segoe lsm-font-light'}
-        onClick={() => setSelectPage('nft')}>Grant Access on NFT Ownership</p>
-      <LitFooter backAction={() => setSelectPage('chooseAccess')}
-                 nextAction={() => handleSubmit()}
-                 nextDisableConditions={(!chain['name'] || !walletAddress.length || !addressIsValid)}/>
+        className={
+          "lsm-text-sm lsm-w-full lsm-cursor-pointer lsm-underline  md:lsm-text-base dark:lsm-text-gray-3 lsm-mb-4 lsm-mt-8 lsm-text-title-gray lsm-text-left lsm-font-segoe lsm-font-light"
+        }
+        onClick={() => setSelectPage("nft")}
+      >
+        Grant Access on NFT Ownership
+      </p>
+      <LitFooter
+        backAction={() => setSelectPage("chooseAccess")}
+        nextAction={() => handleSubmit()}
+        nextDisableConditions={
+          !chain["name"] || !walletAddress.length || !addressIsValid
+        }
+      />
     </div>
   );
-}
-
+};
 
 export default SelectWallet;
