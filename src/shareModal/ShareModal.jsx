@@ -49,7 +49,7 @@ const ShareModal = (props) => {
     onBack = () => false,
     // TODO: showModal needs to start as false
     showModal = true,
-    onAccessControlConditionsSelected,
+    onUnifiedAccessControlConditionsSelected,
     defaultTokens = TOP_LIST,
     injectCSS = true,
     darkMode = false,
@@ -107,6 +107,7 @@ const ShareModal = (props) => {
           name: supportedChains[item].name,
           id: item,
           value: item,
+          vmType: supportedChains[item].vmType,
         };
       }),
     []
@@ -264,10 +265,12 @@ const ShareModal = (props) => {
     const keyParams = {
       accessControlConditions,
       permanent: !conditionsAreUpdatable,
-      chain: "ethereum",
     };
-    // console.log('key Params', keyParams)
-    onAccessControlConditionsSelected(keyParams);
+    console.log(
+      "Calling onUnifiedAccessControlConditionsSelected with keyParams ",
+      keyParams
+    );
+    onUnifiedAccessControlConditionsSelected(keyParams);
   };
 
   return (

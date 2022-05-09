@@ -109,6 +109,7 @@ export const generateUnifiedCondition = ({ chain, conditionType, params }) => {
       } else if (params.contractType === "ERC721") {
         return [
           {
+            conditionType: "evmBasic",
             contractAddress: params.contractAddress,
             standardContractType: params.contractType,
             chain,
@@ -123,6 +124,7 @@ export const generateUnifiedCondition = ({ chain, conditionType, params }) => {
       } else if (params.contractType === "ERC1155") {
         return [
           {
+            conditionType: "evmBasic",
             contractAddress: params.contractAddress,
             standardContractType: params.contractType,
             chain,
@@ -138,8 +140,9 @@ export const generateUnifiedCondition = ({ chain, conditionType, params }) => {
     } else if (vmType === "SVM") {
       return [
         {
+          conditionType: "solRpc",
           method: "balanceOfMetaplexCollection",
-          params: params.contractAddress,
+          params: [params.contractAddress],
           chain,
           returnValueTest: {
             key: "",
@@ -153,6 +156,7 @@ export const generateUnifiedCondition = ({ chain, conditionType, params }) => {
     if (vmType === "EVM") {
       return [
         {
+          conditionType: "evmBasic",
           contractAddress: "",
           standardContractType: "",
           chain,
@@ -167,6 +171,7 @@ export const generateUnifiedCondition = ({ chain, conditionType, params }) => {
     } else if (vmType === "SVM") {
       return [
         {
+          conditionType: "solRpc",
           method: "getBalance",
           params: [":userAddress"],
           chain,

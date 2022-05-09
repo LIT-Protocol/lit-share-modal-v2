@@ -99,6 +99,16 @@ const SelectGroup = ({
             amount: amount.toString(),
           },
         });
+      } else {
+        // probably a solana token
+        accessControlConditions = generateUnifiedCondition({
+          chain: chain.value,
+          conditionType: CONDITION_TYPES.HOLDS_TOKEN_IN_COLLECTION,
+          params: {
+            contractAddress,
+            amount: amount.toString(),
+          },
+        });
       }
       handleUpdateAccessControlConditions(accessControlConditions);
     } else if (selectedToken && selectedToken.value === "ethereum") {
@@ -230,7 +240,7 @@ const SelectGroup = ({
           "lsm-select-prompt lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light"
         }
       >
-        Which wallet should be able to access this asset?
+        Which group should be able to access this asset?
       </h3>
       <h3
         className={
@@ -251,7 +261,11 @@ const SelectGroup = ({
           "lsm-select-label lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light"
         }
       >
-        Select token/NFT or enter contract address:
+        {chain &&
+        chain.value &&
+        LitJsSdk.ALL_LIT_CHAINS[chain.value].vmType === "EVM"
+          ? "Select token/NFT or enter contract address:"
+          : "Select token/NFT or enter Metaplex collection address:"}
       </h3>
       {!contractAddress.length && (
         <LitTokenSelect
@@ -288,83 +302,94 @@ const SelectGroup = ({
           value={contractAddress}
           setValue={setContractAddress}
           errorMessage={addressIsValid ? null : "Address is invalid"}
-          placeholder={"ERC20 or ERC721 or ERC1155 address"}
+          placeholder={
+            chain &&
+            chain.value &&
+            LitJsSdk.ALL_LIT_CHAINS[chain.value].vmType === "EVM"
+              ? "ERC20 or ERC721 or ERC1155 address"
+              : "Metaplex collection address"
+          }
         />
       )}
-      {(!!contractAddress.length || !!selectedToken) && (
-        <div className={"lsm-w-full lsm-mb-2"}>
-          <h3
-            className={
-              "lsm-mt-2 lsm-mb-2 lsm-w-full lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-select-label"
-            }
-          >
-            Token Contract Type:
-          </h3>
-          <span
-            onChange={(e) => handleChangeContractType(e.target.value)}
-            className={
-              "lsm-flex lsm-w-full lsm-justify-around lsm-items-center lsm-mt-2 lsm-px-4 lsm-border-standard lsm-rounded lsm-border-gray-4 focus:outline-0 lsm-input"
-            }
-          >
-            <div>
-              <input
-                readOnly
-                checked={contractType === "ERC20"}
-                type="radio"
-                id="erc20"
-                name="addressType"
-                value="ERC20"
-              />
-              <label
-                className={
-                  "lsm-ml-2 lsm-font-segoe dark:lsm-text-gray lsm-text-sm lsm-font-light"
-                }
-                htmlFor="erc20"
-              >
-                ERC20
-              </label>
-            </div>
+      {(!!contractAddress.length || !!selectedToken) &&
+        chain &&
+        chain.value &&
+        LitJsSdk.ALL_LIT_CHAINS[chain.value].vmType === "EVM" &&
+        selectedToken.value !== "ethereum" &&
+        selectedToken.value !== "solana" && (
+          <div className={"lsm-w-full lsm-mb-2"}>
+            <h3
+              className={
+                "lsm-mt-2 lsm-mb-2 lsm-w-full lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light lsm-select-label"
+              }
+            >
+              Token Contract Type:
+            </h3>
+            <span
+              onChange={(e) => handleChangeContractType(e.target.value)}
+              className={
+                "lsm-flex lsm-w-full lsm-justify-around lsm-items-center lsm-mt-2 lsm-px-4 lsm-border-standard lsm-rounded lsm-border-gray-4 focus:outline-0 lsm-input"
+              }
+            >
+              <div>
+                <input
+                  readOnly
+                  checked={contractType === "ERC20"}
+                  type="radio"
+                  id="erc20"
+                  name="addressType"
+                  value="ERC20"
+                />
+                <label
+                  className={
+                    "lsm-ml-2 lsm-font-segoe dark:lsm-text-gray lsm-text-sm lsm-font-light"
+                  }
+                  htmlFor="erc20"
+                >
+                  ERC20
+                </label>
+              </div>
 
-            <div>
-              <input
-                readOnly
-                checked={contractType === "ERC721"}
-                type="radio"
-                id="erc721"
-                name="addressType"
-                value="ERC721"
-              />
-              <label
-                className={
-                  "lsm-ml-2 lsm-font-segoe dark:lsm-text-gray lsm-text-sm lsm-font-light"
-                }
-                htmlFor="erc721"
-              >
-                ERC721
-              </label>
-            </div>
+              <div>
+                <input
+                  readOnly
+                  checked={contractType === "ERC721"}
+                  type="radio"
+                  id="erc721"
+                  name="addressType"
+                  value="ERC721"
+                />
+                <label
+                  className={
+                    "lsm-ml-2 lsm-font-segoe dark:lsm-text-gray lsm-text-sm lsm-font-light"
+                  }
+                  htmlFor="erc721"
+                >
+                  ERC721
+                </label>
+              </div>
 
-            <div>
-              <input
-                readOnly
-                checked={contractType === "ERC1155"}
-                type="radio"
-                id="erc1155"
-                name="addressType"
-                value="ERC1155"
-              />
-              <label
-                className={
-                  "lsm-ml-2 lsm-font-segoe dark:lsm-text-gray lsm-text-sm lsm-font-light"
-                }
-                htmlFor="erc1155"
-              >
-                ERC1155
-              </label>
-            </div>
-          </span>
-        </div>
-      )}
+              <div>
+                <input
+                  readOnly
+                  checked={contractType === "ERC1155"}
+                  type="radio"
+                  id="erc1155"
+                  name="addressType"
+                  value="ERC1155"
+                />
+                <label
+                  className={
+                    "lsm-ml-2 lsm-font-segoe dark:lsm-text-gray lsm-text-sm lsm-font-light"
+                  }
+                  htmlFor="erc1155"
+                >
+                  ERC1155
+                </label>
+              </div>
+            </span>
+          </div>
+        )}
       {(!!contractAddress.length || !!selectedToken) &&
         contractType === "ERC1155" && (
           <LitInput
@@ -395,7 +420,10 @@ const SelectGroup = ({
         nextDisableConditions={
           !amount ||
           (!selectedToken && !addressIsValid) ||
-          !contractType ||
+          (selectedToken &&
+            selectedToken.value !== "ethereum" &&
+            selectedToken.value !== "solana" &&
+            !contractType) ||
           !chain ||
           (contractType === "ERC1155" && !erc1155TokenId.length)
         }
