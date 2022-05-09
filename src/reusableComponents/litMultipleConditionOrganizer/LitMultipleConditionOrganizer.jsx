@@ -69,19 +69,27 @@ const LitMultipleConditionOrganizer = ({
               key={i}
               style={{ 'backgroundColor': colorArray[i / 2] }}>
               <span className={'lsm-humanized-condition-text-container'}>
-                <span
-                  className={'lsm-overflow-auto dark:lsm-text-gray lsm-humanized-condition-text lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>
-                  {a[2].humanizedAcc}
-                </span>
-                <span>
-                  <button className={'lsm-mr-1 lsm-border-none lsm-bg-transparent lsm-cursor-pointer'}>
-                    <img src={darkTheme ? lighttrashcan : trashcan} onClick={() => {
-                      setAccType('POAP');
-                      setCurrentAccIndex([i]);
-                      setShowDeleteModal(true);
-                    }}/>
-                  </button>
-                </span>
+                <div className={'lsm-multiple-condition-group'}>
+                  <span
+                    className={'lsm-overflow-auto dark:lsm-text-gray lsm-humanized-condition-text lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>
+                    {a[0].humanizedAcc}
+                  </span>
+                  <span
+                    className={'lsm-overflow-auto dark:lsm-text-gray lsm-humanized-condition-text lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>
+                    OR
+                  </span>
+                  <span
+                    className={'lsm-overflow-auto dark:lsm-text-gray lsm-humanized-condition-text lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>
+                    {a[2].humanizedAcc}
+                  </span>
+                </div>
+                <button className={'lsm-mr-1 lsm-border-none lsm-bg-transparent lsm-cursor-pointer'}>
+                  <img src={darkTheme ? lighttrashcan : trashcan} onClick={() => {
+                    setAccType('POAP');
+                    setCurrentAccIndex([i]);
+                    setShowDeleteModal(true);
+                  }}/>
+                </button>
               </span>
             </div>
           )

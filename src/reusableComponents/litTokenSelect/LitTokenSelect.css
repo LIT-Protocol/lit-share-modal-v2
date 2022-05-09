@@ -35,13 +35,14 @@
 }
 
 .lsm-token-select-header {
-    width: calc(100% - 2rem);
+    width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 3.5rem;
+    box-sizing: border-box;
     /*border-radius: .25rem 0.25rem 0 0;*/
 }
 

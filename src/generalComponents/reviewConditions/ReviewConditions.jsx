@@ -68,7 +68,17 @@ const ReviewConditions = ({ humanizedAccessControlConditions, accessControlCondi
                     <span
                       className={'lsm-overflow-auto lsm-humanized-condition-text dark:lsm-text-gray lsm-text-black dark:lsm-text-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}
                       key={i}
-                    > {h[2].humanizedAcc}
+                    > {h[0].humanizedAcc}
+                    </span>
+                    <span
+                      className={'lsm-overflow-auto lsm-humanized-condition-text dark:lsm-text-gray lsm-text-black dark:lsm-text-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}
+                      key={i}
+                    > OR
+                    </span>
+                    <span
+                      className={'lsm-overflow-auto lsm-humanized-condition-text dark:lsm-text-gray lsm-text-black dark:lsm-text-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}
+                      key={i}
+                    >{h[2].humanizedAcc}
                     </span>
                   </div>
                 )
