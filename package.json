@@ -1,6 +1,6 @@
 {
   "name": "lit-share-modal",
-  "version": "0.1.89",
+  "version": "0.1.90",
   "repository": "https://github.com/LIT-Protocol/lit-share-modal-v2",
   "main": "./dist/lit-share-modal.umd.js",
   "module": "./dist/lit-share-modal.es.js",
