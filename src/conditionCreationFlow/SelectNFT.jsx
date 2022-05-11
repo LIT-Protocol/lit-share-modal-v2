@@ -43,7 +43,7 @@ const SelectNFT = ({ setSelectPage, handleUpdateAccessControlConditions }) => {
   };
 
   return (
-    <div className={'lsm-select-container lsm-interior-scroll'}>
+    <div className={'lsm-select-container'}>
       <h3
         className={'lsm-select-prompt lsm-text-title-gray dark:lsm-text-gray lsm-font-segoe lsm-text-base lsm-font-light'}>Which
         wallet

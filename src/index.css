@@ -58,6 +58,10 @@
     height: calc(100% - 10rem);
 }
 
+.lsm-multiple-scroll {
+    height: calc(100% - 4rem);
+}
+
 .lsm-form-scroll {
     height: calc(100% - 8rem);
     /*height: 10rem;*/

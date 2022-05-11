@@ -34,7 +34,7 @@ const MultipleCreateCondition = ({ endOfCreateCondition, isNested, nestedIndex }
   }
 
   return (
-    <div className={'lsm-width'}>
+    <div className={'lsm-width lsm-form-scroll'}>
       {(() => {
         switch (selectPage) {
           case 'wallet':

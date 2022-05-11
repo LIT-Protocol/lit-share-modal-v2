@@ -41,11 +41,11 @@ const MultipleConditions = ({ humanizedAccessControlConditions, accessControlCon
   }
 
   return (
-    <>
+    <div className={'lsm-h-full'}>
       <LitHeader handleClose={handleClose} darkTheme={darkTheme}/>
       {!showAddCondition ? (
-        <>
-          <div className={'lsm-overflow-scroll lsm-pt-4 lsm-interior-scroll'}>
+        <div className={'lsm-multiple-scroll'}>
+          <div className={'lsm-overflow-scroll lsm-pt-4 lsm-form-scroll'}>
             <LitMultipleConditionOrganizer createCondition={createCondition}
                                            humanizedAccessControlConditions={humanizedAccessControlConditions}
                                            accessControlConditions={accessControlConditions}
@@ -65,13 +65,13 @@ const MultipleConditions = ({ humanizedAccessControlConditions, accessControlCon
           />
           <LitConfirmationModal showConfirmationModal={showConfirmationModal}
                                 onClick={handleConfirmGoBack}/>
-        </>
+        </div>
       ) : (
         <MultipleCreateCondition endOfCreateCondition={endOfCreateCondition}
                                  isNested={isNested}
                                  nestedIndex={nestedIndex}/>
       )}
-    </>
+    </div>
   );
 };
 
