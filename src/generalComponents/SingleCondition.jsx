@@ -24,9 +24,9 @@ const SingleCondition = () => {
   }
 
   return (
-    <>
+    <div className={'lsm-h-full'}>
       <LitHeader handleClose={handleClose} darkTheme={darkTheme}/>
-      <div className={'lsm-width'}>
+      <div className={'lsm-width lsm-form-scroll'}>
         {(() => {
           switch (selectPage) {
             case 'chooseAccess':
@@ -52,7 +52,7 @@ const SingleCondition = () => {
         }
       </div>
 
-    </>
+    </div>
   )
 
 };

@@ -58,6 +58,12 @@
     height: calc(100% - 10rem);
 }
 
+.lsm-form-scroll {
+    height: calc(100% - 8rem);
+    /*height: 10rem;*/
+    overflow-y: scroll;
+}
+
 .lsm-condition-shadow {
     background: rgba(0, 148, 255, .22);
     box-shadow: 1px 1px 4px #04134740;
