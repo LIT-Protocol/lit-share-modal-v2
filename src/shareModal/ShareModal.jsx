@@ -1,15 +1,11 @@
-import React, {
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import SingleCondition from "../generalComponents/SingleCondition";
 import ReviewConditions from "../generalComponents/reviewConditions/ReviewConditions";
 import MultipleConditions from "../generalComponents/MultipleConditions";
 import { ShareModalContext } from "./createShareContext";
 
 import baseCss from "../index.css";
-import modalCss from "./ShareModal.css";
+import importedModalCss from "./ShareModal.css";
 import cssFile0 from "../reusableComponents/litReusableSelect/LitReusableSelect.css";
 import cssFile1 from "../reusableComponents/litHeader/LitHeader.css";
 import cssFile2 from "../reusableComponents/litConfirmationModal/LitConfirmationModal.css";
@@ -40,7 +36,9 @@ const ShareModal = (props) => {
   ] = useState([]);
   const [flow, setFlow] = useState("singleCondition");
   const [tokenList, setTokenList] = useState(null);
-  const [modalCss, setModalCss] = useState("lsm-bg-white lsm-border-standard lsm-border-gray-4 lsm-top-modal")
+  const [modalCss, setModalCss] = useState(
+    "lsm-bg-white lsm-border-standard lsm-border-gray-4 lsm-top-modal"
+  );
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [darkTheme, setDarkTheme] = useState(false);
 
@@ -53,12 +51,12 @@ const ShareModal = (props) => {
     defaultTokens = TOP_LIST,
     injectCSS = true,
     darkMode = false,
-    loadingState = false
+    loadingState = false,
   } = props;
 
   useEffect(() => {
     resetModal();
-  }, [props.showModal])
+  }, [props.showModal]);
 
   useEffect(() => {
     getTokens();
@@ -70,7 +68,7 @@ const ShareModal = (props) => {
       const allCss =
         baseCss +
         "\n" +
-        modalCss +
+        importedModalCss +
         "\n" +
         cssFile0 +
         "\n" +
@@ -122,9 +120,7 @@ const ShareModal = (props) => {
     }
   }, [darkMode]);
 
-
-  document.addEventListener("lit-ready", function (e) {
-  }, false);
+  document.addEventListener("lit-ready", function (e) {}, false);
 
   const getTokens = async () => {
     // get token list and cache it
@@ -132,7 +128,7 @@ const ShareModal = (props) => {
       const tokens = await LitJsSdk.getTokenList();
       setTokenList(tokens);
     } catch (err) {
-      setError(err)
+      setError(err);
     }
   };
 
@@ -266,7 +262,7 @@ const ShareModal = (props) => {
     const keyParams = {
       accessControlConditions,
       permanent: !conditionsAreUpdatable,
-      chain: 'ethereum'
+      chain: "ethereum",
     };
     // console.log('key Params', keyParams)
     onAccessControlConditionsSelected(keyParams);
@@ -277,8 +273,10 @@ const ShareModal = (props) => {
       {showModal && (
         <div className={modalCss} onClick={() => onClose()}>
           <div
-            className={"lsm-bg-white dark:lsm-bg-gray-7 lsm-border-standard lsm-border-gray-4 lsm-top-modal dark:lsm-border-gray-6"}
-            onClick={e => e.stopPropagation()}
+            className={
+              "lsm-bg-white dark:lsm-bg-gray-7 lsm-border-standard lsm-border-gray-4 lsm-top-modal dark:lsm-border-gray-6"
+            }
+            onClick={(e) => e.stopPropagation()}
           >
             {!error ? (
               <ShareModalContext.Provider
@@ -303,15 +301,13 @@ const ShareModal = (props) => {
                   defaultTokens,
                 }}
               >
-                {displayPage === "single" && <SingleCondition/>}
+                {displayPage === "single" && <SingleCondition />}
                 {displayPage === "multiple" && (
                   <MultipleConditions
                     humanizedAccessControlConditions={
                       humanizedAccessControlConditions
                     }
-                    accessControlConditions={
-                      accessControlConditions
-                    }
+                    accessControlConditions={accessControlConditions}
                   />
                 )}
                 {displayPage === "review" && (
@@ -319,9 +315,7 @@ const ShareModal = (props) => {
                     humanizedAccessControlConditions={
                       humanizedAccessControlConditions
                     }
-                    accessControlConditions={
-                      accessControlConditions
-                    }
+                    accessControlConditions={accessControlConditions}
                     loadingState={loadingState}
                   />
                 )}
@@ -332,11 +326,20 @@ const ShareModal = (props) => {
                 />
               </ShareModalContext.Provider>
             ) : (
-              <span className={'lsm-error-display'}>
-                <p className={'lsm-font-segoe lsm-text-gray-5'}>An error occurred with an external API:</p>
-                <p className={'lsm-font-segoe'}>{error}</p>
-                <p className={'lsm-font-segoe lsm-text-gray-5'}>Please close and reopen the modal to reconnect.</p>
-                <button className={'lsm-error-button lsm-bg-gray-4'} onClick={onClose}>Close</button>
+              <span className={"lsm-error-display"}>
+                <p className={"lsm-font-segoe lsm-text-gray-5"}>
+                  An error occurred with an external API:
+                </p>
+                <p className={"lsm-font-segoe"}>{error}</p>
+                <p className={"lsm-font-segoe lsm-text-gray-5"}>
+                  Please close and reopen the modal to reconnect.
+                </p>
+                <button
+                  className={"lsm-error-button lsm-bg-gray-4"}
+                  onClick={onClose}
+                >
+                  Close
+                </button>
               </span>
             )}
           </div>
